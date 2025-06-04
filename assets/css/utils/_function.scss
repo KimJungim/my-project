@@ -1,0 +1,20 @@
+// 기본 함수 정의
+@function mq($breakpoint, $custom-width: null, $min-width: null) {
+  @if $custom-width != null {
+    @return "all and (max-width: #{$custom-width})"; // 예외처리
+  } 
+  @else if $breakpoint == 'desktop' {
+    @return "all and (min-width: #{$breakpoint-desktop})"; // 1025px 이상
+  } 
+  @else if $breakpoint == 'tablet' {
+    @if $min-width != null {
+      // min-width가 있을 때만 함께 반환
+      @return "all and (min-width: #{$min-width}) and (max-width: #{$breakpoint-tablet})";
+    } 
+    // min-width가 null일 경우 max-width만 반환
+    @return "all and (max-width: #{$breakpoint-tablet})";
+  } 
+  @else if $breakpoint == 'mobile' {
+    @return "all and (max-width: #{$breakpoint-mobile})"; // 767px 이하
+  }
+}

@@ -1,0 +1,45 @@
+/****************************** 
+    Logo
+******************************/
+.logo-wrapper {
+  cursor: pointer;
+  color: inherit;
+  &.inner {
+    width: 120px;
+    height: 120px
+  }
+  &.outer {
+    color: #fff;
+    width: 120px;
+    height: 120px
+  }
+}
+
+
+/****************************** 
+    Presets
+******************************/
+.inline-block {
+  max-width: 100%;
+  display: inline-block;
+}
+
+.w-embed {
+  &::before, &::after {
+    content: " ";
+    grid-area: 1/1/2/2;
+    display: table;
+  }
+  &::after {
+    clear: both
+  }
+}
+
+.comp-wrapper {
+  overflow-x: clip
+}
+
+body.scroll-locked {
+  overflow: hidden;
+  height: 100vh;
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bubble {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.07) 15%,
+    rgba(255, 255, 255, 0.03) 45%,
+    transparent 80%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    inset -20px -20px 40px rgba(255, 255, 255, 0.1),
+    inset 10px 10px 30px rgba(255, 255, 255, 0.03);
+  position: relative;
+  overflow: hidden; /* 빛 효과가 밖으로 나가지 않도록 */
+}
+
+/* 상단 왼쪽 하이라이트 */
+.bubble::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 80px;
+  height: 50px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(173, 216, 230, 0.15), transparent);
+  border-radius: 50%;
+  filter: blur(10px);
+  opacity: 0.6;
+  transform: rotate(-10deg);
+}
+
+/* 하단 오른쪽 하이라이트 */
+.bubble::after {
+  content: "";
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 60px;
+  height: 30px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(221, 160, 221, 0.15), transparent);
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0.5;
+  transform: rotate(10deg);
+}
+
+/* 은은한 컬러광을 위한 내부 그라데이션 추가 */
+.bubble::after,
+.bubble::before {
+  mix-blend-mode: screen;
+}
+</style>
+
+  <!-- <style>
+ body {
+  margin: 0;
+  height: 100vh;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bubble {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.05) 10%,
+    rgba(255, 255, 255, 0.02) 50%,
+    transparent 80%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset -15px -15px 30px rgba(255, 255, 255, 0.1),
+    inset 10px 10px 20px rgba(0, 0, 0, 0.03);
+  position: relative;
+}
+
+/* 상단 왼쪽 하이라이트 */
+.bubble::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 80px;
+  height: 50px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.15;
+  filter: blur(10px);
+  transform: rotate(-10deg);
+}
+
+/* 하단 오른쪽 하이라이트 */
+.bubble::after {
+  content: "";
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 60px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.12;
+  filter: blur(8px);
+  transform: rotate(10deg);
+}
+
+  </style> -->
+</head>
+<body>
+  <div class="bubble" role="presentation" aria-hidden="true"></div>
+
+</body>
+</html>

@@ -1,0 +1,382 @@
+// 미디워 쿼리 반응형
+@mixin mobile {
+  @media #{mq('mobile')} {
+    @content;
+  }
+}
+
+@mixin tablet($min-width: null) { // tablet에 선택적 min-width 인자를 추가
+  @media #{mq('tablet', null, $min-width)} {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media #{mq('desktop')} {
+    @content;
+  }
+}
+
+@mixin custom-mq($width) {
+  @media #{mq(null, $width)} {
+    @content;
+  }
+}
+
+@mixin custom-mq-appoint($breakpoint, $width) {
+  @media #{mq($breakpoint, $width)} {
+    @content;
+  }
+}
+
+/* 태블릿 사용 예시
+  @include tablet { 
+    color: blue; // 태블릿, 기본적으로 ~ max-width: 1024px까지만 적용
+  }
+
+  @include tablet(768px) { 
+    color: green; // 768px 이상 1024px 이하 범위에서 녹색
+  }
+*/
+
+// flex
+@mixin flex-box ($ai: center, $jc: flex-start, $gap: 0, $direction: row) { 
+  display: flex;
+  flex-direction: $direction;
+  align-items: $ai;
+  justify-content: $jc;
+  gap: $gap;
+  @content;
+}
+
+// grid
+@mixin grid($columns: auto, $rows: auto, $gap: 0, $align: center, $justify: start, $flow: column) {
+  display: grid;
+  grid-auto-flow: $flow; // 기본적으로 column, 필요하면 row로 변경 가능
+  grid-template-columns: $columns; // 열 설정
+  grid-template-rows: $rows; // 행 설정
+  gap: $gap;
+  align-items: $align;
+  justify-items: $justify;
+  @content;
+}
+
+
+// 말줄임 처리
+@mixin ellipsis($line: 1) {
+  @if ($line == 1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line; // 표준화된 속성 대신 웹킷 전용 속성 사용
+  }
+}
+
+
+// 숨김 및 대체 텍스트 관련 
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@mixin ir-pm{ // 의미있는 이미지의 대체 텍스트를 제공하는 경우
+  display: block; 
+  overflow: hidden; 
+  font-size: 0; 
+  line-height: 0; 
+  text-indent: -9999px;
+}
+
+@mixin ir-wa { // 의미있는 이미지의 대체 텍스트로 이미지가 없어도 대체 텍스트를 보여주고자 할 때
+  display: block; 
+  overflow: hidden; 
+  position: relative; 
+  z-index: -1; 
+  width: 100%; 
+  height: 100%;
+}
+
+@mixin ir-so { // 대체 텍스트가 아닌 접근성을 위한 숨김 텍스트를 제공할 때
+  overflow: hidden; 
+  position: absolute; 
+  width:0;
+  height: 0; 
+  line-height: 0; 
+  text-indent: -9999px;
+}
+
+
+// 가상요소 생성
+@mixin after($w, $h) {
+  position: relative;
+
+  &::after {
+    display: block;
+    position: absolute;
+    content: '';
+    width: if(unitless($w), $w + rem, $w);
+    height: if(unitless($h), $h + rem, $h);
+    @content;
+  }
+}
+
+@mixin flex-after($w, $h) {
+  display: flex;
+  &::after {
+    display: block;
+    content: '';
+    width: if(unitless($w), $w + rem, $w);
+    height: if(unitless($h), $h + rem, $h);
+    @content;
+  }
+}
+
+@mixin before($w, $h) {
+  position: relative;
+
+  &::before {
+    display: block;
+    position: absolute;
+    content: '';
+    width: if(unitless($w), $w + rem, $w);
+    height: if(unitless($h), $h + rem, $h);
+    @content;
+  }
+}
+
+@mixin flex-before($w, $h) {
+  display: flex;
+  &::before {
+    display: block;
+    content: '';
+    width: if(unitless($w), $w + rem, $w);
+    height: if(unitless($h), $h + rem, $h);
+    @content;
+  }
+}
+
+
+@mixin b-box { 
+  display: block;
+  width: 100%;
+  height: 100%;
+  @content;
+}
+
+@mixin b-size($w, $h){
+  width: if(unitless($w), $w + rem, $w);
+  height: if(unitless($h), $h + rem, $h);
+  @content;
+}
+
+
+// icon
+@mixin icon-bg(
+  $w: 100%,
+  $h: 100%,
+  $background-url: null,
+  $background-position: 0 0,
+  $background-size: cover,
+  $background-repeat: no-repeat,
+  $viewport-width: 1920
+) {
+  display: inline-block;
+
+  // $w, $h 값이 100%가 아니고 px 단위일 때만 rem 단위로 변환
+  @if $w != 100% {
+    width: if(unitless($w), $w + rem, $w); // rem 함수 적용
+  } @else {
+    width: $w; // 기본값 100%일 때 그대로 사용
+  }
+
+  @if $h != 100% {
+    height: if(unitless($h), $h + rem, $h);
+  } @else {
+    height: $h; 
+  }
+
+  // 백그라운드 속성 적용 (입력된 url 값 사용, 기본값은 none)
+  @if $background-url != null {
+    background: url($background-url) $background-position / $background-size $background-repeat;
+  } @else {
+    background: none; // url이 없으면 background 제거
+  }
+
+  @content;
+}
+
+//---------------------웰스토리 커스텀 스타일-----------------------------
+
+// 요소 내부 스크롤 디자인 (웰스토리)
+@mixin innerScroll ($h: auto) {
+  overflow-y: auto;
+  max-height: if($h == auto, inherit, $h);
+
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+    height: 10rem;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: $color-grayscale-bright; 
+    border-radius: 0.4rem; 
+  }
+}
+
+// form 공통 스타일
+@mixin formTextStyle {
+  font-size: $font-size-form;
+  letter-spacing: $font-ls-form;
+  line-height: 145%;
+}
+
+
+@mixin formTextStyle--mo-type {
+  font-size: $font-size-form--mo-type;
+  letter-spacing: $font-ls-form--mo-type;
+  line-height: 145%;
+}
+
+// sub layout common style
+@mixin subLayoutTxt18($fw: b) {
+  @if $fw == b {
+    @include body-18-b;
+    @include tablet {
+      @include body-14-b;
+    }
+  } @else if $fw == r  {
+    @include body-18-r;
+    @include tablet {
+      @include body-14-r;
+    }
+  } @else {
+    @include body-18-b;
+    @include tablet {
+      @include body-14-b;
+    }
+  }
+  @content;
+}
+@mixin subLayoutTxt20 ($fw: m) {
+  @if $fw == m {
+    @include body-20-m; 
+    @include tablet {
+      @include body-16-m;
+    }
+  } @else if $fw == sb  {
+    @include body-20-sb;
+    @include tablet {
+      @include body-16-sb;
+    }
+  } @else if $fw == r  {
+    @include body-20-r;
+    @include tablet {
+      @include body-16-r;
+    }
+  } @else {
+    @include body-20-m; 
+    @include tablet {
+      @include body-16-m;
+    }
+  }
+  @content;
+}
+@mixin subLayoutTxt24 {
+  @include body-24-b;
+  @include tablet {
+    @include body-18-b;
+  }
+  @content;
+}
+@mixin subLayoutTxt28 {
+  @include title-28-b;
+  @include tablet {
+    @include title-18-b;
+  }
+  @content;
+}
+@mixin subLayoutTxt32 {
+  @include title-32-b;
+  letter-spacing: 0;
+  @include tablet {
+    @include title-24-b;
+  }
+  @content;
+}
+@mixin subLayoutTxt36 {
+  @include title-36-b;
+  letter-spacing: 0;
+  @include tablet {
+    @include title-24-b;
+  }
+  @content;
+}
+@mixin subLayoutTxt38 {
+  @include title-38-b;
+  @include tablet {
+    @include title-24-b;
+  }
+  @content;
+}
+@mixin subLayoutTxt75 ($ff: $font-f-welstory) {
+  @include headline-75-b;
+  font-family: $ff;
+
+  @include tablet {
+    font-size: 4.2rem;
+    letter-spacing: -0.084rem;
+  }
+
+  @content;
+}
+
+// tab style
+@mixin tabMobileOverflowStyle ($screen) {
+  &-wrap {
+    @include custom-mq ($screen) {
+      overflow: visible;
+    }
+  }
+  &__nav {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    @include custom-mq ($screen){
+      width: calc(100% + 4rem);
+      margin-left: -2rem;
+      margin-right: -2rem;
+    }
+      > div {
+        padding-left: 0rem;
+        @include custom-mq ($screen){
+          padding-left:2rem;
+        }
+      }
+      &__list-indicator {
+        margin-left: 0;
+        @include custom-mq ($screen){
+          margin-left: 2rem;
+        }
+      }
+  }
+  @include mobile {
+    &__list::after {
+      width: calc(var(--fix-nav-width--fit) + 2rem)
+    }
+  }
+}

@@ -1,0 +1,266 @@
+/****************************** 
+    Intro & About
+******************************/
+.main-text-heading {
+  perspective: 1000px;
+  text-align: center;
+  letter-spacing: -.05em;
+  text-transform: uppercase;
+  width: 100%;
+  max-width: 860px;
+  height: auto;
+  font-family: Gotham,sans-serif;
+  font-size: clamp(1rem,5vw,3.2rem);
+  line-height: 1.2;
+  position: relative;
+  transform: perspective(1000px);
+  &.text-fly-in {
+    position: absolute;
+    transform: none
+  }
+}
+
+.dala-floda-span {
+  perspective: 1000px;
+  word-spacing: .15em;
+  font-family: "Lusitana", serif;
+  font-size: clamp(2rem,5vw,3.5rem);
+  font-weight: 700;
+  line-height: 1;
+  display: inline-block;
+  transform: perspective(1000px)
+}
+
+
+/****************************** 
+    Loading 
+******************************/
+.loading-screen {
+  z-index: 10001;
+  background-color: var(--black);
+  padding: 0;
+  display: none;
+  position: fixed;
+  inset: 0%;
+  
+  .loading-screen-content {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    position: relative
+  }
+  .loading-screen-fill {
+    background-color: var(--swatch--red);
+    width: 100%;
+    height: 0%;
+    transition: height .75s cubic-bezier(.165,.84,.44,1);
+    position: absolute;
+    inset: auto 0% 0%;
+    overflow: hidden;
+    .loading-screen-inner-content {
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      position: absolute;
+      inset: auto 0% 0%
+    }
+  }
+}
+
+
+/****************************** 
+    Keyword 
+******************************/
+.comp-keyword {
+  z-index: 2;
+  padding-right: var(--swatch--padding--main);
+  padding-left: var(--swatch--padding--main);
+  pointer-events: auto;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100svh;
+  display: flex;
+  position: relative;
+  overflow: clip;
+
+  .comp-keyword-content {
+    z-index: 0;
+    background-color: var(--swatch--red);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    inset: 0%;
+    overflow: hidden;
+    &.mobile {
+      display: none
+    }
+  }
+
+  .i-chevron {
+    border-bottom: 2px solid #000;
+    border-right: 2px solid #000;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 60px;
+    transform: rotate(45deg)
+  }
+}
+
+
+/****************************** 
+    About 
+******************************/
+.comp-about {
+  background-color: var(--white);
+  text-align: center;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 500svh;
+  display: flex;
+  position: relative;
+  overflow-x: clip;
+  
+  // Splitting.js로 나눈 단어 애니메이션 스타일
+  .word {
+    display: inline-block;
+    transform-origin: center;
+    perspective: 1000px;
+    opacity: 0; /* 애니메이션 전에 보이지 않도록 설정 */
+  }
+
+  .image-fly-in-wrapper {
+    perspective: 1000px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: 200vh;
+    margin-bottom: 0;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    transform: perspective(1000px);
+    &.old {
+      display: none
+    }
+    &.back {
+      z-index: 0
+    }
+    &.front {
+      z-index: 2
+    }
+
+    .fly-in-list-item {
+      display: flex;
+      position: absolute;
+      .fly-in-image {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        &.one {
+          width: 70px;
+          top: 16%;
+          left: 33%
+        }
+        &.two {
+          width: 78px;
+          top: 22%;
+          left: 61%
+        }
+        &.three {
+          width: 97px;
+          top: 39%;
+          right: 14%
+        }
+        &.four {
+          cursor: pointer;
+          width: 136px;
+          bottom: 18%;
+          left: 50%
+        }
+        &.five {
+          width: 75px;
+          bottom: 22%;
+          left: 25%
+        }
+        &.six {
+          width: 111px;
+          top: 42%;
+          left: 14%
+        }
+
+        .fly-in-tag {
+          aspect-ratio: auto;
+          transform-origin: 0 100%;
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+          margin-bottom: .5rem;
+          transition: all .25s cubic-bezier(.215,.61,.355,1);
+          display: block;
+          position: relative;
+          transform: translate(-50%)
+        }
+      }
+    }
+  }
+
+  .video-pin-wrapper {
+    z-index: 1;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100svh;
+    transition: background-color .25s cubic-bezier(.215,.61,.355,1);
+    display: flex;
+    position: absolute;
+    top: -100vh;
+    .text-fly-wrapper {
+      pointer-events: auto;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      position: absolute
+    }
+    .hero-video {
+      z-index: 1;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      & >video {
+        object-fit: cover;
+        z-index: -100;
+        background-position: 50%;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        position: absolute;
+        inset: -100%;
+        &::-webkit-media-controls-start-playback-button {
+          -webkit-appearance: none;
+          display: none!important
+        }
+      }
+    }
+  }
+}
+
+
+
+
+

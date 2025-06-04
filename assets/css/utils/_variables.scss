@@ -1,0 +1,64 @@
+/*************************************
+    Device Breakpoint (Media Query)
+    767px 이하: mobile
+    768px ~ 1024px: tablet
+    1025px 이상: desktop
+*************************************/
+$breakpoint-mobile: 767px;
+$breakpoint-tablet: 1024px;
+$breakpoint-desktop: 1025px;
+$breakpoint-gnb: 1250px;
+
+
+// font
+$font-f-kr: 'Pretendard', sans-serif;
+$font-f-welstory: 'Welstorygothic', sans-serif;
+
+// form
+$color-form-disabled: #F5F5F5;
+$font-size-form: 2rem;
+$font-ls-form: -0.06rem;
+
+$font-size-form--mo-type: 1.6rem;
+$font-ls-form--mo-type: -0.048rem;
+
+
+:root {
+	--black: #0E1126;
+	--swatch--red: #5D04D9;
+	--swatch--padding--main: 30px;
+	--swatch--white: #FFDEDE;
+	--white: white;
+	--dark: #171717;
+	--swatch--black: #0D0D0D;
+	--swatch--padding--nav-color: var(--white);
+	--vh: 1vh;
+	--hue: 223;
+	--bg: hsl(var(--hue),10%,90%);
+	--fg: hsl(var(--hue),10%,10%);
+	--primary: hsl(var(--hue),90%,50%);
+	--trans-dur: 0.3s;
+	--trans-timing: cubic-bezier(0.65,0,0.35,1);
+}
+
+
+/* Color Theme Swatches in Hex */
+.Dcoya---Cyber-Phishing-Dashboard-1-hex { color: #5D04D9; }
+.Dcoya---Cyber-Phishing-Dashboard-2-hex { color: #260E59; }
+.Dcoya---Cyber-Phishing-Dashboard-3-hex { color: #0E1126; }
+.Dcoya---Cyber-Phishing-Dashboard-4-hex { color: #056CF2; }
+.Dcoya---Cyber-Phishing-Dashboard-5-hex { color: #05C7F2; }
+
+/* Color Theme Swatches in RGBA */
+.Dcoya---Cyber-Phishing-Dashboard-1-rgba { color: rgba(92, 4, 216, 1); }
+.Dcoya---Cyber-Phishing-Dashboard-2-rgba { color: rgba(38, 14, 89, 1); }
+.Dcoya---Cyber-Phishing-Dashboard-3-rgba { color: rgba(13, 17, 38, 1); }
+.Dcoya---Cyber-Phishing-Dashboard-4-rgba { color: rgba(4, 107, 242, 1); }
+.Dcoya---Cyber-Phishing-Dashboard-5-rgba { color: rgba(4, 198, 242, 1); }
+
+/* Color Theme Swatches in HSLA */
+.Dcoya---Cyber-Phishing-Dashboard-1-hsla { color: hsla(264, 96, 43, 1); }
+.Dcoya---Cyber-Phishing-Dashboard-2-hsla { color: hsla(258, 72, 20, 1); }
+.Dcoya---Cyber-Phishing-Dashboard-3-hsla { color: hsla(230, 47, 10, 1); }
+.Dcoya---Cyber-Phishing-Dashboard-4-hsla { color: hsla(213, 96, 48, 1); }
+.Dcoya---Cyber-Phishing-Dashboard-5-hsla { color: hsla(191, 96, 48, 1); }

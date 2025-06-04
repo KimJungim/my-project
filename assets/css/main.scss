@@ -1,0 +1,21 @@
+// utils (변수, 믹스인, 함수 먼저 불러오기)
+@import "utils/variables";
+@import "utils/mixins";
+@import "utils/function";
+
+// base (기본 스타일)
+@import "base/reset";
+@import "base/font";
+
+// layouts (레이아웃 관련 스타일)
+@import "layouts/intro-about";
+@import "layouts/career";
+@import "layouts/skill";
+@import "layouts/workflow";
+@import "layouts/mindset";
+// @import "layouts/grid";
+
+// components (컴포넌트 스타일)
+@import "components/asset";
+@import "components/header";
+@import "components/footer"

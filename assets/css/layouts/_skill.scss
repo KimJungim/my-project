@@ -1,0 +1,299 @@
+.comp-skill {
+  position: relative;
+  min-height: 100vh; /* 170 */
+  z-index: 10;
+	overflow: visible;
+	flex: 0 0 100vw;
+	// .black-fill {
+	// 	position: absolute;
+	// 	bottom: 0;
+	// 	left: 0;
+	// 	width: 100vw;
+	// 	height: 0%;
+	// 	background: linear-gradient(to top,
+	// 		black 0%,
+	// 		black 60%,
+	// 		rgba(0,0,0,0.6) 80%,
+	// 		rgba(0,0,0,0.3) 90%,
+	// 		rgba(0,0,0,0) 100%);
+	// 	z-index: 1;
+	// 	pointer-events: none;
+	// 	transition: none;
+	// 	&::after {
+	// 		content: "";
+	// 		position: absolute;
+	// 		bottom: 0;
+	// 		left: 0;
+	// 		width: 100%;
+	// 		height: 50px; /* 충분히 덮도록 */
+	// 		background: black;
+	// 		z-index: 10;
+	// 		pointer-events: none;
+	// 	}
+	// 	&.full-black::after {
+	// 		opacity: 1;
+	// 	}
+	// }
+	.skill-box {
+		position: absolute;
+		// bottom: 0.3vh;
+		width: 100%;
+		height: 100vh;
+		overflow: visible;
+		pointer-events: none;
+		z-index: 10;
+		&.active {
+			opacity: 1;
+			pointer-events: auto;
+		}
+		// .skill {
+		// 	position: absolute;
+		// 	width: 240px;
+		// 	height: 240px;
+		// 	border-radius: 50%;
+		// 	color: white;
+		// 	display: flex;
+		// 	flex-direction: column;
+		// 	align-items: center;
+		// 	justify-content: center;
+		// 	font-family: sans-serif;
+		// 	text-align: center;
+		// 	z-index: 20;
+		// 	transform: translate(-50%, -50%);
+		// 	pointer-events: none;
+		// 	img {
+		// 		width: 60px;
+		// 		height: 60px;
+		// 		margin-bottom: 10px;
+		// 	}
+		// 	span {
+		// 		font-size: 20px;
+		// 		font-weight: bold;
+		// 	}
+		// 	&.skill-b {
+		// 		background-color: #f0ede8; /* 밝은 배경 */
+		// 		color: #111;
+		// 	}
+		// 	&.skill-w {
+		// 		background-color: #222; /* 어두운 배경 */
+		// 		color: #fff;
+		// 	}
+		// }
+
+		.skill {
+			position: absolute;
+			width: 240px;
+			height: 240px;
+			border-radius: 50%;
+			color: white;
+			display: flex;
+			// flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			font-family: sans-serif;
+			text-align: center;
+			z-index: 20;
+			transform: translate(-50%, -50%) translateZ(0);
+			backface-visibility: hidden;
+  		will-change: transform;
+			pointer-events: none;
+			background-color: transparent; /* 안쪽은 투명 */
+			overflow: hidden; /* 가상 요소 넘치지 않도록 */
+			&::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border-radius: 50%;
+				background: linear-gradient(to bottom, #7A7A7A, #333333);
+				-webkit-mask: 
+					radial-gradient(farthest-side, transparent calc(100% - 3px), black 100%);
+				mask: 
+					radial-gradient(farthest-side, transparent calc(100% - 3px), black 100%);
+				z-index: 0;
+				pointer-events: none;
+				image-rendering: auto;
+ 			 	-webkit-font-smoothing: antialiased;
+			}
+			//  > * {
+			// 	position: relative;
+			// 	z-index: 1;
+			// }
+			img {
+				width: 35px;
+				height: 35px;
+				// width: 60px;
+				// height: 60px;
+				// margin-bottom: 10px;
+				// display: none;
+			}
+			span {
+				font-size: 16px;
+				font-weight: bold;
+				margin-left: 8px;
+				// display: none;
+			}
+			// background: radial-gradient(
+			// 		circle at 50% 50%,
+			// 		rgba(255, 255, 255, 0.07) 15%,
+			// 		rgba(255, 255, 255, 0.03) 45%,
+			// 		transparent 80%
+			// 	);
+			// 	border: 1px solid rgba(255, 255, 255, 0.2);
+			// 	box-shadow:
+			// 		inset -20px -20px 40px rgba(255, 255, 255, 0.1),
+			// 		inset 10px 10px 30px rgba(255, 255, 255, 0.03);
+			// 	&::before {
+			// 		content: "";
+			// 		position: absolute;
+			// 		top: 10px;
+			// 		left: 10px;
+			// 		width: 80px;
+			// 		height: 50px;
+			// 		background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(173, 216, 230, 0.15), transparent);
+			// 		border-radius: 50%;
+			// 		filter: blur(10px);
+			// 		opacity: 0.6;
+			// 		transform: rotate(-10deg);
+			// 	}
+			// 	&::after {
+			// 		content: "";
+			// 		position: absolute;
+			// 		bottom: 15px;
+			// 		right: 15px;
+			// 		width: 60px;
+			// 		height: 30px;
+			// 		background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(221, 160, 221, 0.15), transparent);
+			// 		border-radius: 50%;
+			// 		filter: blur(8px);
+			// 		opacity: 0.5;
+			// 		transform: rotate(10deg);
+			// 	}
+			// 	&::after,
+			// 	&::before {
+			// 		mix-blend-mode: screen;
+			// 	}
+			// &.skill-b {
+			// 	// background-color: #f0ede8; /* 밝은 배경 */
+			// 	// color: #111;
+			// 	background-color: #222; /* 어두운 배경 */
+			// 	color: #fff;
+			// }
+			// &.skill-w {
+			// 	background-color: #222; /* 어두운 배경 */
+			// 	color: #fff;
+			// }
+		}
+		
+		#skillCanvas {
+			opacity: 0;
+			pointer-events: none;
+			transform: translateZ(0);
+		}
+	}
+}
+
+.pin-wrap {
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+  height: 100vh;
+}
+
+.skill-wrap {
+  flex: 0 0 100vw;
+	position: relative;
+  overflow: hidden;
+  z-index: 1;
+  height: auto; /* 세로 콘텐츠 */
+	.gradient-overlay {
+		position: absolute;
+		top: 0; left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 40%, black 100%);
+		filter: blur(40px);
+		opacity: 0;
+		pointer-events: none;
+		z-index: 1;
+	}
+	.solid-overlay {
+		position: absolute;
+		top: 0; left: 0;
+		width: 100%;
+		height: 100%;
+		background: black;
+		opacity: 0;
+		pointer-events: none;
+		z-index: 0;
+	}
+}
+
+.comp-mindset {
+  display: flex;
+  flex: 0 0 auto;
+  height: 100vh;
+	width: max-content; // 가로 스크롤 유지
+	.mindset{
+		&-slide {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			min-width: 100vw;
+			flex-shrink: 0;
+			h2 {
+				font-size: 35px;
+				color: #D9D9D9;
+				margin-bottom: 50px;
+			}
+			.chart-wrapper {
+				width: 50vw;
+				height: 500px;
+				background-color: black;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+
+				path {
+					stroke: black;
+					cursor: pointer;
+					transition: fill 250ms;
+					&:hover {
+						fill: #fff;
+					}
+				}
+
+				text {
+					font-size: 15px;
+					text-transform: uppercase;
+					letter-spacing: 0.5px;
+				}
+
+				polyline {
+					fill: none;
+					stroke: #ffffff;          /* 선 색상 */
+					stroke-width: 2px;
+					stroke-dasharray: 5 4;    /* 점선 모양: 선 5px, 간격 4px */
+					stroke-linecap: round;    /* 점선 끝을 둥글게 */
+				}
+			}
+		}
+	}
+}
+
+// .mindset-slide-gap {
+//   min-width: 0vw; // 너비로 여유 확보
+//   flex-shrink: 0;
+//   background: transparent;
+//   pointer-events: none;
+// }
+
+.mindset-slide,
+.mindset-slide-gap,
+.skill-wrap {
+  margin-right: -1px; // 1px 중첩시켜 얇은 틈 숨기기
+}
+
+
+
