@@ -1456,29 +1456,33 @@ body {
   pointer-events: none;
 }
 .projects-component .projects-list .project-item .project-content .project-details {
-  width: 25%;
+  width: calc((100% - 400px) / 2);
   text-align: left;
-  font-size: 0.8rem;
-  letter-spacing: 0.05rem;
-  font-weight: 500;
-}
-.projects-component .projects-list .project-item .project-content .project-details .line-wrapper {
-  overflow: hidden;
-  margin-bottom: 0.25rem;
+  font-size: 12px;
+  letter-spacing: 0.1px;
 }
 .projects-component .projects-list .project-item .project-content .project-details.right {
   text-align: right;
 }
+.projects-component .projects-list .project-item .project-content .project-details .detail-label {
+  font-size: 13px;
+  letter-spacing: 0.05rem;
+}
+.projects-component .projects-list .project-item .project-content .project-details .detail-label .line-wrapper {
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.projects-component .projects-list .project-item .project-content .project-details .detail-label strong {
+  font-weight: 600;
+  display: block;
+}
+.projects-component .projects-list .project-item .project-content .project-details .detail-label span {
+  display: block;
+}
 .projects-component .projects-list .project-item .project-content .project-details .detail-year {
   margin-top: 0.5rem;
 }
-.projects-component .projects-list .project-item .project-content .detail-label {
-  margin-bottom: 0.25rem;
-  font-size: 0.7rem;
-  letter-spacing: 0.05rem;
-}
 .projects-component .projects-list .project-item .project-content .project-image {
-  width: 40%;
   max-width: 400px;
   position: relative;
   overflow: hidden;
@@ -1726,10 +1730,17 @@ body {
   -ms-flex-negative: 0;
       flex-shrink: 0;
 }
-.comp-mindset .mindset-slide h2 {
-  font-size: 35px;
+.comp-mindset .mindset-slide-title {
   color: #D9D9D9;
   margin-bottom: 50px;
+  text-align: center;
+}
+.comp-mindset .mindset-slide-title h2 {
+  font-size: 40px;
+}
+.comp-mindset .mindset-slide-title p {
+  font-size: 15px;
+  margin-top: 10px;
 }
 .comp-mindset .mindset-slide .chart-wrapper {
   width: 50vw;

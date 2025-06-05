@@ -462,21 +462,38 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize text splitting
   projectItems.forEach((project) => {
     const detailElements = project.querySelectorAll(".project-details p");
-    detailElements.forEach((element) => {
-      // Create a simple text splitting approach that works without SplitType
-      const originalText = element.innerText;
-      element.innerHTML = "";
+    detailElements.forEach((p) => {
+      // strong과 span 요소 추출
+      const strong = p.querySelector("strong");
+      const span = p.querySelector("span");
+
+      // 둘 다 없으면 패스
+      if (!strong && !span) return;
+
+      // 기존 요소들 분리 저장
+      const strongClone = strong?.cloneNode(true);
+      const spanClone = span?.cloneNode(true);
+
+      // <p> 비우기
+      p.innerHTML = "";
+
+      // wrapper 구성
       const lineWrapper = document.createElement("div");
       lineWrapper.className = "line-wrapper";
-      lineWrapper.style.overflow = "hidden"; // Added overflow hidden for cleaner text animations
-      const lineElement = document.createElement("div");
-      lineElement.className = "line";
-      lineElement.innerText = originalText;
-      lineWrapper.appendChild(lineElement);
-      element.appendChild(lineWrapper);
+      lineWrapper.style.overflow = "hidden";
 
-      // Set initial GSAP position
-      gsap.set(lineElement, {
+      const line = document.createElement("div");
+      line.className = "line";
+
+      // 원래의 <strong>, <span>을 다시 넣어줌
+      if (strongClone) line.appendChild(strongClone);
+      if (spanClone) line.appendChild(spanClone);
+
+      lineWrapper.appendChild(line);
+      p.appendChild(lineWrapper);
+
+      // GSAP 초기 위치 세팅
+      gsap.set(line, {
         y: "100%",
         opacity: 0
       });
@@ -1386,19 +1403,16 @@ function drawMindsetChart() {
   const dataset = Array(8).fill(1);
   // const dataset = [2, 1, 1.5, 1, 1, 0.5, 1.5, 1, 0.5, 1];  
 
-  // const colors = ['#9e0142', '#d53e4f', '#f46d43', '#fdae61', '#fee08b', '#e6f598', '#abdda4', '#66c2a5', '#3288bd', '#5e4fa2'];
   const colors = ['#333333', '#404040', '#4D4D4D', '#595959', '#666666', '#737373', '#A6A6A6', '#D9D9D9'];
   const labels = [
-    "접근성",
-    "유지보수성",
-    "소통",
-    "팀워크",
-    // "사용자 중심 사고",
-    "디테일 집중",
-    "기술 탐구심",
-    "퍼포먼스 최적화",
-    "표준 준수",
-    // "문서화와 공유"
+    "#소통에 능한",
+    "#디테일을 놓치지 않는",
+    "#책임감 있는 마무리",
+    "#기준이 있는 작업자",
+    "#접근성을 고려하는",
+    "#정리된 사고",
+    "#사용자 중심의 시선",
+    "#협업에 강한",
   ];
 
   const width = container.offsetWidth;
