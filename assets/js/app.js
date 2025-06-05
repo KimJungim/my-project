@@ -1288,7 +1288,7 @@ function dropNextSkill() {
   const el = document.createElement('div');
   el.className = 'skill';
   el.classList.add(Math.random() < 0.5 ? 'skill-b' : 'skill-w');
-  el.innerHTML = `<img src="../assets/image/icons/${skill.icon}" alt="${skill.name}" /><span>${skill.name}</span>`;
+  el.innerHTML = `<img src="assets/image/icons/${skill.icon}" alt="${skill.name}" /><span>${skill.name}</span>`;
   document.querySelector('.skill-box').appendChild(el);
   skillElements.push({ el, body: circle });
 
