@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 기존 네비게이션 및 화살표 애니메이션 유지
     loadingAnim.from(".nav", { yPercent: -100, ease: "circ.out" }, "<");
-    loadingAnim.from(".snw-chevron", { yPercent: 100, opacity: 0, ease: "circ.out" }, "<");
+    loadingAnim.from(".i-chevron", { yPercent: 100, opacity: 0, ease: "circ.out" }, "<");
   }
 
   // comp-intro 고정
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
         gsap.timeline({
           scrollTrigger: {
             trigger: ".comp-keyword",
-            pin: ".hero-heading-content",
+            pin: ".comp-keyword-content",
             start: "top top",
             end: "bottom top",
             pinType: "transform",
@@ -308,16 +308,16 @@ document.addEventListener("DOMContentLoaded", () => {
   gsap.set('.comp-career .circle .txt', { width: txtSize });
 
   // 텍스트 등장 애니메이션
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: '.comp-career h3',
-      start: 'top 80%',
-      toggleActions: 'play none none reverse',
-    }
-  })
-    .from('.comp-career .circleBx', { opacity: 0, y: 120, duration: 1 })
-    .from('.comp-career h3 strong', { opacity: 0, y: 50, duration: 1 }, 0.3)
-    .from('.comp-career h3 p', { opacity: 0, y: 50, duration: 1 }, 0.6);
+  // gsap.timeline({
+  //   scrollTrigger: {
+  //     trigger: '.comp-career h3',
+  //     start: 'top 80%',
+  //     toggleActions: 'play none none reverse',
+  //   }
+  // })
+  //   .from('.comp-career .circleBx', { opacity: 0, y: 120, duration: 1 })
+  //   .from('.comp-career h3 strong', { opacity: 0, y: 50, duration: 1 }, 0.3)
+  //   .from('.comp-career h3 p', { opacity: 0, y: 50, duration: 1 }, 0.6);
 
   // 원커지기
   const career = gsap.timeline({
