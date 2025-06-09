@@ -1116,6 +1116,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const tl = gsap.timeline({
     scrollTrigger: {
+      id: "comp-skill-pin",
       trigger: ".comp-skill",
       start: "top top",
       end: `+=${extraScroll + mindsetWidth}`,
