@@ -67,6 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
   Splitting();
   gsap.registerPlugin(ScrollTrigger);
 
+  document.querySelectorAll(".project-item").forEach(rotateTitle);
+
   setTimeout(() => {
     ScrollTrigger.refresh();
   }, 100);
@@ -740,6 +742,12 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 0.2,
         ease: "projectCollapse",
         onComplete: () => {
+          activeProject.classList.remove("is-active");
+          const oldTitle = activeProject.querySelector(".project-title");
+          gsap.set(oldTitle, { clearProps: "transform, opacity" });
+
+          rotateTitle(activeProject); // 리스트 회전 애니메이션 다시 복구
+
           // After animation completes
           activeProject = null;
           resetScaling();
@@ -811,6 +819,30 @@ document.addEventListener("DOMContentLoaded", () => {
         const details = project.querySelectorAll(".project-details .line");
         const title = project.querySelector(".project-title");
 
+        // 선택 시 indicator 강제 숨김
+        const leftIndicator = project.querySelector(".hover-indicator.left");
+        const rightIndicator = project.querySelector(".hover-indicator.right");
+
+        gsap.killTweensOf([leftIndicator, rightIndicator]);
+        gsap.to([leftIndicator, rightIndicator], {
+          width: "0px",
+          opacity: 0,
+          x: (i) => (i === 0 ? -10 : 10),
+          duration: 0.2,
+          overwrite: true
+        });
+
+        // 선택된 project-item은 회전 애니메이션 제거
+        project.classList.add("is-active");
+
+        // 선택된 항목의 타이틀 회전 애니메이션 제거
+        ScrollTrigger.getAll().forEach(trigger => {
+          const target = trigger.animation?.targets?.()[0];
+          if (target && project.contains(target) && target.classList.contains("project-title")) {
+            trigger.kill(true);
+          }
+        });
+        
         // Pre-render content to get accurate height
         gsap.set(content, {
           display: "flex",
@@ -905,27 +937,47 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Ensure visible in viewport
+        // setTimeout(() => {
+        //   const projectsList = document.querySelector(".projects-list");
+        //   const rect = project.getBoundingClientRect();
+        //   const containerRect = projectsList.getBoundingClientRect();
+
+        //   if (
+        //     rect.top < containerRect.top ||
+        //     rect.bottom > containerRect.bottom
+        //   ) {
+        //     const scrollOffset =
+        //       rect.top -
+        //       containerRect.top -
+        //       containerRect.height / 2 +
+        //       rect.height / 2;
+
+        //     projectsList.scrollBy({
+        //       top: scrollOffset,
+        //       behavior: "smooth"
+        //     });
+        //   }
+        // }, 50);
+        // Ensure visible in viewport (스크롤 중앙 정렬)
         setTimeout(() => {
-          const projectsList = document.querySelector(".projects-list");
           const rect = project.getBoundingClientRect();
-          const containerRect = projectsList.getBoundingClientRect();
+          const offset = rect.top + window.scrollY;
+          const targetY = offset - (window.innerHeight / 2) + (rect.height / 2);
 
-          if (
-            rect.top < containerRect.top ||
-            rect.bottom > containerRect.bottom
-          ) {
-            const scrollOffset =
-              rect.top -
-              containerRect.top -
-              containerRect.height / 2 +
-              rect.height / 2;
-
-            projectsList.scrollBy({
-              top: scrollOffset,
+          // Lenis 사용 시
+          if (window.lenis) {
+            window.lenis.scrollTo(targetY, {
+              duration: 1.2,
+              easing: (t) => 1 - Math.pow(1 - t, 3)
+            });
+          } else {
+            window.scrollTo({
+              top: targetY,
               behavior: "smooth"
             });
           }
-        }, 50);
+        }, 350); // 콘텐츠 펼치기 후 약간의 시간차
+
       }
     }
   };
@@ -975,44 +1027,78 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   
   // List 회전
-  ScrollTrigger.matchMedia({
-    // 데스크탑 또는 가로 모드
-    '(orientation: landscape)': () => {
-      document.querySelectorAll('.project-item').forEach((el) => {
-        gsap.to(el.querySelector('.project-title'), {
+  // ScrollTrigger.matchMedia({
+  //   // 데스크탑 또는 가로 모드
+  //   '(orientation: landscape)': () => {
+  //     document.querySelectorAll('.project-item').forEach((el) => {
+  //       gsap.to(el.querySelector('.project-title'), {
+  //         rotateX: 90,
+  //         z: '-0.6em',
+  //         transformOrigin: 'center 270%',
+  //         opacity: 0,
+  //         ease: 'none',
+  //         scrollTrigger: {
+  //           trigger: el,
+  //           start: 'top 50%',
+  //           end: 'top 10%',
+  //           scrub: true
+  //         }
+  //       });
+  //     });
+  //   },
+  //   // 모바일 또는 세로 모드
+  //   '(orientation: portrait)': () => {
+  //     document.querySelectorAll('.project-item').forEach((el) => {
+  //       gsap.to(el.querySelector('.project-title'), {
+  //         rotateX: 90,
+  //         z: '-0.6em',
+  //         transformOrigin: 'center 270%',
+  //         opacity: 0,
+  //         ease: 'none',
+  //         scrollTrigger: {
+  //           trigger: el,
+  //           start: 'top 60%',
+  //           end: 'top 20%',
+  //           scrub: true
+  //         }
+  //       });
+  //     });
+  //   }
+  // });
+  function rotateTitle(el) {
+    ScrollTrigger.matchMedia({
+      "(orientation: portrait)": () => {
+        gsap.to(el.querySelector(".project-title"), {
           rotateX: 90,
-          z: '-0.6em',
-          transformOrigin: 'center 270%',
+          z: "-0.6em",
+          transformOrigin: "center 270%",
           opacity: 0,
-          ease: 'none',
+          ease: "none",
           scrollTrigger: {
             trigger: el,
-            start: 'top 50%',
-            end: 'top 10%',
+            start: "top 60%",
+            end: "top 20%",
             scrub: true
           }
         });
-      });
-    },
-    // 모바일 또는 세로 모드
-    '(orientation: portrait)': () => {
-      document.querySelectorAll('.project-item').forEach((el) => {
-        gsap.to(el.querySelector('.project-title'), {
+      },
+      "(orientation: landscape)": () => {
+        gsap.to(el.querySelector(".project-title"), {
           rotateX: 90,
-          z: '-0.6em',
-          transformOrigin: 'center 270%',
+          z: "-0.6em",
+          transformOrigin: "center 270%",
           opacity: 0,
-          ease: 'none',
+          ease: "none",
           scrollTrigger: {
             trigger: el,
-            start: 'top 60%',
-            end: 'top 20%',
+            start: "top 50%",
+            end: "top 10%",
             scrub: true
           }
         });
-      });
-    }
-  });
+      }
+    });
+  }
 
   // skill
   ScrollTrigger.create({
