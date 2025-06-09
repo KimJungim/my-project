@@ -307,18 +307,6 @@ document.addEventListener("DOMContentLoaded", () => {
   gsap.set('.comp-career .circle', { clipPath: 'circle(18%)' });
   gsap.set('.comp-career .circle .txt', { width: txtSize });
 
-  // 텍스트 등장 애니메이션
-  // gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: '.comp-career h3',
-  //     start: 'top 80%',
-  //     toggleActions: 'play none none reverse',
-  //   }
-  // })
-  //   .from('.comp-career .circleBx', { opacity: 0, y: 120, duration: 1 })
-  //   .from('.comp-career h3 strong', { opacity: 0, y: 50, duration: 1 }, 0.3)
-  //   .from('.comp-career h3 p', { opacity: 0, y: 50, duration: 1 }, 0.6);
-
   // 원커지기
   const career = gsap.timeline({
     scrollTrigger: {
@@ -739,7 +727,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-
   // Function to toggle project expansion
   const toggleProject = (project) => {
     // Debounce clicks
@@ -795,6 +782,10 @@ document.addEventListener("DOMContentLoaded", () => {
             savedTransform = null;
           }
 
+          if (window.lenis && window.lenis.isStopped) {
+            window.lenis.start();
+          }
+
           activeProject = null;
           resetScaling();
           gsap.to(projectItems, {
@@ -803,6 +794,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ease: "projectExpand",
             stagger: 0.02
           });
+          openNewProject();
         }
       });
 
@@ -840,14 +832,46 @@ document.addEventListener("DOMContentLoaded", () => {
           ease: "projectCollapse"
         });
 
-        gsap.to(oldContent, {
+        // gsap.to(oldContent, {
+        //   maxHeight: 0,
+        //   opacity: 0,
+        //   margin: 0,
+        //   duration: 0.2,
+        //   ease: "projectCollapse",
+        //   onComplete: () => openNewProject()
+        // });
+        gsap.to(content, {
           maxHeight: 0,
           opacity: 0,
           margin: 0,
           duration: 0.2,
           ease: "projectCollapse",
-          onComplete: () => openNewProject()
+          onComplete: () => {
+            activeProject.classList.remove("is-active");
+
+            const title = activeProject.querySelector(".project-title");
+            if (savedTransform) {
+              title.style.transform = savedTransform.transform;
+              title.style.opacity = savedTransform.opacity;
+              savedTransform = null;
+            }
+
+            // 다시 스크롤 가능하게
+            if (window.lenis && window.lenis.isStopped) {
+              window.lenis.start();
+            }
+
+            activeProject = null;
+            resetScaling();
+            gsap.to(projectItems, {
+              marginBottom: "1.5rem",
+              duration: 0.3,
+              ease: "projectExpand",
+              stagger: 0.02
+            });
+          }
         });
+
       } else {
         openNewProject();
       }
@@ -879,16 +903,6 @@ document.addEventListener("DOMContentLoaded", () => {
           duration: 0.2,
           overwrite: true
         });
-
-        // 선택된 project-item은 회전 애니메이션 제거
-        // project.classList.add("is-active");
-
-        // ScrollTrigger.getAll().forEach(trigger => {
-        //   const target = trigger?.trigger;
-        //   if (target && project.contains(target)) {
-        //     trigger.kill(true);
-        //   }
-        // });
 
         // Pre-render content to get accurate height
         gsap.set(content, {
@@ -983,47 +997,28 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         }
 
-        // Ensure visible in viewport
-        // setTimeout(() => {
-        //   const projectsList = document.querySelector(".projects-list");
-        //   const rect = project.getBoundingClientRect();
-        //   const containerRect = projectsList.getBoundingClientRect();
-
-        //   if (
-        //     rect.top < containerRect.top ||
-        //     rect.bottom > containerRect.bottom
-        //   ) {
-        //     const scrollOffset =
-        //       rect.top -
-        //       containerRect.top -
-        //       containerRect.height / 2 +
-        //       rect.height / 2;
-
-        //     projectsList.scrollBy({
-        //       top: scrollOffset,
-        //       behavior: "smooth"
-        //     });
-        //   }
-        // }, 50);
-        // Ensure visible in viewport (스크롤 중앙 정렬)
         setTimeout(() => {
           const rect = project.getBoundingClientRect();
           const offset = rect.top + window.scrollY;
           const targetY = offset - (window.innerHeight / 2) + (rect.height / 2);
 
-          // Lenis 사용 시
           if (window.lenis) {
             window.lenis.scrollTo(targetY, {
               duration: 1.2,
               easing: (t) => 1 - Math.pow(1 - t, 3)
             });
+
+            // ✅ 부드럽게 살짝 이동 후 정지 (250ms 정도)
+            setTimeout(() => {
+              window.lenis.stop();
+            }, 250); // ✅ 너무 짧으면 위치 이동 안함 / 너무 길면 너무 늦음
           } else {
             window.scrollTo({
               top: targetY,
               behavior: "smooth"
             });
           }
-        }, 350); // 콘텐츠 펼치기 후 약간의 시간차
+        }, 350); // ← 콘텐츠가 펼쳐진 이후에 실행
 
       }
     }
