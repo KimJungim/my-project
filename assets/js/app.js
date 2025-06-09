@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
   Splitting();
   gsap.registerPlugin(ScrollTrigger);
 
-  document.querySelectorAll(".project-item").forEach(rotateTitle);
+  document.querySelectorAll(".project-item").forEach(createScrollRotateTitle);
 
   setTimeout(() => {
     ScrollTrigger.refresh();
@@ -419,6 +419,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // List 회전
+  function createScrollRotateTitle(el) {
+    const title = el.querySelector(".project-title");
+    if (!title) return;
+
+    ScrollTrigger.create({
+      trigger: el,
+      start: window.matchMedia("(orientation: portrait)").matches ? "top 60%" : "top 50%",
+      end: window.matchMedia("(orientation: portrait)").matches ? "top 20%" : "top 10%",
+      scrub: true,
+      onUpdate: (self) => {
+        const p = self.progress;
+        gsap.set(title, {
+          rotateX: 90 * p,
+          z: `${-0.6 * p}em`,
+          opacity: 1 - p,
+          transformOrigin: "center 270%"
+        });
+      }
+    });
+  }
+  ScrollTrigger.matchMedia({
+    "(orientation: landscape)": () => {
+      document.querySelectorAll(".project-item").forEach(createScrollRotateTitle);
+    },
+    "(orientation: portrait)": () => {
+      document.querySelectorAll(".project-item").forEach(createScrollRotateTitle);
+    }
+  });
+
   // project
   gsap.registerPlugin(CustomEase);
 
@@ -696,6 +726,20 @@ document.addEventListener("DOMContentLoaded", () => {
     clipPath: "inset(100% 0 0 0)"
   });
 
+  // 타이틀 회전
+  let savedTransform = null;
+
+  function rememberTitleTransform(el) {
+    const title = el.querySelector(".project-title");
+    if (!title) return;
+
+    savedTransform = {
+      transform: getComputedStyle(title).transform,
+      opacity: getComputedStyle(title).opacity
+    };
+  }
+
+
   // Function to toggle project expansion
   const toggleProject = (project) => {
     // Debounce clicks
@@ -743,15 +787,16 @@ document.addEventListener("DOMContentLoaded", () => {
         ease: "projectCollapse",
         onComplete: () => {
           activeProject.classList.remove("is-active");
-          const oldTitle = activeProject.querySelector(".project-title");
-          gsap.set(oldTitle, { clearProps: "transform, opacity" });
 
-          rotateTitle(activeProject); // 리스트 회전 애니메이션 다시 복구
+          const title = activeProject.querySelector(".project-title");
+          if (savedTransform) {
+            title.style.transform = savedTransform.transform;
+            title.style.opacity = savedTransform.opacity;
+            savedTransform = null;
+          }
 
-          // After animation completes
           activeProject = null;
           resetScaling();
-          // Reset spacing
           gsap.to(projectItems, {
             marginBottom: "1.5rem",
             duration: 0.3,
@@ -760,6 +805,8 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         }
       });
+
+      return; // 새로운 항목 열지 않음
     } else {
       // Close active project if exists
       if (activeProject) {
@@ -808,6 +855,7 @@ document.addEventListener("DOMContentLoaded", () => {
       function openNewProject() {
         // Open new project
         activeProject = project;
+        rememberTitleTransform(project);
 
         // Apply scaling with blur
         const activeIndex = Array.from(projectItems).indexOf(project);
@@ -833,16 +881,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         // 선택된 project-item은 회전 애니메이션 제거
-        project.classList.add("is-active");
+        // project.classList.add("is-active");
 
-        // 선택된 항목의 타이틀 회전 애니메이션 제거
-        ScrollTrigger.getAll().forEach(trigger => {
-          const target = trigger.animation?.targets?.()[0];
-          if (target && project.contains(target) && target.classList.contains("project-title")) {
-            trigger.kill(true);
-          }
-        });
-        
+        // ScrollTrigger.getAll().forEach(trigger => {
+        //   const target = trigger?.trigger;
+        //   if (target && project.contains(target)) {
+        //     trigger.kill(true);
+        //   }
+        // });
+
         // Pre-render content to get accurate height
         gsap.set(content, {
           display: "flex",
@@ -1025,80 +1072,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
-  
-  // List 회전
-  // ScrollTrigger.matchMedia({
-  //   // 데스크탑 또는 가로 모드
-  //   '(orientation: landscape)': () => {
-  //     document.querySelectorAll('.project-item').forEach((el) => {
-  //       gsap.to(el.querySelector('.project-title'), {
-  //         rotateX: 90,
-  //         z: '-0.6em',
-  //         transformOrigin: 'center 270%',
-  //         opacity: 0,
-  //         ease: 'none',
-  //         scrollTrigger: {
-  //           trigger: el,
-  //           start: 'top 50%',
-  //           end: 'top 10%',
-  //           scrub: true
-  //         }
-  //       });
-  //     });
-  //   },
-  //   // 모바일 또는 세로 모드
-  //   '(orientation: portrait)': () => {
-  //     document.querySelectorAll('.project-item').forEach((el) => {
-  //       gsap.to(el.querySelector('.project-title'), {
-  //         rotateX: 90,
-  //         z: '-0.6em',
-  //         transformOrigin: 'center 270%',
-  //         opacity: 0,
-  //         ease: 'none',
-  //         scrollTrigger: {
-  //           trigger: el,
-  //           start: 'top 60%',
-  //           end: 'top 20%',
-  //           scrub: true
-  //         }
-  //       });
-  //     });
-  //   }
-  // });
-  function rotateTitle(el) {
-    ScrollTrigger.matchMedia({
-      "(orientation: portrait)": () => {
-        gsap.to(el.querySelector(".project-title"), {
-          rotateX: 90,
-          z: "-0.6em",
-          transformOrigin: "center 270%",
-          opacity: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 60%",
-            end: "top 20%",
-            scrub: true
-          }
-        });
-      },
-      "(orientation: landscape)": () => {
-        gsap.to(el.querySelector(".project-title"), {
-          rotateX: 90,
-          z: "-0.6em",
-          transformOrigin: "center 270%",
-          opacity: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 50%",
-            end: "top 10%",
-            scrub: true
-          }
-        });
-      }
-    });
-  }
 
   // skill
   ScrollTrigger.create({
