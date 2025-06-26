@@ -22,6 +22,11 @@
     padding-bottom: 20px;
     display: flex;
     position: relative;
+    transition: filter 0.3s ease;
+    z-index: 9999;
+    &.invert-nav {
+      filter: invert(1);
+    }
   }
 
   .nav-column {

@@ -73,6 +73,38 @@ document.addEventListener("DOMContentLoaded", () => {
     ScrollTrigger.refresh();
   }, 100);
 
+  // nav dark mode
+  const navWrapper = document.querySelector('.nav-wrapper');
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1 // 10% 이상 화면에 보이면 감지
+  };
+
+  const darkSections = document.querySelectorAll('.comp-dark');
+  let visibleDarkSections = new Set();
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        visibleDarkSections.add(entry.target);
+      } else {
+        visibleDarkSections.delete(entry.target);
+      }
+
+      if (visibleDarkSections.size > 0) {
+        navWrapper.classList.add('invert-nav');
+      } else {
+        navWrapper.classList.remove('invert-nav');
+      }
+    });
+  }, observerOptions);
+
+  darkSections.forEach(section => {
+    observer.observe(section);
+  });
+
+
   const heroHeading = document.querySelector("[data-hero-heading]");
 
   if (heroHeading) {

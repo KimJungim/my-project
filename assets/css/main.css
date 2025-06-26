@@ -2074,6 +2074,15 @@ body.scroll-locked {
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  -webkit-transition: -webkit-filter 0.3s ease;
+  transition: -webkit-filter 0.3s ease;
+  transition: filter 0.3s ease;
+  transition: filter 0.3s ease, -webkit-filter 0.3s ease;
+  z-index: 9999;
+}
+.nav .nav-wrapper.invert-nav {
+  -webkit-filter: invert(1);
+          filter: invert(1);
 }
 .nav .nav-column {
   -webkit-box-flex: 1;
