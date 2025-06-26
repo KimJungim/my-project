@@ -104,6 +104,30 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(section);
   });
 
+  // video play 관련
+  const video = document.querySelector('.video-pin-wrapper video');
+  const keywordContent = document.querySelector('.comp-keyword');
+
+  function handleVideoTrigger() {
+    const rect = keywordContent.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    // 조건: keywordContent의 하단이 화면의 50% 위로 넘어갔을 때
+    const isOverHalfGone = rect.bottom < windowHeight * 0.5;
+
+    if (isOverHalfGone && video.paused) {
+      video.play();
+    } 
+    else if (!isOverHalfGone && !video.paused) {
+      video.pause(); // 원하면 제거
+    }
+  }
+
+  // 렌더링 타이밍 감안해서 scroll + resize 감지
+  window.addEventListener('scroll', handleVideoTrigger);
+  window.addEventListener('resize', handleVideoTrigger);
+  window.addEventListener('load', handleVideoTrigger);
+
 
   const heroHeading = document.querySelector("[data-hero-heading]");
 
