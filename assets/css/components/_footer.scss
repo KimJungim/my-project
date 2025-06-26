@@ -76,6 +76,13 @@
   background-position: center;
 }
 
+.footer .content .copy {
+  justify-content: flex-end;
+  p {
+    margin-bottom: 1rem;
+  }
+}
+
 @keyframes bubble-size {
   0%, 75% {
     width: var(--size, 4rem);

@@ -2385,6 +2385,15 @@ body.scroll-locked {
   background-position: center;
 }
 
+.footer .content .copy {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.footer .content .copy p {
+  margin-bottom: 1rem;
+}
+
 @-webkit-keyframes bubble-size {
   0%, 75% {
     width: var(--size, 4rem);
