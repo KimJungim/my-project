@@ -78,14 +78,11 @@
 				<div class="menu-headline">Creating reliable and accessible web experiences on time:</div>
 				<div class="menu-body">
 					<div class="menu-main-links">
-						<a href="tel:+010-3161-8712" class="menu-main-link menu-phone-number inline-block">
-							<div class="menu-main-link-text">+010-3161-8712</div>
-						</a>
 						<a href="mailto:jungimnim87@naver.com" class="menu-main-link menu-email inline-block">
 							<div class="main-link-text-dala-floda menu-main-link-text">jungimnim87@naver.com</div>
 						</a>
-						<a href="https://www.linkedin.com/company/soren-west-agency/" target="_blank" class="menu-main-link menu-follow inline-block">
-							<div class="menu-main-link-text">FOLLOW @SORENWEST</div>
+						<a href="https://pf.kakao.com/_nMuxin/chat" target="_blank" rel="noopener" class="menu-main-link menu-follow inline-block">
+							<div class="menu-main-link-text">Chat with me on KakaoTalk</div>
 						</a>
 					</div>
 					<div class="socials">
@@ -103,8 +100,7 @@
 						</a>
 					</div>
 					<div class="footer-cta-buttons">
-						<a href="mailto:sales@sorenwest.com?subject=Let&#x27;s%20schedule%20a%20call" class="footer-cta-button inline-block">Schedule a call</a>
-						<a href="mailto:hello@sorenwest.com" class="footer-cta-button inline-block">Send a message</a>
+						<a href="#none" id="kakao-link-btn" class="footer-cta-button inline-block">Share this portfolio via KakaoTalk</a>
 					</div>
 				</div>
 			</div>
@@ -215,10 +211,25 @@
 						.
 					</h2>
 				</div>
-				<div data-poster-url="https://cdn.prod.website-files.com/666c938255c9ed6610cdf0d7%2F66c8ab2eb701db9c8fda344c_SNW%20Landscape%20Slide%20V02-poster-00001.jpg" data-video-urls="https://cdn.prod.website-files.com/666c938255c9ed6610cdf0d7%2F66c8ab2eb701db9c8fda344c_SNW%20Landscape%20Slide%20V02-transcode.mp4,https://cdn.prod.website-files.com/666c938255c9ed6610cdf0d7%2F66c8ab2eb701db9c8fda344c_SNW%20Landscape%20Slide%20V02-transcode.webm" data-autoplay="true" data-loop="true" data-wf-ignore="true" data-post-anim="0" class="hero-video w-background-video w-background-video-atom">
-					<video id="cf6bce3f-c447-7cc3-61dc-ade93472a72a-video" autoplay="" loop="" style="background-image:url(&quot;https://cdn.prod.website-files.com/666c938255c9ed6610cdf0d7%2F66c8ab2eb701db9c8fda344c_SNW%20Landscape%20Slide%20V02-poster-00001.jpg&quot;)" muted="" playsinline="" data-wf-ignore="true" data-object-fit="cover">
-						<source src="https://cdn.prod.website-files.com/666c938255c9ed6610cdf0d7%2F66c8ab2eb701db9c8fda344c_SNW%20Landscape%20Slide%20V02-transcode.mp4" data-wf-ignore="true"/>
-						<source src="https://cdn.prod.website-files.com/666c938255c9ed6610cdf0d7%2F66c8ab2eb701db9c8fda344c_SNW%20Landscape%20Slide%20V02-transcode.webm" data-wf-ignore="true"/>
+				<div 
+					data-poster-url="assets/video/new-poster.jpg"
+					data-video-urls="assets/video/w_ji.mp4"
+					data-autoplay="true" 
+					data-loop="true" 
+					data-wf-ignore="true" 
+					data-post-anim="0" 
+					class="hero-video w-background-video w-background-video-atom"
+				>
+					<video 
+						autoplay 
+						loop 
+						muted 
+						playsinline 
+						style="background-image:url('assets/video/new-poster.jpg')" 
+						data-wf-ignore="true" 
+						data-object-fit="cover"
+					>
+						<source src="assets/video/w_ji.mp4" data-wf-ignore="true" />
 					</video>
 				</div>
 			</div>
@@ -373,7 +384,7 @@
 								</p>
 								<p class="detail-label">
 									<strong>Participation</strong>
-									<span>100%</span>
+									<span>60%</span>
 								</p>
 							</div>
 							<div class="project-image">
@@ -499,7 +510,7 @@
 								</p>
 								<p class="detail-label">
 									<strong>Participation</strong>
-									<span>100%</span>
+									<span>70%</span>
 								</p>
 							</div>
 							<div class="project-image">
@@ -625,7 +636,7 @@
 								</p>
 								<p class="detail-label">
 									<strong>Participation</strong>
-									<span>100%</span>
+									<span>(구축) 60% / (운영) 60%</span>
 								</p>
 							</div>
 							<div class="project-image">
@@ -688,7 +699,7 @@
 								</p>
 								<p class="detail-label">
 									<strong>Participation</strong>
-									<span>100%</span>
+									<span>70%</span>
 								</p>
 							</div>
 							<div class="project-image">
@@ -751,7 +762,7 @@
 								</p>
 								<p class="detail-label">
 									<strong>Participation</strong>
-									<span>100%</span>
+									<span>60%</span>
 								</p>
 							</div>
 							<div class="project-image">
@@ -1378,6 +1389,20 @@
 <!-- 공통 스크립트 -->
 <script defer src="./assets/js/common.js"></script>
 <script src="./assets/js/app.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script>
+  Kakao.init('995382c07bf9a8c1b4b99ada6ac32b87'); // 본인의 JavaScript 키로 변경
 
+  Kakao.Link.createDefaultButton({
+    container: '#kakao-link-btn',
+    objectType: 'text',
+    text: 'JungDaru Portfolio',
+    link: {
+      mobileWebUrl: 'https://your-website.com',
+      webUrl: 'https://your-website.com'
+    },
+    buttonTitle: '웹사이트로 이동'
+  });
+</script>
 </body>
 </html>
