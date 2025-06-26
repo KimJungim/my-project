@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener('resize', handleVideoTrigger);
   window.addEventListener('load', handleVideoTrigger);
 
-
+  // keyword splitting
   const heroHeading = document.querySelector("[data-hero-heading]");
 
   if (heroHeading) {
