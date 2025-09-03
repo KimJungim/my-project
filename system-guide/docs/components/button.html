@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../assets/style-guide.css">
+	<title>Button</title>
+</head>
+<body>
+  <div class="container container--no-header">
+    <h1 class="t-title-1 guide-title">Button 컴포넌트</h1>
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">기본 버튼</h2>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">기본 버튼 (배경색)</h3>
+        <div class="guide-component-group">
+          <button class="btn btn--fill">수정</button>
+          <button class="btn btn--fill" disabled>수정</button>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;button class="btn btn--fill"&gt;수정&lt;/button&gt;
+&lt;button class="btn btn--fill" disabled&gt;수정&lt;/button&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">보더라인 버튼</h3>
+        <div class="guide-component-group">
+          <button class="btn btn--solid">삭제</button>
+          <button class="btn btn--solid" disabled>삭제</button>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;button class="btn btn--solid"&gt;삭제&lt;/button&gt;
+&lt;button class="btn btn--solid" disabled&gt;삭제&lt;/button&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">라이트 보더라인 버튼</h3>
+        <div class="guide-component-group">
+          <button class="btn btn--solid-light">재업로드</button>
+          <button class="btn btn--solid-light" disabled>재업로드</button>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;button class="btn btn--solid-light"&gt;재업로드&lt;/button&gt;
+&lt;button class="btn btn--solid-light" disabled&gt;재업로드&lt;/button&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">버튼 배치 예시</h2>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">가로 배치 (PC에서 3개 균등)</h3>
+        <div class="guide-component-group">
+          <div class="btn-container btn-container--triple">
+            <button class="btn btn--fill">수정</button>
+            <button class="btn btn--solid">삭제</button>
+            <button class="btn btn--solid-light">재업로드</button>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="btn-container btn-container--triple"&gt;
+  &lt;button class="btn btn--fill"&gt;수정&lt;/button&gt;
+  &lt;button class="btn btn--solid"&gt;삭제&lt;/button&gt;
+  &lt;button class="btn btn--solid-light"&gt;재업로드&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">반응형: PC에서 가로, 모바일에서 2-1 배치 (상단 2개, 하단 1개)</h3>
+        <div class="guide-component-group">
+          <div class="card">
+            <div class="card__content">
+              <div class="card__header">
+                <div class="card__status">
+                  <div class="badge-group badge-group--status">
+                    <span class="badge badge-status badge-status-primary">8회 사용</span>
+                  </div>
+                </div>
+                <div class="card__main">
+                  <h3 class="card__title">제안서 업로드 화면 템플릿</h3>
+                  <div class="card__categories">
+                    <div class="badge-group badge-group--category">
+                      <span class="badge badge-category">작업유형</span>
+                      <span class="badge badge-category">카테고리</span>
+                      <span class="badge badge-category">템플릿 유형</span>
+                    </div>
+                  </div>
+                  <p class="card__summary">파일명 | PDF, PPT 파일을 업로드하고 발주처, 키워드 등 메타데이터를 입력할 수 있는 화면을 생성하는 AI 템플릿입니다.</p>
+                  <div class="card__date">2025.06.10</div>
+                  <div class="card__tags">
+                    <div class="tag-list">
+                      <span class="tag">#CRUD</span>
+                      <span class="tag">#CRUD</span>
+                      <span class="tag">#CRUD</span>
+                      <span class="tag">#CRUD</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card__buttons">
+                <div class="btn-container btn-container--triple btn-container--mobile-2-1">
+                  <button class="btn btn--fill">수정</button>
+                  <button class="btn btn--solid">삭제</button>
+                  <button class="btn btn--solid-light">재업로드</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="btn-container btn-container--triple btn-container--mobile-2-1"&gt;
+  &lt;button class="btn btn--fill"&gt;수정&lt;/button&gt;
+  &lt;button class="btn btn--solid"&gt;삭제&lt;/button&gt;
+  &lt;button class="btn btn--solid-light"&gt;재업로드&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">반응형: PC에서 가로, 모바일에서 1-2 배치 (상단 1개, 하단 2개)</h3>
+        <div class="guide-component-group">
+          <div class="card">
+            <div class="card__content">
+              <div class="card__header">
+                <div class="card__status">
+                  <div class="badge-group badge-group--status">
+                    <span class="badge badge-status badge-status-primary">8회 사용</span>
+                  </div>
+                </div>
+                <div class="card__main">
+                  <h3 class="card__title">제안서 업로드 화면 템플릿</h3>
+                  <div class="card__categories">
+                    <div class="badge-group badge-group--category">
+                      <span class="badge badge-category">작업유형</span>
+                      <span class="badge badge-category">카테고리</span>
+                      <span class="badge badge-category">템플릿 유형</span>
+                    </div>
+                  </div>
+                  <p class="card__summary">파일명 | PDF, PPT 파일을 업로드하고 발주처, 키워드 등 메타데이터를 입력할 수 있는 화면을 생성하는 AI 템플릿입니다.</p>
+                  <div class="card__date">2025.06.10</div>
+                  <div class="card__tags">
+                    <div class="tag-list">
+                      <span class="tag">#CRUD</span>
+                      <span class="tag">#CRUD</span>
+                      <span class="tag">#CRUD</span>
+                      <span class="tag">#CRUD</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card__buttons">
+                <div class="btn-container btn-container--triple btn-container--mobile-1-2">
+                  <button class="btn btn--fill">재업로드</button>
+                  <button class="btn btn--solid">수정</button>
+                  <button class="btn btn--solid-light">삭제</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="btn-container btn-container--triple btn-container--mobile-1-2"&gt;
+  &lt;button class="btn btn--fill"&gt;재업로드&lt;/button&gt;
+  &lt;button class="btn btn--solid"&gt;수정&lt;/button&gt;
+  &lt;button class="btn btn--solid-light"&gt;삭제&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">반응형: 수동으로 2개 + 1개 배치</h3>
+        <div class="guide-component-group">
+          <div class="card">
+            <div class="card__content">
+              <div class="card__header">
+                <div class="card__status">
+                  <div class="badge-group badge-group--status">
+                    <span class="badge badge-status badge-status-primary">8회 사용</span>
+                  </div>
+                </div>
+                <div class="card__main">
+                  <h3 class="card__title">제안서 업로드 화면 템플릿</h3>
+                  <div class="card__categories">
+                    <div class="badge-group badge-group--category">
+                      <span class="badge badge-category">작업유형</span>
+                      <span class="badge badge-category">카테고리</span>
+                      <span class="badge badge-category">템플릿 유형</span>
+                    </div>
+                  </div>
+                  <p class="card__summary">파일명 | PDF, PPT 파일을 업로드하고 발주처, 키워드 등 메타데이터를 입력할 수 있는 화면을 생성하는 AI 템플릿입니다.</p>
+                  <div class="card__date">2025.06.10</div>
+                  <div class="card__tags">
+                    <div class="tag-list">
+                      <span class="tag">#CRUD</span>
+                      <span class="tag">#CRUD</span>
+                      <span class="tag">#CRUD</span>
+                      <span class="tag">#CRUD</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card__buttons">
+                <!-- 첫 번째 row에 2개 버튼 -->
+                <div class="btn-container btn-container--half">
+                  <button class="btn btn--fill">수정</button>
+                  <button class="btn btn--solid">삭제</button>
+                </div>
+                <!-- 두 번째 row에 1개 버튼 -->
+                <div class="btn-container" style="margin-top: 10px;">
+                  <button class="btn btn--solid-light btn--full-width">재업로드</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;!-- 첫 번째 row에 2개 버튼 --&gt;
+&lt;div class="btn-container btn-container--half"&gt;
+  &lt;button class="btn btn--fill"&gt;수정&lt;/button&gt;
+  &lt;button class="btn btn--solid"&gt;삭제&lt;/button&gt;
+&lt;/div&gt;
+&lt;!-- 두 번째 row에 1개 버튼 --&gt;
+&lt;div class="btn-container" style="margin-top: 10px;"&gt;
+  &lt;button class="btn btn--solid-light btn--full-width"&gt;재업로드&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">가로 배치 (1/2 너비)</h3>
+        <div class="guide-component-group">
+          <div class="btn-container btn-container--half">
+            <button class="btn btn--fill">확인</button>
+            <button class="btn btn--solid">취소</button>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="btn-container btn-container--half"&gt;
+  &lt;button class="btn btn--fill"&gt;확인&lt;/button&gt;
+  &lt;button class="btn btn--solid"&gt;취소&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">세로 배치</h3>
+        <div class="guide-component-group">
+          <div class="btn-container btn-container--column">
+            <button class="btn btn--fill">수정</button>
+            <button class="btn btn--solid">삭제</button>
+            <button class="btn btn--solid-light">재업로드</button>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="btn-container btn-container--column"&gt;
+  &lt;button class="btn btn--fill"&gt;수정&lt;/button&gt;
+  &lt;button class="btn btn--solid"&gt;삭제&lt;/button&gt;
+  &lt;button class="btn btn--solid-light"&gt;재업로드&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">하단 넓은 버튼 예시</h2>
+      
+      <div class="guide-article">
+        <div class="guide-component-group">
+          <button class="btn btn--fill btn--wide">등록하기</button>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;button class="btn btn--fill btn--wide"&gt;등록하기&lt;/button&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">각진 모서리 버튼</h2>
+      
+      <div class="guide-article">
+        <div class="guide-component-group">
+          <button class="btn btn--fill btn--square">각진 모서리 버튼</button>
+          <button class="btn btn--solid btn--square">각진 모서리 보더라인</button>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;button class="btn btn--fill btn--square"&gt;각진 모서리 버튼&lt;/button&gt;
+&lt;button class="btn btn--solid btn--square"&gt;각진 모서리 보더라인&lt;/button&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">전체 너비 버튼 예시</h2>
+      
+      <div class="guide-article">
+        <div class="guide-component-group">
+          <button class="btn btn--fill btn--full-width">전체 너비 버튼</button>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;button class="btn btn--fill btn--full-width"&gt;전체 너비 버튼&lt;/button&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">JavaScript 기능</h2>
+      <p class="guide-subtitle">버튼 컴포넌트에서 사용할 수 있는 자바스크립트 유틸리티 함수입니다. 주로 버튼의 로딩 상태나 비활성화 상태를 제어하는 데 사용됩니다.</p>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">버튼 로딩 상태 제어</h3>
+        <div class="guide-component-group">
+          <button class="btn btn--fill" id="loadingDemoBtn">로딩 상태 테스트</button>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;script&gt;
+  /**
+   * 버튼 로딩 상태를 설정하는 함수
+   * @param {HTMLElement} button - 대상 버튼 요소
+   * @param {boolean} isLoading - 로딩 상태 여부
+   * @param {string} loadingText - 로딩 중 표시할 텍스트 (기본값: '처리 중...')
+   * @param {string} originalText - 원래 버튼에 표시할 텍스트 (제공되지 않으면 버튼의 현재 텍스트 사용)
+   */
+  function setButtonLoading(button, isLoading, loadingText = '처리 중...', originalText) {
+    const btnText = originalText || button.textContent.trim();
+    
+    if (isLoading) {
+      // 로딩 상태로 변경
+      button.classList.add('btn--loading');
+      button.setAttribute('disabled', true);
+      button.innerHTML = `&lt;span class="btn__spinner"&gt;&lt;/span&gt; ${loadingText}`;
+    } else {
+      // 기본 상태로 복원
+      button.classList.remove('btn--loading');
+      button.removeAttribute('disabled');
+      button.textContent = btnText;
+    }
+  }
+  
+  /**
+   * 사용 예시:
+   */
+  document.addEventListener('DOMContentLoaded', function() {
+    const demoBtn = document.getElementById('loadingDemoBtn');
+    if (!demoBtn) return;
+    
+    demoBtn.addEventListener('click', function() {
+      // 버튼을 로딩 상태로 변경
+      setButtonLoading(this, true, '로딩 중...');
+      
+      // 3초 후 원래 상태로 복원 (실제 애플리케이션에서는 API 호출 완료 후 등의 시점에 호출)
+      setTimeout(() => {
+        setButtonLoading(this, false, '', '로딩 상태 테스트');
+      }, 3000);
+    });
+  });
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    /**
+     * 버튼 컴포넌트 관련 기능을 처리하는 스크립트
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+      // 로딩 버튼 데모 초기화
+      const demoBtn = document.getElementById('loadingDemoBtn');
+      if (!demoBtn) return;
+      
+      demoBtn.addEventListener('click', function() {
+        // 버튼을 로딩 상태로 변경
+        setButtonLoading(this, true, '로딩 중...');
+        
+        // 3초 후 원래 상태로 복원
+        setTimeout(() => {
+          setButtonLoading(this, false, '', '로딩 상태 테스트');
+        }, 3000);
+      });
+    });
+    
+    /**
+     * 버튼 로딩 상태를 설정하는 함수
+     * @param {HTMLElement} button - 대상 버튼 요소
+     * @param {boolean} isLoading - 로딩 상태 여부
+     * @param {string} loadingText - 로딩 중 표시할 텍스트 (기본값: '처리 중...')
+     * @param {string} originalText - 원래 버튼에 표시할 텍스트 (제공되지 않으면 버튼의 현재 텍스트 사용)
+     */
+    function setButtonLoading(button, isLoading, loadingText = '처리 중...', originalText) {
+      const btnText = originalText || button.textContent.trim();
+      
+      if (isLoading) {
+        // 로딩 상태로 변경
+        button.classList.add('btn--loading');
+        button.setAttribute('disabled', true);
+        button.innerHTML = `<span class="btn__spinner"></span> ${loadingText}`;
+      } else {
+        // 기본 상태로 복원
+        button.classList.remove('btn--loading');
+        button.removeAttribute('disabled');
+        button.textContent = btnText;
+      }
+    }
+  </script>
+</body>
+</html>

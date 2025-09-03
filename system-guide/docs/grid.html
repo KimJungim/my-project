@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>테일윈드 그리드 시스템 테스트</title>
+  <link rel="stylesheet" href="../assets/style-guide.css">
+  <style>
+    /* Additional styles for the test page only */
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .nav {
+      background-color: #f3f4f6;
+      padding: 1.5rem 0;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    section {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    h1 {
+      font-size: 1.875rem;
+      font-weight: 600;
+    }
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 1.5rem 0 1rem;
+    }
+    p {
+      margin-bottom: 1rem;
+    }
+    .grid-item {
+      padding: 1rem;
+      background-color: #e5e7f5;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.25rem;
+      text-align: center;
+      height: 100%;
+    }
+    .grid-item-alt {
+      background-color: #dbeafe;
+      border-color: #93c5fd;
+    }
+    .grid-item-primary {
+      background-color: #ddd6fe;
+      border-color: #a78bfa;
+    }
+    .breakpoint-indicator {
+      display: none;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .mobile-indicator { display: block; }
+    
+    /* Only show the appropriate indicator based on screen size */
+    @media (min-width: 744px) {
+      .mobile-indicator { display: none; }
+      .tablet-indicator { display: block; }
+    }
+    @media (min-width: 1280px) {
+      .tablet-indicator { display: none; }
+      .desktop-indicator { display: block; }
+    }
+    
+    .info-box {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.25rem;
+      padding: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .color-legend {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .color-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .color-box {
+      width: 1.5rem;
+      height: 1.5rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.25rem;
+    }
+    .full-height {
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <div class="container">
+      <h1>테일윈드 그리드 시스템 테스트</h1>
+      <div class="breakpoint-indicator mobile-indicator">현재 브레이크포인트: 모바일 (360px, 4컬럼)</div>
+      <div class="breakpoint-indicator tablet-indicator">현재 브레이크포인트: 태블릿 (744px, 8컬럼)</div>
+      <div class="breakpoint-indicator desktop-indicator">현재 브레이크포인트: PC (1280px, 12컬럼)</div>
+    </div>
+  </div>
+
+  <main class="container">
+    <div class="info-box">
+      <h2>그리드 구성</h2>
+      <p><strong>PC (lg):</strong> 12컬럼, 컬럼 간격 16px, 좌우 여백 20px, 기준 폭 1280px</p>
+      <p><strong>태블릿 (md):</strong> 8컬럼, 컬럼 간격 16px, 좌우 여백 20px, 총 폭 744px</p>
+      <p><strong>모바일 (sm):</strong> 4컬럼, 컬럼 간격 16px, 좌우 여백 20px, 총 폭 360px</p>
+      
+      <div class="color-legend">
+        <div class="color-item">
+          <div class="color-box" style="background-color: #e5e7f5;"></div>
+          <span>기본 그리드 아이템</span>
+        </div>
+        <div class="color-item">
+          <div class="color-box" style="background-color: #dbeafe;"></div>
+          <span>대체 그리드 아이템</span>
+        </div>
+        <div class="color-item">
+          <div class="color-box" style="background-color: #ddd6fe;"></div>
+          <span>주요 그리드 아이템</span>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <h2>기본 그리드 레이아웃</h2>
+      <p>브레이크포인트에 따라 조정되는 컬럼 구조</p>
+      
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-4 md:col-span-8 lg:col-span-12">
+          <div class="grid-item">전체 너비 (모든 화면 크기)</div>
+        </div>
+      </div>
+      
+      
+      <h3>2등분 컬럼</h3>
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-2 md:col-span-4 lg:col-span-6">
+          <div class="grid-item">1/2 너비</div>
+        </div>
+        <div class="col-span-2 md:col-span-4 lg:col-span-6">
+          <div class="grid-item grid-item-alt">1/2 너비</div>
+        </div>
+      </div>
+      
+      <h3>3등분 컬럼</h3>
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-4 md:col-span-2 lg:col-span-4">
+          <div class="grid-item">모바일: 전체, 태블릿: 1/4, PC: 1/3</div>
+        </div>
+        <div class="col-span-4 md:col-span-4 lg:col-span-4">
+          <div class="grid-item grid-item-alt">모바일: 전체, 태블릿: 1/2, PC: 1/3</div>
+        </div>
+        <div class="col-span-4 md:col-span-2 lg:col-span-4">
+          <div class="grid-item grid-item-primary">모바일: 전체, 태블릿: 1/4, PC: 1/3</div>
+        </div>
+      </div>
+      
+      <h3>4등분 컬럼</h3>
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-2 md:col-span-2 lg:col-span-3">
+          <div class="grid-item">모바일: 1/2, 태블릿: 1/4, PC: 1/4</div>
+        </div>
+        <div class="col-span-2 md:col-span-2 lg:col-span-3">
+          <div class="grid-item grid-item-alt">모바일: 1/2, 태블릿: 1/4, PC: 1/4</div>
+        </div>
+        <div class="col-span-2 md:col-span-2 lg:col-span-3">
+          <div class="grid-item">모바일: 1/2, 태블릿: 1/4, PC: 1/4</div>
+        </div>
+        <div class="col-span-2 md:col-span-2 lg:col-span-3">
+          <div class="grid-item grid-item-alt">모바일: 1/2, 태블릿: 1/4, PC: 1/4</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>혼합 컬럼 레이아웃</h2>
+      <p>다양한 너비의 복합 레이아웃</p>
+      
+      <h3>사이드바 레이아웃 (1/3 - 2/3)</h3>
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-4 md:col-span-3 lg:col-span-4">
+          <div class="grid-item">사이드바: 모바일-전체, 태블릿-3/8, PC-1/3</div>
+        </div>
+        <div class="col-span-4 md:col-span-5 lg:col-span-8">
+          <div class="grid-item grid-item-alt">콘텐츠: 모바일-전체, 태블릿-5/8, PC-2/3</div>
+        </div>
+      </div>
+      
+      <h3>3단 컬럼 레이아웃 (1/4 - 2/4 - 1/4)</h3>
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-4 md:col-span-2 lg:col-span-3">
+          <div class="grid-item">왼쪽 사이드바</div>
+        </div>
+        <div class="col-span-4 md:col-span-4 lg:col-span-6">
+          <div class="grid-item grid-item-primary">메인 콘텐츠</div>
+        </div>
+        <div class="col-span-4 md:col-span-2 lg:col-span-3">
+          <div class="grid-item">오른쪽 사이드바</div>
+        </div>
+      </div>
+      
+      <h3>주요 콘텐츠 레이아웃 (2/3 - 1/3)</h3>
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-4 md:col-span-5 lg:col-span-8">
+          <div class="grid-item grid-item-primary">주요 콘텐츠</div>
+        </div>
+        <div class="col-span-4 md:col-span-3 lg:col-span-4">
+          <div class="grid-item">관련 콘텐츠</div>
+        </div>
+      </div>
+    </section>
+    
+    <section>
+      <h2>중첩 그리드 레이아웃</h2>
+      <p>그리드 셀 안에 그리드 구조 배치</p>
+      
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-4 md:col-span-8 lg:col-span-12">
+          <div class="grid-item">
+            <h3>헤더 영역</h3>
+            <div class="grid grid-cols-4 md:grid-cols-4 lg:grid-cols-4">
+              <div class="col-span-1">
+                <div class="grid-item grid-item-alt">로고</div>
+              </div>
+              <div class="col-span-3">
+                <div class="grid-item grid-item-primary">네비게이션</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-span-4 md:col-span-8 lg:col-span-8">
+          <div class="grid-item">
+            <h3>메인 콘텐츠</h3>
+            <div class="grid grid-cols-4 md:grid-cols-4 lg:grid-cols-4">
+              <div class="col-span-4 md:col-span-2 lg:col-span-2">
+                <div class="grid-item grid-item-alt">기능 1</div>
+              </div>
+              <div class="col-span-4 md:col-span-2 lg:col-span-2">
+                <div class="grid-item grid-item-alt">기능 2</div>
+              </div>
+              <div class="col-span-4 md:col-span-4 lg:col-span-4">
+                <div class="grid-item grid-item-primary">주요 아티클</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-span-4 md:col-span-8 lg:col-span-4">
+          <div class="grid-item">
+            <h3>사이드바</h3>
+            <div class="grid grid-cols-2">
+              <div class="col-span-2">
+                <div class="grid-item grid-item-alt">검색</div>
+              </div>
+              <div class="col-span-2">
+                <div class="grid-item grid-item-primary">카테고리</div>
+              </div>
+              <div class="col-span-1">
+                <div class="grid-item grid-item-alt">태그 1</div>
+              </div>
+              <div class="col-span-1">
+                <div class="grid-item grid-item-alt">태그 2</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section>
+      <h2>카드 레이아웃</h2>
+      <p>화면 크기에 따라 변하는 카드 그리드 패턴</p>
+      
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-4 md:col-span-4 lg:col-span-4">
+          <div class="grid-item full-height">
+            <h3>카드 1</h3>
+            <p>모바일: 한 줄, 태블릿: 두 줄, PC: 세 줄</p>
+          </div>
+        </div>
+        <div class="col-span-4 md:col-span-4 lg:col-span-4">
+          <div class="grid-item grid-item-alt full-height">
+            <h3>카드 2</h3>
+            <p>모바일에서는 세로로 쌓이고 큰 화면에서는 그리드로 배치</p>
+          </div>
+        </div>
+        <div class="col-span-4 md:col-span-4 lg:col-span-4">
+          <div class="grid-item grid-item-primary full-height">
+            <h3>카드 3</h3>
+            <p>균일한 너비와 일정한 간격의 카드 배치</p>
+          </div>
+        </div>
+        <div class="col-span-4 md:col-span-4 lg:col-span-3">
+          <div class="grid-item full-height">
+            <h3>카드 4</h3>
+            <p>태블릿: 한 줄에 2개, PC: 한 줄에 4개</p>
+          </div>
+        </div>
+        <div class="col-span-4 md:col-span-4 lg:col-span-3">
+          <div class="grid-item grid-item-alt full-height">
+            <h3>카드 5</h3>
+            <p>태블릿: 한 줄에 2개, PC: 한 줄에 4개</p>
+          </div>
+        </div>
+        <div class="col-span-4 md:col-span-4 lg:col-span-3">
+          <div class="grid-item full-height">
+            <h3>카드 6</h3>
+            <p>태블릿: 한 줄에 2개, PC: 한 줄에 4개</p>
+          </div>
+        </div>
+        <div class="col-span-4 md:col-span-4 lg:col-span-3">
+          <div class="grid-item grid-item-alt full-height">
+            <h3>카드 7</h3>
+            <p>태블릿: 한 줄에 2개, PC: 한 줄에 4개</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section>
+      <h2>대시보드 레이아웃</h2>
+      <p>다양한 너비 섹션으로 구성된 대시보드 예시</p>
+      
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-4 md:col-span-8 lg:col-span-12">
+          <div class="grid-item grid-item-primary">대시보드 헤더 - 전체 너비</div>
+        </div>
+        
+        <div class="col-span-4 md:col-span-5 lg:col-span-8">
+          <div class="grid-item">메인 대시보드 영역</div>
+        </div>
+        
+        <div class="col-span-4 md:col-span-3 lg:col-span-4">
+          <div class="grid-item grid-item-alt">대시보드 사이드바</div>
+        </div>
+        
+        <div class="col-span-2 md:col-span-2 lg:col-span-3">
+          <div class="grid-item grid-item-alt">통계 박스 1</div>
+        </div>
+        <div class="col-span-2 md:col-span-2 lg:col-span-3">
+          <div class="grid-item grid-item-primary">통계 박스 2</div>
+        </div>
+        <div class="col-span-2 md:col-span-2 lg:col-span-3">
+          <div class="grid-item grid-item-alt">통계 박스 3</div>
+        </div>
+        <div class="col-span-2 md:col-span-2 lg:col-span-3">
+          <div class="grid-item grid-item-primary">통계 박스 4</div>
+        </div>
+        
+        <div class="col-span-4 md:col-span-4 lg:col-span-6">
+          <div class="grid-item">차트 1</div>
+        </div>
+        <div class="col-span-4 md:col-span-4 lg:col-span-6">
+          <div class="grid-item grid-item-alt">차트 2</div>
+        </div>
+      </div>
+    </section>
+    
+    <section>
+      <h2>폼 레이아웃</h2>
+      <p>그리드 시스템을 활용한 폼 레이아웃 예시</p>
+      
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-4 md:col-span-8 lg:col-span-12">
+          <div class="grid-item">폼 헤더</div>
+        </div>
+        
+        <div class="col-span-4 md:col-span-4 lg:col-span-6">
+          <div class="grid-item grid-item-alt">이름 필드</div>
+        </div>
+        <div class="col-span-4 md:col-span-4 lg:col-span-6">
+          <div class="grid-item grid-item-alt">성 필드</div>
+        </div>
+        
+        <div class="col-span-4 md:col-span-8 lg:col-span-12">
+          <div class="grid-item grid-item-alt">이메일 주소 필드</div>
+        </div>
+        
+        <div class="col-span-4 md:col-span-8 lg:col-span-12">
+          <div class="grid-item grid-item-alt">메시지 필드</div>
+        </div>
+        
+        <div class="col-span-4 md:col-span-8 lg:col-span-12">
+          <div class="flex justify-between">
+            <div class="w-1/4">
+              <div class="grid-item">취소</div>
+            </div>
+            <div class="w-1/4">
+              <div class="grid-item grid-item-primary">제출</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>기본 3등분 레이아웃</h2>
+      <p>PC: 4-4-4, Tablet: 4-4-스택, Mobile: 스택</p>
+      
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-4 md:col-span-4 lg:col-span-4">
+          <div class="grid-item" style="background-color: #4895ef; color: white;">컬럼 1</div>
+        </div>
+        <div class="col-span-4 md:col-span-4 lg:col-span-4">
+          <div class="grid-item" style="background-color: #4895ef; color: white;">컬럼 2</div>
+        </div>
+        <div class="col-span-4 md:col-span-8 lg:col-span-4">
+          <div class="grid-item" style="background-color: #4895ef; color: white;">컬럼 3</div>
+        </div>
+      </div>
+    </section>
+    
+    <section>
+      <h2>불균형 레이아웃</h2>
+      <p>PC: 3-3-6, Tablet: 3-5, Mobile: 스택</p>
+      
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-4 md:col-span-3 lg:col-span-3">
+          <div class="grid-item" style="background-color: #9d4edd; color: white;">사이드바 1</div>
+        </div>
+        <div class="col-span-4 md:col-span-5 lg:col-span-3">
+          <div class="grid-item" style="background-color: #9d4edd; color: white;">사이드바 2</div>
+        </div>
+        <div class="col-span-4 md:col-span-8 lg:col-span-6">
+          <div class="grid-item" style="background-color: #9d4edd; color: white;">메인 콘텐츠</div>
+        </div>
+      </div>
+    </section>
+    
+    <section>
+      <h2>중첩된 그리드 레이아웃</h2>
+      <p>메인 영역과 부가 영역이 분리된 복합 레이아웃</p>
+      
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-4 md:col-span-8 lg:col-span-12">
+          <div class="grid-item" style="background-color: #2ec4b6; color: white;">헤더</div>
+        </div>
+        
+        <div class="col-span-4 md:col-span-8 lg:col-span-9">
+          <div class="grid-item" style="background-color: #e9c46a;">
+            <h3>메인 콘텐츠 영역</h3>
+            <div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-9">
+              <div class="col-span-4 md:col-span-6 lg:col-span-9">
+                <div class="grid-item" style="background-color: #f4a261; color: white;">중첩 항목 1</div>
+              </div>
+              <div class="col-span-2 md:col-span-3 lg:col-span-3">
+                <div class="grid-item" style="background-color: #f4a261; color: white;">중첩 항목 2</div>
+              </div>
+              <div class="col-span-2 md:col-span-3 lg:col-span-3">
+                <div class="grid-item" style="background-color: #f4a261; color: white;">중첩 항목 3</div>
+              </div>
+              <div class="col-span-2 md:col-span-3 lg:col-span-3">
+                <div class="grid-item" style="background-color: #f4a261; color: white;">중첩 항목 4</div>
+              </div>
+              <div class="col-span-2 md:col-span-3 lg:col-span-6">
+                <div class="grid-item" style="background-color: #f4a261; color: white;">중첩 항목 5</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-span-4 md:col-span-8 lg:col-span-3">
+          <div class="grid-item" style="background-color: #e9c46a;">사이드바</div>
+        </div>
+      </div>
+    </section>
+    
+    <section>
+      <h2>오프셋을 활용한 레이아웃</h2>
+      <p>시작 위치를 지정하여 오프셋 효과 구현</p>
+      
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-4 md:col-span-8 lg:col-span-12">
+          <div class="grid-item" style="background-color: #ff7e67; color: white;">전체 너비 헤더</div>
+        </div>
+        
+        <div class="col-span-2 md:col-span-3 lg:col-span-4">
+          <div class="grid-item" style="background-color: #ff7e67; color: white;">왼쪽 컬럼</div>
+        </div>
+        
+        <div class="col-span-2 md:col-span-3 md:col-start-6 lg:col-span-4 lg:col-start-9">
+          <div class="grid-item" style="background-color: #ff7e67; color: white;">오른쪽 컬럼</div>
+        </div>
+        
+        <div class="col-span-3 col-start-2 md:col-span-4 md:col-start-3 lg:col-span-6 lg:col-start-4">
+          <div class="grid-item" style="background-color: #ff7e67; color: white;">중앙 정렬 컬럼</div>
+        </div>
+        
+        <div class="col-span-1 md:col-span-2 md:col-start-1 lg:col-span-3 lg:col-start-1">
+          <div class="grid-item" style="background-color: #ff7e67; color: white;">1</div>
+        </div>
+        <div class="col-span-1 md:col-span-2 md:col-start-4 lg:col-span-3 lg:col-start-5">
+          <div class="grid-item" style="background-color: #ff7e67; color: white;">2</div>
+        </div>
+        <div class="col-span-1 md:col-span-2 md:col-start-7 lg:col-span-3 lg:col-start-9">
+          <div class="grid-item" style="background-color: #ff7e67; color: white;">3</div>
+        </div>
+      </div>
+    </section>
+    
+    <section>
+      <h2>갤러리 스타일 레이아웃</h2>
+      <p>다양한 크기의 이미지 갤러리 형태</p>
+      
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-4 md:col-span-5 lg:col-span-6">
+          <div class="grid-item" style="background-color: #30bced; color: white; height: 200px;">이미지 1</div>
+        </div>
+        <div class="col-span-4 md:col-span-3 lg:col-span-6">
+          <div class="grid-item" style="background-color: #30bced; color: white; height: 200px;">이미지 2</div>
+        </div>
+        
+        <div class="col-span-2 md:col-span-2 lg:col-span-3">
+          <div class="grid-item" style="background-color: #30bced; color: white; height: 150px;">이미지 3</div>
+        </div>
+        <div class="col-span-2 md:col-span-2 lg:col-span-3">
+          <div class="grid-item" style="background-color: #30bced; color: white; height: 150px;">이미지 4</div>
+        </div>
+        <div class="col-span-2 md:col-span-2 lg:col-span-3">
+          <div class="grid-item" style="background-color: #30bced; color: white; height: 150px;">이미지 5</div>
+        </div>
+        <div class="col-span-2 md:col-span-2 lg:col-span-3">
+          <div class="grid-item" style="background-color: #30bced; color: white; height: 150px;">이미지 6</div>
+        </div>
+        
+        <div class="col-span-1 md:col-span-2 lg:col-span-3">
+          <div class="grid-item" style="background-color: #30bced; color: white; height: 100px;">이미지 7</div>
+        </div>
+        <div class="col-span-1 md:col-span-2 lg:col-span-3">
+          <div class="grid-item" style="background-color: #30bced; color: white; height: 100px;">이미지 8</div>
+        </div>
+        <div class="col-span-1 md:col-span-2 lg:col-span-3">
+          <div class="grid-item" style="background-color: #30bced; color: white; height: 100px;">이미지 9</div>
+        </div>
+        <div class="col-span-1 md:col-span-2 lg:col-span-3">
+          <div class="grid-item" style="background-color: #30bced; color: white; height: 100px;">이미지 10</div>
+        </div>
+      </div>
+    </section>
+    
+    <section>
+      <h2>콘텐츠 + 사이드바 레이아웃 변형</h2>
+      <p>여러 가지 사이드바 위치 조합</p>
+      
+      <h3>1. 왼쪽 사이드바</h3>
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 mb-8">
+        <div class="col-span-4 md:col-span-3 lg:col-span-3">
+          <div class="grid-item" style="background-color: #e63946; color: white;">왼쪽 사이드바</div>
+        </div>
+        <div class="col-span-4 md:col-span-5 lg:col-span-9">
+          <div class="grid-item" style="background-color: #f1faee;">메인 콘텐츠</div>
+        </div>
+      </div>
+      
+      <h3>2. 오른쪽 사이드바</h3>
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 mb-8">
+        <div class="col-span-4 md:col-span-5 lg:col-span-9">
+          <div class="grid-item" style="background-color: #f1faee;">메인 콘텐츠</div>
+        </div>
+        <div class="col-span-4 md:col-span-3 lg:col-span-3">
+          <div class="grid-item" style="background-color: #e63946; color: white;">오른쪽 사이드바</div>
+        </div>
+      </div>
+      
+      <h3>3. 양쪽 사이드바</h3>
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-2 md:col-span-2 lg:col-span-2">
+          <div class="grid-item" style="background-color: #e63946; color: white;">왼쪽 사이드바</div>
+        </div>
+        <div class="col-span-4 md:col-span-4 lg:col-span-8">
+          <div class="grid-item" style="background-color: #f1faee;">메인 콘텐츠</div>
+        </div>
+        <div class="col-span-2 md:col-span-2 lg:col-span-2">
+          <div class="grid-item" style="background-color: #e63946; color: white;">오른쪽 사이드바</div>
+        </div>
+      </div>
+    </section>
+    
+    <section>
+      <h2>비대칭 그리드 레이아웃</h2>
+      <p>복잡한 비대칭 컬럼 구조</p>
+      
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-4 md:col-span-8 lg:col-span-12">
+          <div class="grid-item" style="background-color: #588157; color: white;">헤더</div>
+        </div>
+        
+        <div class="col-span-4 md:col-span-3 lg:col-span-4">
+          <div class="grid-item" style="background-color: #588157; color: white; height: 150px;">구역 A</div>
+        </div>
+        
+        <div class="col-span-4 md:col-span-5 lg:col-span-8">
+          <div class="grid grid-cols-4 md:grid-cols-5 lg:grid-cols-8">
+            <div class="col-span-4 md:col-span-5 lg:col-span-8">
+              <div class="grid-item" style="background-color: #588157; color: white;">구역 B</div>
+            </div>
+            <div class="col-span-2 md:col-span-2 lg:col-span-3">
+              <div class="grid-item" style="background-color: #588157; color: white; height: 100px;">구역 C</div>
+            </div>
+            <div class="col-span-2 md:col-span-3 lg:col-span-5">
+              <div class="grid-item" style="background-color: #588157; color: white; height: 100px;">구역 D</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-span-1 md:col-span-2 lg:col-span-3">
+          <div class="grid-item" style="background-color: #588157; color: white;">E</div>
+        </div>
+        <div class="col-span-1 md:col-span-2 lg:col-span-3">
+          <div class="grid-item" style="background-color: #588157; color: white;">F</div>
+        </div>
+        <div class="col-span-2 md:col-span-4 lg:col-span-6">
+          <div class="grid-item" style="background-color: #588157; color: white;">G</div>
+        </div>
+      </div>
+    </section>
+    
+    <section>
+      <h2>고급 그리드 구성</h2>
+      <p>컬럼 조합의 다양한 예시</p>
+      
+      <h3>1:11 비율 (PC)</h3>
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 mb-8">
+        <div class="col-span-1 md:col-span-1 lg:col-span-1">
+          <div class="grid-item" style="background-color: #5f0f40; color: white;">1</div>
+        </div>
+        <div class="col-span-3 md:col-span-7 lg:col-span-11">
+          <div class="grid-item" style="background-color: #5f0f40; color: white;">11</div>
+        </div>
+      </div>
+      
+      <h3>2:10 비율 (PC)</h3>
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 mb-8">
+        <div class="col-span-1 md:col-span-2 lg:col-span-2">
+          <div class="grid-item" style="background-color: #5f0f40; color: white;">2</div>
+        </div>
+        <div class="col-span-3 md:col-span-6 lg:col-span-10">
+          <div class="grid-item" style="background-color: #5f0f40; color: white;">10</div>
+        </div>
+      </div>
+      
+      <h3>3:9 비율 (PC)</h3>
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 mb-8">
+        <div class="col-span-1 md:col-span-3 lg:col-span-3">
+          <div class="grid-item" style="background-color: #5f0f40; color: white;">3</div>
+        </div>
+        <div class="col-span-3 md:col-span-5 lg:col-span-9">
+          <div class="grid-item" style="background-color: #5f0f40; color: white;">9</div>
+        </div>
+      </div>
+      
+      <h3>4:8 비율 (PC)</h3>
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 mb-8">
+        <div class="col-span-2 md:col-span-4 lg:col-span-4">
+          <div class="grid-item" style="background-color: #5f0f40; color: white;">4</div>
+        </div>
+        <div class="col-span-2 md:col-span-4 lg:col-span-8">
+          <div class="grid-item" style="background-color: #5f0f40; color: white;">8</div>
+        </div>
+      </div>
+      
+      <h3>5:7 비율 (PC)</h3>
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 mb-8">
+        <div class="col-span-2 md:col-span-3 lg:col-span-5">
+          <div class="grid-item" style="background-color: #5f0f40; color: white;">5</div>
+        </div>
+        <div class="col-span-2 md:col-span-5 lg:col-span-7">
+          <div class="grid-item" style="background-color: #5f0f40; color: white;">7</div>
+        </div>
+      </div>
+      
+      <h3>6:6 비율 (PC)</h3>
+      <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div class="col-span-2 md:col-span-4 lg:col-span-6">
+          <div class="grid-item" style="background-color: #5f0f40; color: white;">6</div>
+        </div>
+        <div class="col-span-2 md:col-span-4 lg:col-span-6">
+          <div class="grid-item" style="background-color: #5f0f40; color: white;">6</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container" style="margin-top: 2rem; margin-bottom: 2rem;">
+    <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+      <div class="col-span-4 md:col-span-8 lg:col-span-12">
+        <div class="grid-item">
+          푸터 콘텐츠 - 이 테스트 페이지는 모바일(4컬럼), 태블릿(8컬럼), PC(12컬럼) 레이아웃에 맞게 
+          구성된 Tailwind CSS 그리드 시스템을 보여줍니다.
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

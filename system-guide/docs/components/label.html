@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../assets/style-guide.css">
+	<title>Label</title>
+</head>
+<body>
+  <div class="container container--no-header">
+    <h1 class="t-title-1 guide-title">Label 컴포넌트</h1>
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">라벨 적용 예시 모음</h2>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">단일 컨트롤 예시</h3>
+        <p class="guide-subtitle">라벨은 컨트롤 전에 위치하며, 필수 필드인 경우 라벨 뒤에 별표를 추가합니다.</p>
+        <div class="guide-component-group block">
+          <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+            <div class="fd-field col-span-4 md:col-span-4 lg:col-span-4">
+              <label for="f-text-1" class="fd-field__lbl">입력 필드</label>
+              <div class="fd-field__ctrl fd-field__ctrl--input">
+                <div class="fd-input fd-input--full">
+                  <input id="f-text-1" type="text" class="fd-input__el" placeholder="텍스트" required>
+                </div>
+              </div>
+            </div>
+            <div class="fd-field col-span-4 md:col-span-4 lg:col-span-4">
+              <label for="f-password-1" class="fd-field__lbl">비밀번호 입력 필드</label>
+              <div class="fd-field__ctrl fd-field__ctrl--pw">
+                <div class="fd-pw fd-pw--full">
+                  <input id="f-password-1" name="password" type="password" class="fd-pw__el"
+                           placeholder="비밀번호를 입력하세요" required minlength="8" autocomplete="new-password">
+                    <button type="button" class="fd-pw__toggle" aria-pressed="false" data-password-toggle>
+                      <span class="visually-hidden">비밀번호 보기</span>
+                      <i class="icon-bg icon-pw-hide" aria-hidden="true"></i>
+                    </button>
+                </div>
+              </div>
+            </div>
+            <div class="fd-field col-span-4 md:col-span-4 lg:col-span-4">
+              <label for="f-select-1" class="fd-field__lbl">선택 박스</label>
+              <div class="fd-field__ctrl fd-field__ctrl--select">
+                <div class="select">
+                  <select id="f-select-1" class="select__element">
+                    <option value="" disabled selected hidden>선택하세요</option>
+                    <option value="option1">옵션 1</option>
+                    <option value="option2">옵션 2</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;!-- 단일 컨트롤용 라벨: for/id 매칭 --&gt;
+&lt;label for="f-text-1" class="fd-field__lbl"&gt;입력 필드&lt;/label&gt;
+&lt;label for="f-password-1" class="fd-field__lbl"&gt;비밀번호 입력 필드&lt;/label&gt;
+&lt;label for="f-select-1" class="fd-field__lbl"&gt;선택 박스&lt;/label&gt;
+</code></pre> 
+        </div>
+      </div>
+
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">다중 컨트롤 예시</h3>
+        <p class="guide-subtitle">라벨과 함께 사용되는 다중 컨트롤 예시입니다.</p>
+        <div class="guide-component-group block">
+          <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+            <div class="fd-field col-span-4 md:col-span-4 lg:col-span-6">
+              <fieldset class="fd-field__ctrl fd-field__ctrl--chk">
+                <legend id="option-label" class="fd-field__lbl">체크박스 그룹</legend>
+                  <div class="fd-chk-group fd-chk-group--column">
+                    <div class="fd-chk">
+                      <input id="option-1" type="checkbox" class="fd-chk__el" name="chk-option">
+                      <label for="option-1" class="fd-chk__lbl">옵션 1</label>
+                    </div>
+                    <div class="fd-chk">
+                      <input id="option-2" type="checkbox" class="fd-chk__el" name="chk-option">
+                      <label for="option-2" class="fd-chk__lbl">옵션 2</label>
+                    </div>
+                    <div class="fd-chk">
+                      <input id="option-3" type="checkbox" class="fd-chk__el" name="chk-option">
+                      <label for="option-3" class="fd-chk__lbl">옵션 3</label>
+                    </div>
+                    <div class="fd-chk">
+                      <input id="option-4" type="checkbox" class="fd-chk__el" name="chk-option">
+                      <label for="option-4" class="fd-chk__lbl">옵션 4</label>
+                    </div>
+                  </div>
+              </fieldset>
+            </div>
+            <div class="fd-field col-span-4 md:col-span-4 lg:col-span-6">
+              <fieldset class="fd-field__ctrl fd-field__ctrl--rdo">
+                <legend id="rdo-label" class="fd-field__lbl">라디오 버튼 그룹</legend>
+                  <div class="fd-rdo-group fd-rdo-group--column">
+                    <div class="fd-rdo">
+                      <input id="rdo-1" type="radio" class="fd-rdo__el" name="rdo-option" required>
+                      <label for="rdo-1" class="fd-rdo__lbl">옵션 1</label>
+                    </div>
+                    <div class="fd-rdo">
+                      <input id="rdo-2" type="radio" class="fd-rdo__el" name="rdo-option">
+                      <label for="rdo-2" class="fd-rdo__lbl">옵션 2</label>
+                    </div>
+                    <div class="fd-rdo">
+                      <input id="rdo-3" type="radio" class="fd-rdo__el" name="rdo-option">
+                      <label for="rdo-3" class="fd-rdo__lbl">옵션 3</label>
+                    </div>
+                    <div class="fd-rdo">
+                      <input id="rdo-4" type="radio" class="fd-rdo__el" name="rdo-option">
+                      <label for="rdo-4" class="fd-rdo__lbl">옵션 4</label>
+                    </div>
+                  </div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;!-- 그룹 라벨: 체크박스/라디오 그룹은 label 대신 legend 사용 --&gt;
+&lt;!-- (fieldset 컨테이너 내부에서만 사용) --&gt;
+&lt;legend class=&quot;fd-field__lbl&quot;&gt;체크박스/라디오 그룹명&lt;/legend&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">상태에 따른 라벨 스타일</h3>
+        <p class="guide-subtitle">상태에 따른 라벨 스타일을 추가합니다.</p>
+        <div class="guide-component-group block">
+          <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+            <div class="fd-field col-span-4 md:col-span-4 lg:col-span-4">
+              <label for="f-required" class="fd-field__lbl fd-label--required">
+                필수 입력 필드<span class="fd-label__required" aria-hidden="true">*</span><span class="visually-hidden">(필수)</span>
+              </label>
+              <div class="fd-field__ctrl fd-field__ctrl--input">
+                <div class="fd-input fd-input--full">
+                  <input id="f-required" type="text" class="fd-input__el" placeholder="텍스트" required>
+                </div>
+              </div>
+            </div>
+            <div class="fd-field col-span-4 md:col-span-4 lg:col-span-4">
+              <label for="f-disabled" class="fd-field__lbl fd-label--disabled">비활성화 입력 필드</label>
+              <div class="fd-field__ctrl fd-field__ctrl--input">
+                <div class="fd-input fd-input--full">
+                  <input id="f-disabled" type="text" class="fd-input__el" placeholder="텍스트" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="fd-field fd-field--error col-span-4 md:col-span-4 lg:col-span-4">
+              <label for="f-text-error" class="fd-field__lbl fd-label--error">오류 라벨 텍스트(필요 시 컬러 변경)</label>
+              <div class="fd-field__ctrl fd-field__ctrl--input">
+                <div class="fd-input fd-input--full">
+                  <input id="f-text-error" type="text" class="fd-input__el" placeholder="텍스트" required aria-describedby="f-text-error-msg">
+                </div>
+              </div>
+              <p id="f-text-error-msg" class="fd-field__msg fd-field__msg--error" aria-live="polite">*올바른 값을 입력해주세요.</p>
+            </div>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;!-- 필수 표기: 시각(*) + 스크린리더 텍스트 --&gt;
+&lt;label for=&quot;f-required&quot; class=&quot;fd-field__lbl fd-label--required&quot;&gt;
+  필수 입력 필드
+  &lt;span class=&quot;fd-label__required&quot; aria-hidden=&quot;true&quot;&gt;*&lt;/span&gt;
+  &lt;span class=&quot;visually-hidden&quot;&gt;(필수)&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- 상태 라벨: 비활성/오류 (스타일 클래스만 부여) --&gt;
+&lt;label for=&quot;f-disabled&quot; class=&quot;fd-field__lbl fd-label--disabled&quot;&gt;비활성화 입력 필드&lt;/label&gt;
+&lt;label for=&quot;f-error&quot; class=&quot;fd-field__lbl fd-label--error&quot;&gt;오류 라벨 텍스트&lt;/label&gt;</code></pre>
+        </div>
+      </div>
+      <div class="guide-notice">
+        <strong>참고:</strong> 설명/오류 메시지는 포커스를 받는 실제 위젯(<input>, .select__field 등) 또는 fieldset에 aria-describedby로 연결합니다.
+      </div>
+    </section>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Password 토글 기능
+      const toggles = document.querySelectorAll('[data-password-toggle]');
+    
+      toggles.forEach((btn) => {
+        // 안전장치: submit 방지
+        if (btn.type !== 'button') btn.setAttribute('type', 'button');
+    
+        // 1. 접근성 이름: 버튼 직접 자식 SR 텍스트 보장
+        if (btn.hasAttribute('aria-label')) btn.removeAttribute('aria-label');
+        let sr = btn.querySelector(':scope > .visually-hidden');
+        if (!sr) {
+          const srInIcon = btn.querySelector('.icon-bg .visually-hidden');
+          const text = srInIcon ? srInIcon.textContent.trim() : '비밀번호 보기';
+          sr = document.createElement('span');
+          sr.className = 'visually-hidden';
+          sr.textContent = text || '비밀번호 보기';
+          btn.prepend(sr);
+          if (srInIcon) srInIcon.remove(); // 중복 제거
+        }
+    
+        // 2. 아이콘은 SR에서 제외
+        const icon = btn.querySelector('.icon-bg');
+        if (icon && !icon.hasAttribute('aria-hidden')) {
+          icon.setAttribute('aria-hidden', 'true');
+        }
+    
+        // 3. 초기화 시점에 제어 대상 연결 + 초기 상태 동기화 (추가)
+        const container = btn.closest('.fd-pw');
+        const input = container ? container.querySelector('.fd-pw__el') : null;
+        if (!input) return; // 이 버튼은 스킵
+    
+        if (!input.id) {
+          input.id = 'pw-' + Math.random().toString(36).slice(2, 8);
+        }
+        btn.setAttribute('aria-controls', input.id);
+    
+        // 초기 aria-pressed / SR 문구 동기화 (현재 타입 기준)
+        const isHiddenInit = (input.type === 'password');
+        btn.setAttribute('aria-pressed', isHiddenInit ? 'false' : 'true');
+        sr.textContent = isHiddenInit ? '비밀번호 보기' : '비밀번호 숨기기';
+    
+        // 입력 비활성화 시 버튼도 비활성화 동기화
+        if (input.disabled) btn.disabled = true;
+    
+        // 4. 클릭 토글
+        btn.addEventListener('click', () => {
+          const show = (input.type === 'password'); // 보여줄지 여부
+          input.type = show ? 'text' : 'password';
+    
+          // 아이콘 상태 토글 (replace 우선, 실패 시 폴백)
+          if (icon) {
+            const from = show ? 'icon-pw-hide' : 'icon-pw-show';
+            const to   = show ? 'icon-pw-show' : 'icon-pw-hide';
+            if (!icon.classList.replace(from, to)) {
+              icon.classList.toggle('icon-pw-hide', !show);
+              icon.classList.toggle('icon-pw-show', show);
+            }
+          }
+    
+          // 상태·이름 동기화
+          btn.setAttribute('aria-pressed', show ? 'true' : 'false');
+          sr.textContent = show ? '비밀번호 숨기기' : '비밀번호 보기';
+        });
+      });
+    });
+  </script>    
+</body>
+</html> 

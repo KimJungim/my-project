@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../assets/style-guide.css">
+  <title>Card</title>
+</head>
+<body>
+  <div class="container container--no-header">
+    <h1 class="t-title-1 guide-title">Card 컴포넌트</h1>
+    
+    <section class="guide-section">
+      <div class="guide-article">
+        <h3 class="t-title-2 guide-subtitle">기본 카드 (반응형)</h3>
+        <div class="guide-component-group">
+          <div class="card">
+            <div class="card__content">
+              <div class="card__header">
+                <div class="card__status">
+                  <div class="badge-group badge-group--status">
+                    <span class="badge badge-status badge-status-primary">8회 사용</span>
+                  </div>
+                </div>
+                <div class="card__main">
+                  <h3 class="card__title">제안서 업로드 화면 템플릿</h3>
+                  <div class="card__categories">
+                    <div class="badge-group badge-group--category">
+                      <span class="badge badge-category">작업유형</span>
+                      <span class="badge badge-category">카테고리</span>
+                      <span class="badge badge-category">템플릿 유형</span>
+                    </div>
+                  </div>
+                  <p class="card__summary">
+                    <strong class="card__summary-label">파일명</strong><span class="card__summary-text">PDF, PPT 파일을 업로드하고 발주처, 키워드 등 메타데이터를 입력할 수 있는 화면을 생성하는 AI 템플릿입니다.</span>
+                  </p>
+                  <div class="card__date">2025.06.10</div>
+                  <div class="card__tags">
+                    <div class="tag-list">
+                      <span class="tag">#CRUD</span>
+                      <span class="tag">#메타데이터</span>
+                      <span class="tag">#파일업로드</span>
+                      <span class="tag">#AI템플릿</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card__buttons">
+                <div class="btn-container btn-container--triple btn-container--mobile-1-2">
+                  <button class="btn btn--fill">재업로드</button>
+                  <button class="btn btn--solid">수정</button>
+                  <button class="btn btn--solid-light">삭제</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="guide-code-block">
+<code>&lt;div class="card"&gt;
+  &lt;div class="card__content"&gt;
+    &lt;div class="card__header"&gt;
+      &lt;div class="card__status"&gt;
+        &lt;div class="badge-group badge-group--status"&gt;
+          &lt;span class="badge badge-status badge-status-primary"&gt;8회 사용&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="card__main"&gt;
+        &lt;h3 class="card__title"&gt;제안서 업로드 화면 템플릿&lt;/h3&gt;
+        &lt;div class="card__categories"&gt;
+          &lt;div class="badge-group badge-group--category"&gt;
+            &lt;span class="badge badge-category"&gt;작업유형&lt;/span&gt;
+            &lt;span class="badge badge-category"&gt;카테고리&lt;/span&gt;
+            &lt;span class="badge badge-category"&gt;템플릿 유형&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;p class="card__summary"&gt;
+          &lt;strong class="card__summary-label"&gt;파일명&lt;/strong&gt;&lt;span class="card__summary-text"&gt;요약 설명글 입니다.&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;div class="card__date"&gt;2025.06.10&lt;/div&gt;
+        &lt;div class="card__tags"&gt;
+          &lt;div class="tag-list"&gt;
+            &lt;span class="tag"&gt;#CRUD&lt;/span&gt;
+            &lt;span class="tag"&gt;#메타데이터&lt;/span&gt;
+            &lt;span class="tag"&gt;#파일업로드&lt;/span&gt;
+            &lt;span class="tag"&gt;#AI템플릿&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card__buttons"&gt;
+      &lt;div class="btn-container btn-container--triple btn-container--mobile-1-2"&gt;
+        &lt;button class="btn btn--fill"&gt;재업로드&lt;/button&gt;
+        &lt;button class="btn btn--solid"&gt;수정&lt;/button&gt;
+        &lt;button class="btn btn--solid-light"&gt;삭제&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
+         </div>
+        <div class="guide-notice">
+          <p class="guide-subtitle">하나의 마크업으로 PC와 모바일 환경을 모두 지원합니다. CSS 미디어 쿼리를 통해 반응형 레이아웃이 자동으로 적용됩니다.</p>
+        </div>
+      </div>
+
+      <div class="guide-article">
+        <h3 class="t-title-2 guide-subtitle">링크 카드</h3>
+        <div class="guide-component-group">
+          <div class="card card--link">
+            <div class="card__content">
+              <div class="card__header" role="link" tabindex="0" aria-label="상세보기">
+                <div class="card__status">
+                  <div class="badge-group badge-group--status">
+                    <span class="badge badge-status badge-status-primary">8회 사용</span>
+                  </div>
+                </div>
+                <div class="card__main">
+                  <h3 class="card__title">제안서 업로드 화면 템플릿</h3>
+                  <div class="card__categories">
+                    <div class="badge-group badge-group--category">
+                      <span class="badge badge-category">작업유형</span>
+                      <span class="badge badge-category">카테고리</span>
+                      <span class="badge badge-category">템플릿 유형</span>
+                    </div>
+                  </div>
+                  <p class="card__summary">
+                    <strong class="card__summary-label">파일명</strong><span class="card__summary-text">PDF, PPT 파일을 업로드하고 발주처, 키워드 등 메타데이터를 입력할 수 있는 화면을 생성하는 AI 템플릿입니다.</span>
+                  </p>
+                  <div class="card__date">2025.06.10</div>
+                  <div class="card__tags">
+                    <div class="tag-list">
+                      <span class="tag">#CRUD</span>
+                      <span class="tag">#메타데이터</span>
+                      <span class="tag">#파일업로드</span>
+                      <span class="tag">#AI템플릿</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card__buttons">
+                <div class="btn-container btn-container--triple btn-container--mobile-1-2">
+                  <button class="btn btn--fill">재업로드</button>
+                  <button class="btn btn--solid">수정</button>
+                  <button class="btn btn--solid-light">삭제</button>
+                </div>
+              </div>
+            </div>
+            <i class="icon-bg icon-link-b card__link-icon">
+              <span class="visually-hidden">링크 아이콘</span>
+            </i>
+          </div>
+        </div>
+        <div class="guide-code-block">
+<code>&lt;a href="#" class="card card--link"&gt;
+  &lt;div class="card__content"&gt;
+    &lt;div class="card__header" role="link" tabindex="0" aria-label="상세보기"&gt;
+      &lt;div class="card__status"&gt;
+        &lt;div class="badge-group badge-group--status"&gt;
+          &lt;span class="badge badge-status badge-status-primary"&gt;8회 사용&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="card__main"&gt;
+        &lt;h3 class="card__title"&gt;제안서 업로드 화면 템플릿&lt;/h3&gt;
+        &lt;div class="card__categories"&gt;
+          &lt;div class="badge-group badge-group--category"&gt;
+            &lt;span class="badge badge-category"&gt;작업유형&lt;/span&gt;
+            &lt;span class="badge badge-category"&gt;카테고리&lt;/span&gt;
+            &lt;span class="tag"&gt;템플릿 유형&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;p class="card__summary"&gt;
+          &lt;strong class="card__summary-label"&gt;파일명&lt;/strong&gt;&lt;span class="card__summary-text"&gt;요약 설명글 입니다.&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;div class="card__date"&gt;2025.06.10&lt;/div&gt;
+        &lt;div class="card__tags"&gt;
+          &lt;div class="tag-list"&gt;
+            &lt;span class="tag"&gt;#CRUD&lt;/span&gt;
+            &lt;span class="tag"&gt;#메타데이터&lt;/span&gt;
+            &lt;span class="tag"&gt;#파일업로드&lt;/span&gt;
+            &lt;span class="tag"&gt;#AI템플릿&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card__buttons"&gt;
+      &lt;div class="btn-container btn-container--triple btn-container--mobile-1-2"&gt;
+        &lt;button class="btn btn--fill"&gt;재업로드&lt;/button&gt;
+        &lt;button class="btn btn--solid"&gt;수정&lt;/button&gt;
+        &lt;button class="btn btn--solid-light"&gt;삭제&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;i class="icon-bg icon-link-b card__link-icon"&gt;
+    &lt;span class="visually-hidden"&gt;링크 아이콘&lt;/span&gt;
+  &lt;/i&gt;
+&lt;/a&gt;</code>
+         </div>
+      </div>
+
+      <div class="guide-article">
+        <h3 class="t-title-2 guide-subtitle">카드 리스트 (반응형)</h3>
+          <div class="guide-component-group">
+           <div class="card-list grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-4">
+            <div class="card">
+              <div class="card__content">
+                <div class="card__header">
+                  <div class="card__status">
+                    <div class="badge-group badge-group--status">
+                      <span class="badge badge-status badge-status-primary">8회 사용</span>
+                    </div>
+                  </div>
+                  <div class="card__main">
+                    <div class="card__title">제안서 업로드 화면 템플릿</div>
+                    <div class="card__categories">
+                      <div class="badge-group badge-group--category">
+                        <span class="badge badge-category">작업유형</span>
+                        <span class="badge badge-category">카테고리</span>
+                        <span class="badge badge-category">템플릿 유형</span>
+                      </div>
+                    </div>
+                    <p class="card__summary">
+                      <strong class="card__summary-label">파일명</strong><span class="card__summary-text">PDF, PPT 파일을 업로드하고 발주처, 키워드 등 메타데이터를 입력할 수 있는 화면을 생성하는 AI 템플릿입니다. 이 템플릿은 사용자가 쉽게 파일을 업로드하고 관련 정보를 입력할 수 있도록 직관적인 인터페이스를 제공하며, 다양한 파일 형식을 지원합니다.</span>
+                    </p>
+                    <div class="card__date">2025.06.10</div>
+                    <div class="card__tags">
+                      <div class="tag-list">
+                        <span class="tag">#CRUD</span>
+                        <span class="tag">#메타데이터</span>
+                        <span class="tag">#파일업로드</span>
+                        <span class="tag">#AI템플릿</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card__content">
+                <div class="card__header">
+                  <div class="card__status">
+                    <div class="badge-group badge-group--status">
+                      <span class="badge badge-status badge-status-waiting">대기</span>
+                    </div>
+                  </div>
+                  <div class="card__main">
+                    <div class="card__title">PDF 파일 분석 템플릿</div>
+                    <div class="card__categories">
+                      <div class="badge-group badge-group--category">
+                        <span class="badge badge-category">AI분석</span>
+                        <span class="badge badge-category">자동화</span>
+                      </div>
+                    </div>
+                    <p class="card__summary">
+                      <strong class="card__summary-label">파일명</strong><span class="card__summary-text">PDF 파일 내용을 자동으로 분석하고 중요 정보를 추출하여 요약해주는 템플릿입니다.</span>
+                    </p>
+                    <div class="card__date">2025.06.08</div>
+                    <div class="card__tags">
+                      <div class="tag-list">
+                        <span class="tag">#PDF</span>
+                        <span class="tag">#분석</span>
+                        <span class="tag">#자동화</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card__content">
+                <div class="card__header">
+                  <div class="card__status">
+                    <div class="badge-group badge-group--status">
+                      <span class="badge badge-status badge-status-progress">진행중</span>
+                    </div>
+                  </div>
+                  <div class="card__main">
+                    <div class="card__title">데이터 시각화 템플릿</div>
+                    <div class="card__categories">
+                      <div class="badge-group badge-group--category">
+                        <span class="badge badge-category">차트</span>
+                        <span class="badge badge-category">시각화</span>
+                        <span class="badge badge-category">대시보드</span>
+                      </div>
+                    </div>
+                    <p class="card__summary">
+                      <strong class="card__summary-label">파일명</strong><span class="card__summary-text">데이터를 다양한 차트와 그래프로 시각화하는 템플릿입니다.</span>
+                    </p>
+                    <div class="card__date">2025.06.05</div>
+                    <div class="card__tags">
+                      <div class="tag-list">
+                        <span class="tag">#차트</span>
+                        <span class="tag">#시각화</span>
+                        <span class="tag">#대시보드</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card__content">
+                <div class="card__header">
+                  <div class="card__status">
+                    <div class="badge-group badge-group--status">
+                      <span class="badge badge-status badge-status-success">완료</span>
+                    </div>
+                  </div>
+                  <div class="card__main">
+                    <div class="card__title">API 연동 템플릿</div>
+                    <div class="card__categories">
+                      <div class="badge-group badge-group--category">
+                        <span class="badge badge-category">API</span>
+                        <span class="badge badge-category">연동</span>
+                        <span class="badge badge-category">통합</span>
+                      </div>
+                    </div>
+                    <p class="card__summary">
+                      <strong class="card__summary-label">파일명</strong><span class="card__summary-text">외부 API와 연동하여 데이터를 주고받는 템플릿입니다.</span>
+                    </p>
+                    <div class="card__date">2025.05.15</div>
+                    <div class="card__tags">
+                      <div class="tag-list">
+                        <span class="tag">#API</span>
+                        <span class="tag">#연동</span>
+                        <span class="tag">#통합</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card__content">
+                <div class="card__header">
+                  <div class="card__status">
+                    <div class="badge-group badge-group--status">
+                      <span class="badge badge-status badge-status-error">실패</span>
+                    </div>
+                  </div>
+                  <div class="card__main">
+                    <div class="card__title">사용자 관리 템플릿</div>
+                    <div class="card__categories">
+                      <div class="badge-group badge-group--category">
+                        <span class="badge badge-category">사용자</span>
+                        <span class="badge badge-category">권한</span>
+                        <span class="badge badge-category">관리</span>
+                      </div>
+                    </div>
+                    <p class="card__summary">
+                      <strong class="card__summary-label">파일명</strong><span class="card__summary-text">사용자 정보를 관리하고 권한을 설정하는 템플릿입니다.</span>
+                    </p>
+                    <div class="card__date">2025.05.10</div>
+                    <div class="card__tags">
+                      <div class="tag-list">
+                        <span class="tag">#사용자</span>
+                        <span class="tag">#권한</span>
+                        <span class="tag">#관리</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card__content">
+                <div class="card__header">
+                  <div class="card__status">
+                    <div class="badge-group badge-group--status">
+                      <span class="badge badge-status badge-status-primary">12회 사용</span>
+                    </div>
+                  </div>
+                  <div class="card__main">
+                    <div class="card__title">결제 시스템 템플릿</div>
+                    <div class="card__categories">
+                      <div class="badge-group badge-group--category">
+                        <span class="badge badge-category">결제</span>
+                        <span class="badge badge-category">시스템</span>
+                        <span class="badge badge-category">보안</span>
+                      </div>
+                    </div>
+                    <p class="card__summary">
+                      <strong class="card__summary-label">파일명</strong><span class="card__summary-text">결제 정보를 처리하고 관리하는 템플릿입니다.</span>
+                    </p>
+                    <div class="card__date">2025.05.05</div>
+                    <div class="card__tags">
+                      <div class="tag-list">
+                        <span class="tag">#결제</span>
+                        <span class="tag">#시스템</span>
+                        <span class="tag">#보안</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="guide-code-block">
+<code>&lt;div class="card-list grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-4"&gt;
+  &lt;!-- 카드 아이템들 --&gt;
+  &lt;div class="card"&gt;
+    &lt;div class="card__content"&gt;
+      &lt;div class="card__header"&gt;
+        &lt;div class="card__status"&gt;
+          &lt;div class="badge-group badge-group--status"&gt;
+            &lt;span class="badge badge-status badge-status-primary"&gt;8회 사용&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card__main"&gt;
+          &lt;div class="card__title"&gt;제안서 업로드 화면 템플릿&lt;/div&gt;
+          &lt;div class="card__categories"&gt;
+            &lt;div class="badge-group badge-group--category"&gt;
+              &lt;span class="badge badge-category"&gt;작업유형&lt;/span&gt;
+              &lt;span class="badge badge-category"&gt;카테고리&lt;/span&gt;
+              &lt;span class="badge badge-category"&gt;템플릿 유형&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;p class="card__summary"&gt;
+            &lt;strong class="card__summary-label"&gt;파일명&lt;/strong&gt;&lt;span class="card__summary-text"&gt;요약 설명글 입니다.&lt;/span&gt;
+          &lt;/p&gt;
+          &lt;div class="card__date"&gt;2025.06.10&lt;/div&gt;
+          &lt;div class="card__tags"&gt;
+            &lt;div class="tag-list"&gt;
+              &lt;span class="tag"&gt;#CRUD&lt;/span&gt;
+              &lt;span class="tag"&gt;#메타데이터&lt;/span&gt;
+              &lt;span class="tag"&gt;#파일업로드&lt;/span&gt;
+              &lt;span class="tag"&gt;#AI템플릿&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- 추가 카드들... --&gt;
+&lt;/div&gt;</code>
+         </div>
+        <div class="guide-notice">
+           <p class="guide-subtitle">카드 리스트는 시스템 레이아웃의 그리드 시스템을 사용합니다. 모바일에서는 4컬럼 그리드에서 4컬럼 차지(1개), 태블릿에서는 8컬럼 그리드에서 4컬럼 차지(2개), PC에서는 12컬럼 그리드에서 4컬럼 차지(3개)로 배치되며, 모든 카드는 동일한 크기를 유지합니다. 카드 리스트의 모든 카드는 기본 카드와 동일한 구조를 가지며, 버튼 영역은 제외되어 정보 표시에 집중된 형태로 구성됩니다.</p>
+         </div>
+      </div>
+
+      <div class="guide-article">
+         <h3 class="t-title-2 guide-subtitle">카드 컴포넌트 가이드</h3>
+         <div class="guide-notice">
+           <ul class="guide-list">
+             <li>
+              <span>카드 컴포넌트는 <code>card__content</code> 안에 <code>card__header</code>와 <code>card__main</code> 영역으로 구조화됩니다.</span>
+             </li>
+             <li>
+              <span><code>card__header</code>에는 <code>card__status</code>와 <code>card__main</code>이 포함됩니다.</span>
+             </li>
+             <li>
+              <span><code>card__status</code>에는 상태 배지들이 <code>badge-group badge-group--status</code>로 그룹화됩니다.</span>
+             </li>
+             <li>
+              <span><code>card__main</code>에는 타이틀, 카테고리, 요약글, 날짜, 태그가 포함됩니다.</span>
+             </li>
+             <li>
+              <span><code>card__categories</code>에는 카테고리 배지들이 <code>badge-group badge-group--category</code>로 그룹화됩니다.</span>
+             </li>
+             <li>
+              <span><code>card__tags</code>에는 태그들이 <code>tag-list</code> 컨테이너로 그룹화됩니다.</span>
+             </li>
+             <li>
+              <span>필수 요소는 타이틀(<code>card__title</code>)과 요약글(<code>card__summary</code>)입니다. 카드 리스트에서는 제목이 <code>&lt;div&gt;</code> 태그로 구성되고, 각 카드는 <code>&lt;article&gt;</code> 태그로 감싸져 계층구조 문제를 방지합니다.</span>
+             </li>
+             <li>
+              <span>요약글은 <code>card__summary-label</code>과 <code>card__summary-text</code>로 구성되며, 라벨 뒤에는 구분자(|)가 자동으로 추가됩니다.</span>
+             </li>
+             <li>
+              <span>카드 링크 타입을 사용하려면 <code>card--link</code> 클래스를 추가하고 <code>icon-link-b</code> 아이콘을 사용합니다.</span>
+             </li>
+             <li>
+              <span>버튼은 <code>card__buttons</code> 영역에 <code>btn-container</code>로 그룹화하여 배치합니다.</span>
+             </li>
+             <li>
+              <span>하나의 마크업으로 PC와 모바일 환경을 모두 지원하며, CSS 미디어 쿼리로 반응형 레이아웃이 자동 적용됩니다.</span>
+             </li>
+             <li>
+              <span>카드 리스트는 시스템 레이아웃을 사용하여 모바일에서는 1열에 1개, PC에서는 최대 1열에 3개까지 배치됩니다.</span>
+             </li>
+             <li>
+              <span>카드 리스트의 모든 카드는 기본 카드와 동일한 구조를 가지며, 버튼 영역은 제외되어 정보 표시에 집중된 형태로 구성됩니다.</span>
+             </li>
+             <li>
+              <span>모든 카드는 동일한 크기를 유지하며, 같은 행의 카드 높이는 자동으로 동일하게 조정됩니다.</span>
+             </li>
+           </ul>
+         </div>
+       </div>
+    </section>
+  </div>
+</body>
+</html>

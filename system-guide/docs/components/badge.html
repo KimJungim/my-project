@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../assets/style-guide.css">
+	<title>Badge</title>
+</head>
+<body>
+  <div class="container container--no-header">
+    <h1 class="t-title-1 guide-title">Badge 컴포넌트</h1>
+
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">상태 배지</h2>
+      <div class="guide-article">
+        <div class="badge-group badge-group--status">
+          <span class="badge badge-status badge-status-primary">8회 사용</span>
+          <span class="badge badge-status badge-status-waiting">대기</span>
+          <span class="badge badge-status badge-status-progress">진행중</span>
+          <span class="badge badge-status badge-status-success">완료</span>
+          <span class="badge badge-status badge-status-error">실패</span>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="badge-group badge-group--status"&gt;
+  &lt;span class="badge badge-status badge-status-primary"&gt;8회 사용&lt;/span&gt;
+  &lt;span class="badge badge-status badge-status-waiting"&gt;대기&lt;/span&gt;
+  &lt;span class="badge badge-status badge-status-progress"&gt;진행중&lt;/span&gt;
+  &lt;span class="badge badge-status badge-status-success"&gt;완료&lt;/span&gt;
+  &lt;span class="badge badge-status badge-status-error"&gt;실패&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">카테고리 배지</h2>
+      <div class="guide-article">
+        <div class="badge-group badge-group--category">
+          <span class="badge badge-category">작업유형</span>
+          <span class="badge badge-category">카테고리</span>
+          <span class="badge badge-category">템플릿 유형</span>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="badge-group badge-group--category"&gt;
+  &lt;span class="badge badge-category"&gt;작업유형&lt;/span&gt;
+  &lt;span class="badge badge-category"&gt;카테고리&lt;/span&gt;
+  &lt;span class="badge badge-category"&gt;템플릿 유형&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">배지 그룹 설명</h2>
+      <div class="guide-article">
+        <p>배지 그룹은 여러 배지를 일정한 간격으로 배치할 때 사용합니다. 타입에 따라 다른 간격이 적용됩니다:</p>
+        <ul>
+          <li><strong>badge-group--status</strong>: 상태 타입 배지를 위한 그룹 (간격 4px)</li>
+          <li><strong>badge-group--category</strong>: 카테고리 타입 배지를 위한 그룹 (간격 4px)</li>
+        </ul>
+        <div class="guide-code-block">
+          <pre><code>// 배지 그룹 SCSS 구조
+.badge-group {
+  display: inline-flex;
+  align-items: center;
+  
+  &--status {
+    gap: rem(4);  // 상태 타입 간격
+  }
+  
+  &--category {
+    gap: rem(4);  // 카테고리 타입 간격
+  }
+}</code></pre>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

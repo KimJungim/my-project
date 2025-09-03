@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../assets/style-guide.css">
+	<title>Avatar</title>
+</head>
+<body>
+  <div class="container container--no-header">
+    <h1 class="t-title-1 guide-title">Avatar 컴포넌트</h1>
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">핵심 컴포넌트</h2>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">이미지 아바타</h3>
+        <div class="guide-component-group">
+          <div class="avatar">
+            <img class="avatar__image" src="../../assets/images/avatar/sample_01.png" alt="사용자 아바타">
+          </div>
+          <div class="avatar avatar--md">
+            <img class="avatar__image" src="../../assets/images/avatar/sample_01.png" alt="사용자 아바타">
+          </div>
+          <div class="avatar avatar--lg">
+            <img class="avatar__image" src="../../assets/images/avatar/sample_01.png" alt="사용자 아바타">
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="avatar"&gt;
+  &lt;img class="avatar__image" src="..." alt="사용자 아바타"&gt;
+&lt;/div&gt;
+
+&lt;div class="avatar avatar--md"&gt;
+  &lt;img class="avatar__image" src="..." alt="사용자 아바타"&gt;
+&lt;/div&gt;
+
+&lt;div class="avatar avatar--lg"&gt;
+  &lt;img class="avatar__image" src="..." alt="사용자 아바타"&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">텍스트 아바타</h3>
+        <div class="guide-component-group">
+          <div class="avatar avatar--text">
+            <span class="avatar__text">엘</span>
+          </div>
+          <div class="avatar avatar--text avatar--md">
+            <span class="avatar__text">엘</span>
+          </div>
+          <div class="avatar avatar--text avatar--lg">
+            <span class="avatar__text">엘</span>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="avatar avatar--text"&gt;
+  &lt;span class="avatar__text"&gt;엘&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="avatar avatar--text avatar--md"&gt;
+  &lt;span class="avatar__text"&gt;엘&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="avatar avatar--text avatar--lg"&gt;
+  &lt;span class="avatar__text"&gt;엘&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">활용 패턴</h2>
+      <p class="guide-subtitle">아래는 아바타 컴포넌트를 활용한 다양한 패턴입니다. 실제 구현과 코드 예시를 함께 제공합니다.</p>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">아바타 + 텍스트 (기본)</h3>
+        <div class="guide-component-group">
+          <div class="avatar-info">
+            <div class="avatar">
+              <img class="avatar__image" src="../../assets/images/avatar/sample_01.png" alt="사용자 아바타">
+            </div>
+            <span class="avatar__info">엘루오</span>
+          </div>
+          
+          <div class="avatar-info">
+            <div class="avatar avatar--text">
+              <span class="avatar__text">엘</span>
+            </div>
+            <span class="avatar__info">엘루오</span>
+          </div>
+        </div>
+        
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="avatar-info"&gt;
+  &lt;div class="avatar"&gt;
+    &lt;img class="avatar__image" src="..." alt="사용자 아바타"&gt;
+  &lt;/div&gt;
+  &lt;span class="avatar__info"&gt;엘루오&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="avatar-info"&gt;
+  &lt;div class="avatar avatar--text"&gt;
+    &lt;span class="avatar__text"&gt;엘&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class="avatar__info"&gt;엘루오&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        
+        <div class="guide-code-block">
+          <pre><code>/* avatar-info: 아바타와 텍스트를 가로로 배치하기 위한 레이아웃 클래스 */
+.avatar-info {
+  display: inline-flex;
+  align-items: center;
+}</code></pre>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">아바타 + 정보 (이름/이메일)</h3>
+        <div class="guide-component-group">
+          <div class="avatar-info">
+            <div class="avatar avatar--md">
+              <img class="avatar__image" src="../../assets/images/avatar/sample_01.png" alt="사용자 아바타">
+            </div>
+            <div class="avatar__info-wrapper">
+              <div class="avatar__name">엘루오</div>
+              <div class="avatar__sub">eluo@example.com</div>
+            </div>
+          </div>
+          
+          <div class="avatar-info">
+            <div class="avatar avatar--md avatar--text">
+              <span class="avatar__text">엘</span>
+            </div>
+            <div class="avatar__info-wrapper">
+              <div class="avatar__name">엘루오</div>
+              <div class="avatar__sub">eluo@example.com</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="avatar-info"&gt;
+  &lt;div class="avatar avatar--md"&gt;
+    &lt;img class="avatar__image" src="..." alt="사용자 아바타"&gt;
+  &lt;/div&gt;
+  &lt;div class="avatar__info-wrapper"&gt;
+    &lt;div class="avatar__name"&gt;엘루오&lt;/div&gt;
+    &lt;div class="avatar__sub"&gt;eluo@example.com&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">아바타 버튼형</h3>
+        <div class="guide-component-group">
+          <!-- 이미지 아바타 버튼형 -->
+          <button class="avatar-btn" onclick="toggleDropdown(this)">
+            <span class="avatar">
+              <img class="avatar__image" src="../../assets/images/avatar/sample_01.png" alt="사용자 아바타">
+            </span>
+            <span class="avatar-btn__text">엘루오</span>
+          </button>
+          
+          <!-- 텍스트 아바타 버튼형 -->
+          <button class="avatar-btn" onclick="toggleDropdown(this)">
+            <span class="avatar avatar--text">
+              <span class="avatar__text">엘</span>
+            </span>
+            <span class="avatar-btn__text">엘루오</span>
+          </button>
+        </div>
+        
+        <div class="guide-code-block">
+          <pre><code>&lt;!-- 드롭다운이 필요한 경우 --&gt;
+&lt;button class="avatar-btn" onclick="toggleDropdown(this)"&gt;
+  &lt;span class="avatar"&gt;
+    &lt;img class="avatar__image" src="..." alt="사용자 아바타"&gt;
+  &lt;/span&gt;
+  &lt;span class="avatar-btn__text"&gt;엘루오&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- 드롭다운이 필요없는 경우 --&gt;
+&lt;button class="avatar-btn"&gt;
+  &lt;span class="avatar avatar--text"&gt;
+    &lt;span class="avatar__text"&gt;엘&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="avatar-btn__text"&gt;엘루오&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+        </div>
+        
+        <div class="guide-code-block">
+          <pre><code>/* avatar-btn: 아바타와 텍스트를 함께 버튼으로 만들기 위한 클래스
+ * - display: inline-flex로 설정
+ * - 기본 화살표 아이콘 포함 (::after 가상요소)
+ * - .is-active 또는 [aria-expanded="true"] 상태 관리
+ */
+.avatar-btn {
+  display: inline-flex;
+  align-items: center;
+  /* 기타 스타일 */
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">JavaScript 기능</h2>
+      <p class="guide-subtitle">아래 스크립트는 <strong>버튼형 아바타</strong>에서만 사용되며, 화살표 아이콘의 모션을 추가하기 위한 것입니다. 버튼 클릭 시 화살표가 회전하는 애니메이션 효과를 제공합니다.</p>
+      <div class="guide-notice">
+        <strong>참고:</strong> 드롭다운 메뉴가 필요 없는 경우, <code>onclick="toggleDropdown(this)"</code> 속성과 아래 스크립트를 생략해도 됩니다. 스크립트는 아바타 버튼이 드롭다운 메뉴를 제어할 때만 필요합니다.
+      </div>
+      <div class="guide-code-block">
+        <pre><code>&lt;script&gt;
+  function toggleDropdown(btn) {
+    // 클래스 토글 방식
+    btn.classList.toggle('is-active');
+    
+    // ARIA 속성 토글 방식
+    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !isExpanded);
+    
+    // 관련 드롭다운 메뉴 표시/숨김 처리
+    // ...
+  }
+&lt;/script&gt;</code></pre>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    function toggleDropdown(btn) {
+      // 클래스 토글 방식
+      btn.classList.toggle('is-active');
+      
+      // ARIA 속성 토글 방식
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !isExpanded);
+      
+      // 관련 드롭다운 메뉴 표시/숨김 처리
+      // ...
+    }
+  </script>
+</body>
+</html>

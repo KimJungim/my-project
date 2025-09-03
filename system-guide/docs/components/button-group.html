@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../assets/style-guide.css">
+	<title>Button Group</title>
+</head>
+<body>
+  <div class="container container--no-header">
+    <h1 class="t-title-1 guide-title">Button Group 컴포넌트</h1>
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">버튼 방향</h2>
+      <p class="guide-subtitle">버튼 그룹은 기본적으로 가로 배치로 정렬됩니다. 세로 배치로 정렬하고 싶을 때는 btn-group--column 클래스를 추가합니다.</p>
+
+      <div class="guide-article">
+        <div class="guide-component-group block">
+          <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+            <div class="col-span-2 md:col-span-4 lg:col-span-4">
+              <h3 class="t-title-3 guide-subtitle">기본형(가로 배치)</h3>
+                <div class="btn-group">
+                  <button class="btn btn--solid">수정</button>
+                  <button class="btn btn--fill">삭제</button>
+                </div>
+            </div>
+            <div class="col-span-4 md:col-span-4 lg:col-span-4">
+              <h3 class="t-title-3 guide-subtitle">기본형(세로 배치)</h3>
+              <div class="btn-group btn-group--column">
+                <button class="btn btn--solid">수정</button>
+                <button class="btn btn--fill">삭제</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;!-- 가로 배치 --&gt;
+&lt;div class="btn-group"&gt;
+  &lt;button class="btn btn--solid"&gt;수정&lt;/button&gt;
+  &lt;button class="btn btn--fill"&gt;삭제&lt;/button&gt;
+&lt;/div&gt;
+&lt;!-- 세로 배치 --&gt;
+&lt;div class="btn-group btn-group--column"&gt;
+  &lt;button class="btn btn--solid"&gt;수정&lt;/button&gt;
+  &lt;button class="btn btn--fill"&gt;삭제&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      <h2 class="t-title-2 guide-title">버튼 정렬</h2>
+      <p class="guide-subtitle">버튼 그룹은 기본적으로 가로 배치로 정렬됩니다. 좌측, 센터, 우측으로 정렬하고 싶을 때는 btn-group--left, btn-group--center, btn-group--right 클래스를 추가합니다.</p>
+
+      <div class="guide-article">
+        <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+          <div class="col-span-4 md:col-span-4 lg:col-span-4">
+            <h3 class="t-title-3 guide-subtitle">좌측 정렬</h3>
+            <div class="btn-group btn-group--left">
+              <button class="btn btn--solid">수정</button>
+              <button class="btn btn--fill">삭제</button>
+            </div>
+          </div>
+          <div class="col-span-2 md:col-span-4 lg:col-span-4">
+            <h3 class="t-title-3 guide-subtitle">센터 정렬</h3>
+            <div class="btn-group btn-group--center">
+              <button class="btn btn--solid">수정</button>
+              <button class="btn btn--fill">삭제</button>
+            </div>
+          </div>
+          <div class="col-span-4 md:col-span-4 lg:col-span-4">
+            <h3 class="t-title-3 guide-subtitle">우측 정렬</h3>
+            <div class="btn-group btn-group--right">
+              <button class="btn btn--solid">수정</button>
+              <button class="btn btn--fill">삭제</button>
+            </div>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;!-- 좌측 정렬 --&gt;
+&lt;div class="btn-group btn-group--left"&gt;
+  &lt;button class="btn btn--solid"&gt;수정&lt;/button&gt;
+  &lt;button class="btn btn--fill"&gt;삭제&lt;/button&gt;
+&lt;/div&gt;
+&lt;!-- 센터 정렬 --&gt;
+&lt;div class="btn-group btn-group--center"&gt;
+  &lt;button class="btn btn--solid"&gt;수정&lt;/button&gt;
+  &lt;button class="btn btn--fill"&gt;삭제&lt;/button&gt;
+&lt;/div&gt;
+&lt;!-- 우측 정렬 --&gt;
+&lt;div class="btn-group btn-group--right"&gt;
+  &lt;button class="btn btn--solid"&gt;수정&lt;/button&gt;
+  &lt;button class="btn btn--fill"&gt;삭제&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+  </script>
+</body>
+</html>

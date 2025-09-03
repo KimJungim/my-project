@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../assets/style-guide.css">
+  <title>Field</title>
+</head>
+<body>
+  <div class="container container--no-header">
+    <h1 class="t-title-1 guide-title">Field 컴포넌트</h1>
+
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">필드 구조</h2>
+      <p class="guide-subtitle">필드는 <code>.fd-field</code> 래퍼 안에 <strong>라벨</strong>(<code>.fd-field__lbl</code>) → <strong>컨트롤</strong>(<code>.fd-field__ctrl</code>) → <strong>메시지</strong>(선택, <code>.fd-field__msg</code>) 순서로 배치합니다.</p>
+
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">기본형</h3>
+        <div class="guide-component-group">
+          <form class="fd-form">
+            <div class="fd-field">
+              <label for="f-text-1" class="fd-field__lbl">라벨 텍스트</label>
+              <div class="fd-field__ctrl fd-field__ctrl--input">
+                <div class="fd-input fd-input--full">
+                  <input id="f-text-1" type="text" class="fd-input__el" placeholder="텍스트">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="guide-code-block">
+<pre><code>&lt;div class="fd-field"&gt;
+  &lt;label for="f-text-1" class="fd-field__lbl"&gt;라벨 텍스트&lt;/label&gt;
+  &lt;div class="fd-field__ctrl fd-field__ctrl--input"&gt;
+    &lt;div class="fd-input fd-input--full"&gt;
+      &lt;input id="f-text-1" type="text" class="fd-input__el" placeholder="텍스트"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section"> 
+      <h2 class="t-title-2 guide-title">필수/메시지/오류 상태</h2>
+
+      <div class="guide-article">
+        <div class="guide-component-group block">
+          <form class="fd-form grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+            <!-- 정상 상태 -->
+            <div class="fd-field fd-field col-span-4 md:col-span-4 lg:col-span-6">
+              <label for="f-required-1" class="fd-field__lbl fd-label--required">
+                필수 입력 필드
+                <span class="fd-label__required" aria-hidden="true">*</span>
+                <span class="visually-hidden">(필수)</span>
+              </label>
+              <div class="fd-field__ctrl fd-field__ctrl--input">
+                <div class="fd-input fd-input--full">
+                  <input id="f-required-1" type="text" class="fd-input__el" required aria-describedby="f-required-1-msg" placeholder="텍스트">
+                </div>
+              </div>
+              <p id="f-required-1-msg" class="fd-field__msg">*이 필드는 필수 입력입니다.</p>
+            </div>
+
+            <!-- 오류 상태 -->
+            <div class="fd-field fd-field--error fd-field col-span-4 md:col-span-4 lg:col-span-6">
+              <label for="f-error-1" class="fd-field__lbl">오류 상태 예시</label>
+              <div class="fd-field__ctrl fd-field__ctrl--input">
+                <div class="fd-input fd-input--full">
+                  <input id="f-error-1" type="text" class="fd-input__el" required aria-describedby="f-error-1-msg" placeholder="텍스트" aria-invalid="true">
+                </div>
+              </div>
+              <p id="f-error-1-msg" class="fd-field__msg fd-field__msg--error" aria-live="polite">*올바른 값을 입력해주세요.</p>
+            </div>
+          </form>
+        </div>
+
+        <div class="guide-code-block">
+<pre><code>&lt;!-- 정상 상태(필수 + 도움말) --&gt;
+&lt;div class="fd-field"&gt;
+  &lt;label for="f-required-1" class="fd-field__lbl fd-label--required"&gt;
+    필수 입력 필드
+    &lt;span class="fd-label__required" aria-hidden="true"&gt;*&lt;/span&gt;
+    &lt;span class="visually-hidden"&gt;(필수)&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;div class="fd-field__ctrl fd-field__ctrl--input"&gt;
+    &lt;div class="fd-input fd-input--full"&gt;
+      &lt;input id="f-required-1" type="text" class="fd-input__el" required aria-describedby="f-required-1-msg" placeholder="텍스트"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p id="f-required-1-msg" class="fd-field__msg"&gt;*이 필드는 필수 입력입니다.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- 오류 상태 --&gt;
+&lt;div class="fd-field fd-field--error"&gt;
+  &lt;label for="f-error-1" class="fd-field__lbl"&gt;오류 상태 예시&lt;/label&gt;
+  &lt;div class="fd-field__ctrl fd-field__ctrl--input"&gt;
+    &lt;div class="fd-input fd-input--full"&gt;
+      &lt;input id="f-error-1" type="text" class="fd-input__el" required aria-describedby="f-error-1-msg" placeholder="텍스트" aria-invalid="true"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p id="f-error-1-msg" class="fd-field__msg fd-field__msg--error" aria-live="polite"&gt;*올바른 값을 입력해주세요.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">단일 컨트롤 예시</h2>
+      <div class="guide-article">
+        <div class="guide-component-group block">
+          <form class="fd-form">
+            <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-gutter">
+              <!-- Input -->
+              <div class="fd-field col-span-4 md:col-span-4 lg:col-span-3">
+                <label for="f-text-2" class="fd-field__lbl">텍스트 입력</label>
+                <div class="fd-field__ctrl fd-field__ctrl--input">
+                  <div class="fd-input fd-input--full">
+                    <input id="f-text-2" type="text" class="fd-input__el" placeholder="텍스트">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Password -->
+              <div class="fd-field col-span-4 md:col-span-4 lg:col-span-3">
+                <label for="f-password-2" class="fd-field__lbl">비밀번호 입력</label>
+                <div class="fd-field__ctrl fd-field__ctrl--pw">
+                  <div class="fd-pw fd-pw--full">
+                    <input id="f-password-2" name="password" type="password" class="fd-pw__el"
+                           placeholder="비밀번호를 입력하세요" required minlength="8" autocomplete="new-password">
+                    <button type="button" class="fd-pw__toggle" aria-pressed="false" data-password-toggle>
+                      <span class="visually-hidden">비밀번호 보기</span>
+                      <i class="icon-bg icon-pw-hide" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Select -->
+              <div class="fd-field col-span-4 md:col-span-4 lg:col-span-3">
+                <label for="f-select-2" class="fd-field__lbl">선택 박스</label>
+                <div class="fd-field__ctrl fd-field__ctrl--select">
+                  <div class="fd-field__ctrl fd-field__ctrl--select">
+                    <div class="select">
+                      <select id="f-select-2" class="select__element">
+                        <option value="" disabled selected hidden>선택하세요</option>
+                        <option value="option1">관련도</option>
+                        <option value="option2">최신순</option>
+                        <option value="option3">오래된순</option>
+                        <option value="option4">인기순</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Multi Select -->
+              <div class="fd-field col-span-4 md:col-span-4 lg:col-span-3">
+                <label id="f-multi-select" class="fd-field__lbl" for="f-multi-select-native">다중 선택 박스</label>
+                <div class="fd-field__ctrl fd-field__ctrl--multi-select">
+                  <!-- 커스텀 UI: JS 향상 시 활성 -->
+                  <div class="select select--multiple">
+                    <!-- 폴백: 네이티브 (JS 꺼져도 접근 가능) -->
+                    <select id="f-multi-select-native" class="select__native" multiple>
+                      <option value="option1">옵션 1</option>
+                      <option value="option2">옵션 2</option>
+                      <option value="option3">옵션 3</option>
+                      <option value="option4">옵션 4</option>
+                      <option value="option5">옵션 5</option>
+                      <option value="option6">매우 긴 텍스트의 옵션 이름이 있는 경우</option>
+                    </select>
+
+                    <!-- 커스텀 UI (JavaScript 활성화 시 표시됨) -->
+                    <div class="select__field" tabindex="0" role="button" 
+                         aria-haspopup="listbox" aria-expanded="false" 
+                         aria-controls="select-options-1" 
+                         aria-labelledby="f-multi-select">
+                      <span id="select-label" class="select__placeholder">항목을 선택해주세요</span>
+                      <!-- 선택된 항목들은 JavaScript로 여기에 태그로 추가됨 -->
+                    </div>
+                    <i class="select__arrow" aria-hidden="true"></i>
+                    
+                    <!-- 옵션 목록 -->
+                    <div id="select-options-1" class="select__options" role="listbox" aria-multiselectable="true">
+                      <div class="select__option" role="option" id="option1" data-value="option1" tabindex="-1" aria-selected="false">옵션 1</div>
+                      <div class="select__option" role="option" id="option2" data-value="option2" tabindex="-1" aria-selected="false">옵션 2</div>
+                      <div class="select__option" role="option" id="option3" data-value="option3" tabindex="-1" aria-selected="false">옵션 3</div>
+                      <div class="select__option" role="option" id="option4" data-value="option4" tabindex="-1" aria-selected="false">옵션 4</div>
+                      <div class="select__option" role="option" id="option5" data-value="option5" tabindex="-1" aria-selected="false">옵션 5</div>
+                      <div class="select__option" role="option" id="option6" data-value="option6" tabindex="-1" aria-selected="false">매우 긴 텍스트의 옵션 이름이 있는 경우</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="guide-code-block">
+<pre><code>&lt;!-- Input --&gt;
+&lt;div class="fd-field"&gt;
+  &lt;label for="f-text-2" class="fd-field__lbl"&gt;텍스트 입력&lt;/label&gt;
+  &lt;div class="fd-field__ctrl fd-field__ctrl--input"&gt;
+    &lt;div class="fd-input fd-input--full"&gt;
+      &lt;input id="f-text-2" type="text" class="fd-input__el" placeholder="텍스트"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Password --&gt;
+&lt;div class="fd-field"&gt;
+  &lt;label for="f-password-2" class="fd-field__lbl"&gt;비밀번호 입력&lt;/label&gt;
+  &lt;div class="fd-field__ctrl fd-field__ctrl--pw"&gt;
+    &lt;div class="fd-pw fd-pw--full"&gt;
+      &lt;input id="f-password-2" name="password" type="password" class="fd-pw__el"
+             placeholder="비밀번호를 입력하세요" required minlength="8" autocomplete="new-password"&gt;
+      &lt;button type="button" class="fd-pw__toggle" aria-pressed="false" data-password-toggle&gt;
+        &lt;span class="visually-hidden"&gt;비밀번호 보기&lt;/span&gt;
+        &lt;i class="icon-bg icon-pw-hide" aria-hidden="true"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Select --&gt;
+&lt;div class="fd-field"&gt;
+  &lt;label for="f-select-2" class="fd-field__lbl"&gt;선택 박스&lt;/label&gt;
+  &lt;div class="fd-field__ctrl fd-field__ctrl--select"&gt;
+    &lt;div class="select"&gt;...&lt;/select&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Multi Select --&gt;
+&lt;div class="fd-field"&gt;
+  &lt;label id="f-multi-select" class="fd-field__lbl" for="f-multi-select-native"&gt;다중 선택 박스&lt;/label&gt;
+  &lt;div class="fd-field__ctrl fd-field__ctrl--multi-select"&gt;
+    &lt;div class="select select--multiple"&gt;
+      &lt;select id="f-multi-select-native" class="select__native" multiple&gt;...&lt;/select&gt;
+      &lt;div class="select__field" tabindex="0" role="button" 
+           aria-haspopup="listbox" aria-expanded="false" 
+           aria-controls="select-options-1"
+           aria-labelledby="f-multi-select"&gt;...&lt;/div&gt;
+      &lt;div id="select-options-1" class="select__options" role="listbox" aria-multiselectable="true"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+        </div>
+      </div>    
+    </section>
+
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">그룹형 요소(Checkbox/Radio) - Column / Row</h2>
+
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">Checkbox 그룹</h3>
+        <div class="guide-component-group block">
+          <form class="fd-form grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+            <!-- Column(세로) 기본 배치 -->
+            <div class="fd-field fd-field col-span-4 md:col-span-4 lg:col-span-6">
+              <fieldset class="fd-field__ctrl fd-field__ctrl--chk" aria-describedby="hobby-help">
+                <legend class="fd-field__lbl">
+                  취미 선택
+                  <span class="fd-label__required" aria-hidden="true">*</span>
+                  <span class="visually-hidden">(필수)</span>
+                </legend>
+            
+                <div class="fd-chk-group fd-chk-group--column" data-min-required="1">
+                  <div class="fd-chk">
+                    <input id="chk-a1" type="checkbox" class="fd-chk__el" name="hobby">
+                    <label for="chk-a1" class="fd-chk__lbl">독서</label>
+                  </div>
+                  <div class="fd-chk">
+                    <input id="chk-a2" type="checkbox" class="fd-chk__el" name="hobby">
+                    <label for="chk-a2" class="fd-chk__lbl">운동</label>
+                  </div>
+                  <div class="fd-chk">
+                    <input id="chk-a3" type="checkbox" class="fd-chk__el" name="hobby">
+                    <label for="chk-a3" class="fd-chk__lbl">음악 감상</label>
+                  </div>
+                </div>
+                <p id="hobby-help" class="fd-field__msg">최소 1개를 선택하세요.</p>
+              </fieldset>
+            </div>
+
+            <!-- Row(가로) 배치: 그리드 유틸리티로 2/4열 -->
+            <div class="fd-field fd-field col-span-4 md:col-span-4 lg:col-span-6">
+              <fieldset class="fd-field__ctrl fd-field__ctrl--chk">
+                <legend class="fd-field__lbl">취미 선택 (가로)</legend>
+                <div class="fd-chk-group fd-chk-group--row">
+                  <div class="fd-chk">
+                    <input id="chk-b1" type="checkbox" class="fd-chk__el" name="hobby2">
+                    <label for="chk-b1" class="fd-chk__lbl">독서</label>
+                  </div>
+                  <div class="fd-chk">
+                    <input id="chk-b2" type="checkbox" class="fd-chk__el" name="hobby2">
+                    <label for="chk-b2" class="fd-chk__lbl">운동</label>
+                  </div>
+                  <div class="fd-chk">
+                    <input id="chk-b3" type="checkbox" class="fd-chk__el" name="hobby2">
+                    <label for="chk-b3" class="fd-chk__lbl">음악 감상</label>
+                  </div>
+                  <div class="fd-chk">
+                    <input id="chk-b4" type="checkbox" class="fd-chk__el" name="hobby2">
+                    <label for="chk-b4" class="fd-chk__lbl">요리</label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </form>
+        </div>
+
+        <div class="guide-code-block">
+<pre><code>&lt;!-- Column(세로 기본) --&gt;
+  &lt;div class=&quot;fd-field&quot;&gt;
+    &lt;fieldset class=&quot;fd-field__ctrl fd-field__ctrl--chk&quot; aria-describedby=&quot;hobby-help&quot;&gt;
+      &lt;legend class=&quot;fd-field__lbl&quot;&gt;
+        취미 선택
+        &lt;span class=&quot;fd-label__required&quot; aria-hidden=&quot;true&quot;&gt;*&lt;/span&gt;
+        &lt;span class=&quot;visually-hidden&quot;&gt;(필수)&lt;/span&gt;
+      &lt;/legend&gt;
+      &lt;div class=&quot;fd-chk-group fd-chk-group--column&quot; data-min-required=&quot;1&quot;&gt;
+        &lt;div class=&quot;fd-chk&quot;&gt;
+          &lt;input id=&quot;chk-a1&quot; type=&quot;checkbox&quot; class=&quot;fd-chk__el&quot; name=&quot;hobby&quot;&gt;
+          &lt;label for=&quot;chk-a1&quot; class=&quot;fd-chk__lbl&quot;&gt;독서&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;fd-chk&quot;&gt;
+          &lt;input id=&quot;chk-a2&quot; type=&quot;checkbox&quot; class=&quot;fd-chk__el&quot; name=&quot;hobby&quot;&gt;
+          &lt;label for=&quot;chk-a2&quot; class=&quot;fd-chk__lbl&quot;&gt;운동&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;fd-chk&quot;&gt;
+          &lt;input id=&quot;chk-a3&quot; type=&quot;checkbox&quot; class=&quot;fd-chk__el&quot; name=&quot;hobby&quot;&gt;
+          &lt;label for=&quot;chk-a3&quot; class=&quot;fd-chk__lbl&quot;&gt;음악 감상&lt;/label&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;p id=&quot;hobby-help&quot; class=&quot;fd-field__msg&quot;&gt;최소 1개를 선택하세요.&lt;/p&gt;
+    &lt;/fieldset&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- Row(가로 배치) --&gt;
+  &lt;div class=&quot;fd-field&quot;&gt;
+    &lt;fieldset class=&quot;fd-field__ctrl fd-field__ctrl--chk&quot;&gt;
+      &lt;legend class=&quot;fd-field__lbl&quot;&gt;취미 선택 (가로)&lt;/legend&gt;
+      &lt;div class=&quot;fd-chk-group fd-chk-group--row&quot;&gt;
+        &lt;div class=&quot;fd-chk&quot;&gt;...&lt;/div&gt;
+        &lt;div class=&quot;fd-chk&quot;&gt;...&lt;/div&gt;
+        &lt;div class=&quot;fd-chk&quot;&gt;...&lt;/div&gt;
+        &lt;div class=&quot;fd-chk&quot;&gt;...&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/fieldset&gt;
+  &lt;/div&gt;</code></pre>    
+        </div>
+      </div>
+
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">Radio 그룹</h3>
+        <div class="guide-component-group block">
+          <form class="fd-form grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+            <!-- Column(세로) 기본 배치 -->
+            <div class="fd-field fd-field col-span-4 md:col-span-4 lg:col-span-6">
+              <fieldset class="fd-field__ctrl fd-field__ctrl--rdo" aria-describedby="pay-help">
+                <legend class="fd-field__lbl">
+                  결제 수단
+                  <span class="fd-label__required" aria-hidden="true">*</span>
+                  <span class="visually-hidden">(필수)</span>
+                </legend>
+            
+                <div class="fd-rdo-group fd-rdo-group--column">
+                  <div class="fd-rdo">
+                    <input id="pay-a1" type="radio" class="fd-rdo__el" name="pay" required>
+                    <label for="pay-a1" class="fd-rdo__lbl">카드</label>
+                  </div>
+                  <div class="fd-rdo">
+                    <input id="pay-a2" type="radio" class="fd-rdo__el" name="pay">
+                    <label for="pay-a2" class="fd-rdo__lbl">계좌이체</label>
+                  </div>
+                </div>
+                <p id="pay-help" class="fd-field__msg">하나를 선택하세요.</p>
+              </fieldset>
+            </div>
+
+            <!-- Row(가로) 배치: 그리드 유틸리티 -->
+            <div class="fd-field fd-field col-span-4 md:col-span-4 lg:col-span-6">
+              <fieldset class="fd-field__ctrl fd-field__ctrl--rdo">
+                <legend class="fd-field__lbl">결제 수단 (가로)</legend>
+                <div class="fd-rdo-group fd-rdo-group--row">
+                  <div class="fd-rdo">
+                    <input id="pay-b1" type="radio" class="fd-rdo__el" name="pay-row" required>
+                    <label for="pay-b1" class="fd-rdo__lbl">카드</label>
+                  </div>
+                  <div class="fd-rdo">
+                    <input id="pay-b2" type="radio" class="fd-rdo__el" name="pay-row">
+                    <label for="pay-b2" class="fd-rdo__lbl">계좌이체</label>
+                  </div>
+                  <div class="fd-rdo">
+                    <input id="pay-b3" type="radio" class="fd-rdo__el" name="pay-row">
+                    <label for="pay-b3" class="fd-rdo__lbl">무통장입금</label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </form>
+        </div>
+
+        <div class="guide-code-block">
+<pre><code>&lt;!-- Column(세로 기본) --&gt;
+  &lt;div class=&quot;fd-field&quot;&gt;
+    &lt;fieldset class=&quot;fd-field__ctrl fd-field__ctrl--rdo&quot; aria-describedby=&quot;pay-help&quot;&gt;
+      &lt;legend class=&quot;fd-field__lbl&quot;&gt;
+        결제 수단
+        &lt;span class=&quot;fd-label__required&quot; aria-hidden=&quot;true&quot;&gt;*&lt;/span&gt;
+        &lt;span class=&quot;visually-hidden&quot;&gt;(필수)&lt;/span&gt;
+      &lt;/legend&gt;
+      &lt;div class=&quot;fd-rdo-group fd-rdo-group--column&quot;&gt;
+        &lt;div class=&quot;fd-rdo&quot;&gt;
+          &lt;input id=&quot;pay-a1&quot; type=&quot;radio&quot; class=&quot;fd-rdo__el&quot; name=&quot;pay&quot; required&gt;
+          &lt;label for=&quot;pay-a1&quot; class=&quot;fd-rdo__lbl&quot;&gt;카드&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;fd-rdo&quot;&gt;
+          &lt;input id=&quot;pay-a2&quot; type=&quot;radio&quot; class=&quot;fd-rdo__el&quot; name=&quot;pay&quot;&gt;
+          &lt;label for=&quot;pay-a2&quot; class=&quot;fd-rdo__lbl&quot;&gt;계좌이체&lt;/label&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;p id=&quot;pay-help&quot; class=&quot;fd-field__msg&quot;&gt;하나를 선택하세요.&lt;/p&gt;
+    &lt;/fieldset&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- Row(가로 배치) --&gt;
+  &lt;div class=&quot;fd-field&quot;&gt;
+    &lt;fieldset class=&quot;fd-field__ctrl fd-field__ctrl--rdo&quot;&gt;
+      &lt;legend class=&quot;fd-field__lbl&quot;&gt;결제 수단 (가로)&lt;/legend&gt;
+      &lt;div class=&quot;fd-rdo-group fd-rdo-group--row&quot;&gt;
+        &lt;div class=&quot;fd-rdo&quot;&gt;...&lt;/div&gt;
+        &lt;div class=&quot;fd-rdo&quot;&gt;...&lt;/div&gt;
+        &lt;div class=&quot;fd-rdo&quot;&gt;...&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/fieldset&gt;
+  &lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+    <!-- 접근성 메모 -->
+    <div class="guide-section">
+      <div class="guide-notice">
+        <strong>접근성 메모:</strong>
+        <ul class="guide-list">
+          <li>라벨은 컨트롤 <em>앞</em>에 배치하고 <code>for</code>/<code>id</code>를 정확히 매칭합니다. 그룹은 <code>fieldset/legend</code> 사용을 권장합니다.</li>
+          <li>필수 표기는 시각용 <code>*</code>(<code>aria-hidden="true"</code>) + 스크린리더용 <code>(필수)</code> 텍스트를 함께 제공하세요.</li>
+          <li>도움말/오류 문구는 해당 컨트롤 또는 <code>fieldset</code>에 <code>aria-describedby</code>로 연결하고, 오류는 <code>aria-live="polite"</code>에 노출해 인지성을 높입니다.</li>
+          <li>오류 스타일은 기본적으로 <code>.fd-field--error</code>를 필드 래퍼에 토글해 일관되게 처리합니다.</li>
+        </ul>
+
+        <strong>접근성 참고:</strong> 설명/오류 메시지는 <em>포커스를 받는 실제 위젯</em> 에 <code>aria-describedby</code>로 연결합니다.
+        <ul class="guide-list">
+          <li>단일 입력(텍스트/패스워드 등): <code>&lt;input&gt;</code>에 직접 연결</li>
+          <li>커스텀 셀렉트: 트리거 요소(예: <code>.select__field[role="button|combobox"]</code>)에 연결</li>
+          <li>라디오/체크 <em>그룹</em>: <code>&lt;fieldset&gt;/&lt;legend&gt;</code>를 사용하고, 각 <code>&lt;input&gt;</code>에 동일한 도움말/오류 ID를 공유해 연결</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../assets/scripts/common/a11y.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 1. 기본 select 요소 이벤트 처리 (키보드 접근성 포함)
+      const selects = document.querySelectorAll('.select__element');
+      selects.forEach(select => {
+        // 탭키로 들어온 경우 active 클래스 제거
+        select.addEventListener('focus', function() {
+          // 탭으로 포커스 이동 시 active 클래스 제거
+          this.parentElement.classList.remove('active');
+        });
+        
+        // blur 이벤트 - active 제거
+        select.addEventListener('blur', function() {
+          this.parentElement.classList.remove('active');
+        });
+        
+        // 클릭 이벤트 - 액티브 토글만 처리
+        select.addEventListener('click', function() {
+          // 클릭 시 active 상태 토글 (브라우저 기본 동작은 그대로 실행)
+          this.parentElement.classList.toggle('active');
+        });
+        
+        // 키보드 이벤트 - 엔터/스페이스 키는 브라우저 기본 동작 유지
+        select.addEventListener('keydown', function(e) {
+          // 엔터키나 스페이스바 - 기본 동작 유지
+          if (e.key === 'Enter' || e.key === ' ') {
+            // 기본 동작 유지 (preventDefault 제거)
+            // 액티브 클래스 추가
+            this.parentElement.classList.add('active');
+          }
+          
+          // ESC 키
+          if (e.key === 'Escape') {
+            this.parentElement.classList.remove('active');
+          }
+        });
+        
+        // 변경 이벤트 - 옵션 선택 후 active 제거
+        select.addEventListener('change', function() {
+          // 옵션 선택 후 active 제거
+          this.parentElement.classList.remove('active');
+        });
+      });
+      
+      // 2. 다중 선택 컴포넌트 초기화 (a11y.js 사용)
+      const multiSelects = document.querySelectorAll('.select--multiple');
+      multiSelects.forEach(multiSelect => {
+        // 네이티브 select 요소에 visually-hidden 클래스 추가
+        const nativeSelect = multiSelect.querySelector('.select__native');
+        if (nativeSelect) {
+          nativeSelect.classList.add('visually-hidden');
+        }
+        
+        // 커스텀 UI 초기화
+        App.a11y.initMultiSelect(multiSelect);
+      });
+    
+      // 3. Password 토글 기능 (접근성 개선 포함)
+      const toggles = document.querySelectorAll('[data-password-toggle]');
+    
+      toggles.forEach((btn) => {
+        // 안전장치: submit 방지
+        if (btn.type !== 'button') btn.setAttribute('type', 'button');
+    
+        // 1. 접근성 이름: 버튼 직접 자식 SR 텍스트 보장
+        if (btn.hasAttribute('aria-label')) btn.removeAttribute('aria-label');
+        let sr = btn.querySelector(':scope > .visually-hidden');
+        if (!sr) {
+          const srInIcon = btn.querySelector('.icon-bg .visually-hidden');
+          const text = srInIcon ? srInIcon.textContent.trim() : '비밀번호 보기';
+          sr = document.createElement('span');
+          sr.className = 'visually-hidden';
+          sr.textContent = text || '비밀번호 보기';
+          btn.prepend(sr);
+          if (srInIcon) srInIcon.remove(); // 중복 제거
+        }
+    
+        // 2. 아이콘은 SR에서 제외
+        const icon = btn.querySelector('.icon-bg');
+        if (icon && !icon.hasAttribute('aria-hidden')) {
+          icon.setAttribute('aria-hidden', 'true');
+        }
+    
+        // 3. 초기화 시점에 제어 대상 연결 + 초기 상태 동기화 (추가)
+        const container = btn.closest('.fd-pw');
+        const input = container ? container.querySelector('.fd-pw__el') : null;
+        if (!input) return; // 이 버튼은 스킵
+    
+        if (!input.id) {
+          input.id = 'pw-' + Math.random().toString(36).slice(2, 8);
+        }
+        btn.setAttribute('aria-controls', input.id);
+    
+        // 초기 aria-pressed / SR 문구 동기화 (현재 타입 기준)
+        const isHiddenInit = (input.type === 'password');
+        btn.setAttribute('aria-pressed', isHiddenInit ? 'false' : 'true');
+        sr.textContent = isHiddenInit ? '비밀번호 보기' : '비밀번호 숨기기';
+    
+        // 입력 비활성화 시 버튼도 비활성화 동기화
+        if (input.disabled) btn.disabled = true;
+    
+        // 4. 클릭 토글
+        btn.addEventListener('click', () => {
+          const show = (input.type === 'password'); // 보여줄지 여부
+          input.type = show ? 'text' : 'password';
+    
+          // 아이콘 상태 토글 (replace 우선, 실패 시 폴백)
+          if (icon) {
+            const from = show ? 'icon-pw-hide' : 'icon-pw-show';
+            const to   = show ? 'icon-pw-show' : 'icon-pw-hide';
+            if (!icon.classList.replace(from, to)) {
+              icon.classList.toggle('icon-pw-hide', !show);
+              icon.classList.toggle('icon-pw-show', show);
+            }
+          }
+    
+          // 상태·이름 동기화
+          btn.setAttribute('aria-pressed', show ? 'true' : 'false');
+          sr.textContent = show ? '비밀번호 숨기기' : '비밀번호 보기';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

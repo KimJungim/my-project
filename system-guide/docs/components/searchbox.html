@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../assets/style-guide.css">
+	<title>Search Box</title>
+</head>
+<body>
+  <div class="container container--no-header">
+    <h1 class="t-title-1 guide-title">Search Box 컴포넌트</h1>
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">검색창</h2>
+
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">기본 검색창</h3>
+        <div class="guide-component-group">
+          <div class="searchbox">
+            <div class="searchbox__input-wrap">
+              <input type="text" class="searchbox__input" placeholder="프로그램 이름으로 검색해 보세요!">
+            </div>
+            <div class="searchbox__button-wrap">
+              <button type="button" class="searchbox__search-btn">
+                <i class="icon-bg icon-search">
+                  <span class="visually-hidden">검색하기</span>
+                </i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="searchbox"&gt;
+  &lt;div class="searchbox__input-wrap"&gt;
+    &lt;input type="text" class="searchbox__input" placeholder="프로그램 이름으로 검색해 보세요!"&gt;
+  &lt;/div&gt;
+  &lt;div class="searchbox__button-wrap"&gt;
+    &lt;button type="button" class="searchbox__search-btn"&gt;
+      &lt;i class="icon-bg icon-search"&gt;
+        &lt;span class="visually-hidden"&gt;검색하기&lt;/span&gt;
+      &lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">기능 검색창</h3>
+        <div class="guide-component-group">
+          <div class="searchbox searchbox--feature">
+            <div class="searchbox__input-wrap">
+              <input type="text" class="searchbox__input searchbox__input--feature" placeholder="템플릿 이름, 기능, 프로그램 이름으로 검색해 보세요!">
+              <div class="tag-list tag-list--button">
+                <button class="tag tag--button">CRUD</button>
+                <button class="tag tag--button">조회(R)</button>
+                <button class="tag tag--button">목록</button>
+              </div>
+            </div>
+            <div class="searchbox__button-wrap">
+              <button type="button" class="searchbox__register-btn">
+                <i class="icon-bg icon-register">
+                  <span class="visually-hidden">등록하기</span>
+                </i>
+              </button>
+              <button type="button" class="searchbox__search-btn">
+                <i class="icon-bg icon-search">
+                  <span class="visually-hidden">검색하기</span>
+                </i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="searchbox searchbox--feature"&gt;
+  &lt;div class="searchbox__input-wrap"&gt;
+    &lt;input type="text" class="searchbox__input searchbox__input--feature" placeholder="템플릿 이름, 기능, 프로그램 이름으로 검색해 보세요!"&gt;
+    &lt;div class="tag-list tag-list--button"&gt;
+      &lt;button class="tag tag--button"&gt;CRUD&lt;/button&gt;
+      &lt;button class="tag tag--button"&gt;조회(R)&lt;/button&gt;
+      &lt;button class="tag tag--button"&gt;목록&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="searchbox__button-wrap"&gt;
+    &lt;button type="button" class="searchbox__register-btn"&gt;
+      &lt;i class="icon-bg icon-register"&gt;
+        &lt;span class="visually-hidden"&gt;등록하기&lt;/span&gt;
+      &lt;/i&gt;
+    &lt;/button&gt;
+    &lt;button type="button" class="searchbox__search-btn"&gt;
+      &lt;i class="icon-bg icon-search"&gt;
+        &lt;span class="visually-hidden"&gt;검색하기&lt;/span&gt;
+      &lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">JavaScript 기능</h2>
+      <p class="guide-subtitle">아래 스크립트는 검색창 컴포넌트의 동작을 위해 필요한 기능을 구현합니다. 주요 기능으로는 버튼형 태그 클릭 시 검색 필드에 태그 텍스트를 입력하는 기능이 포함되어 있습니다.</p>
+      
+      <div class="guide-notice">
+        <strong>참고:</strong> 아래 스크립트는 기능 검색창에서 태그 버튼을 사용할 때 필요합니다. 태그 버튼이 포함된 검색창을 사용하는 경우 반드시 추가해 주세요.
+      </div>
+      
+      <div class="guide-code-block">
+        <pre><code>&lt;script&gt;
+  // 기능 검색창 태그 버튼 기능 초기화
+  function initSearchboxTags() {
+    const buttonTags = document.querySelectorAll('.tag--button');
+    const tagInput = document.querySelector('.searchbox__input--feature');
+    
+    if (!buttonTags.length || !tagInput) return;
+    
+    buttonTags.forEach(tag => {
+      tag.addEventListener('click', function() {
+        // 입력 필드에 태그 텍스트 설정
+        tagInput.value = this.textContent;
+        
+        // 필요한 경우 포커스 이동
+        tagInput.focus();
+      });
+    });
+  }
+  
+  // 페이지 로드 시 초기화
+  document.addEventListener('DOMContentLoaded', function() {
+    initSearchboxTags();
+  });
+&lt;/script&gt;</code></pre>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    /**
+     * 검색창 컴포넌트에서 버튼형 태그 기능 사용 예시
+     * - 현재 비활성화 상태, 필요 시 주석 해제하여 사용
+     */
+    
+    // 기능 검색창 태그 버튼 기능 초기화
+    function initSearchboxTags() {
+      const buttonTags = document.querySelectorAll('.tag--button');
+      const tagInput = document.querySelector('.searchbox__input--feature');
+      
+      if (!buttonTags.length || !tagInput) return;
+      
+      buttonTags.forEach(tag => {
+        tag.addEventListener('click', function() {
+          // 입력 필드에 태그 텍스트 설정
+          tagInput.value = this.textContent;
+          
+          // 필요한 경우 포커스 이동
+          tagInput.focus();
+        });
+      });
+    }
+    
+    // 페이지 로드 시 초기화
+    document.addEventListener('DOMContentLoaded', function() {
+      initSearchboxTags();
+    });
+  </script>
+</body>
+</html>

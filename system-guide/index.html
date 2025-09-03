@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>컴포넌트 가이드</title>
+  <link rel="stylesheet" href="../assets/style-guide.css">
+  <style>
+    .dropdown__item-text {
+      text-transform: capitalize;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+      <h1 class="t-title-1 guide-title">디자인 시스템 가이드</h1>
+
+      <section class="guide-section">
+        <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+          <div class="col-span-4 md:col-span-4 lg:col-span-6">
+            <div class="dropdown">
+              <button class="dropdown__button" aria-haspopup="true" aria-expanded="false">
+                <span class="dropdown__text">가이드 메뉴</span>
+              </button>
+              <ul class="dropdown__list" role="menu">
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/grid.html" class="dropdown__item-text">그리드 적용 가이드</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/index.html" class="dropdown__item-text">레이아웃 적용 가이드</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/a11y-guide.html" class="dropdown__item-text">접근성 가이드</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-span-4 md:col-span-4 lg:col-span-6">
+            <div class="dropdown">
+              <button class="dropdown__button" aria-haspopup="true" aria-expanded="false">
+                <span class="dropdown__text">컴포넌트 메뉴</span>
+              </button>
+              <ul class="dropdown__list" role="menu">
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/avatar.html" class="dropdown__item-text">avatar 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/badge.html" class="dropdown__item-text">badge 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/button-group.html" class="dropdown__item-text">button-group 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/button.html" class="dropdown__item-text">button 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/card.html" class="dropdown__item-text">card 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/checkbox.html" class="dropdown__item-text">checkbox 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/dropdown.html" class="dropdown__item-text">dropdown 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/field.html" class="dropdown__item-text">field 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/floating-button.html" class="dropdown__item-text">floating-button 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/header.html" class="dropdown__item-text">header 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/input.html" class="dropdown__item-text">input 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/label.html" class="dropdown__item-text">label 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/link.html" class="dropdown__item-text">link 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/login-page.html" class="dropdown__item-text">login-page 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/pagination.html" class="dropdown__item-text">pagination 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/password.html" class="dropdown__item-text">password 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/radio-group.html" class="dropdown__item-text">radio-group 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/searchbox.html" class="dropdown__item-text">searchbox 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/select.html" class="dropdown__item-text">select 컴포넌트</a>
+                </li>
+                <li class="dropdown__item" role="menuitem">
+                  <a href="./docs/components/tag.html" class="dropdown__item-text">tag 컴포넌트</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>    
+  </main>
+  
+  <script src="/assets/scripts/common/a11y.js"></script>
+
+  <script>
+    // a11y.js를 활용한 드롭다운 접근성 초기화
+    document.addEventListener('DOMContentLoaded', function() {
+      // 페이지의 모든 드롭다운 컴포넌트 초기화
+      const dropdowns = document.querySelectorAll('.dropdown');
+      dropdowns.forEach(dropdown => {
+        App.a11y.initDropdown(dropdown);
+      });
+    });
+  </script>
+</body>
+</html>

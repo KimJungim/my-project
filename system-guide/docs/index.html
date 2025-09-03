@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>공통 영역</title>
+  <link rel="stylesheet" href="../assets/style-guide.css" />
+</head>
+<body>
+  <!-- 공통 overlay -->
+  <div class="overlay"></div>
+
+  <header class="header">
+    <div class="header__logo">
+      <a href="/" class="header__logo-link">
+        <img src="../assets/images/logo.svg" alt="intelliDOCS">
+      </a>
+    </div>
+    <div class="header__utility">
+      <!-- 사용자 관련 정보 버튼 -->
+      <!-- 비로그인 상태의 로그인 버튼 (이미지) -->
+      <button class="header__user header__user--login" type="button" style="display: none;">
+        <span class="visually-hidden">로그인</span>
+      </button>
+
+      <!-- 로그인 상태의 사용자 버튼 -->
+      <button class="header__user header__user--logged-in avatar-btn" type="button" aria-controls="globalSideNav" aria-expanded="false">
+        <!-- 텍스트 아바타 -->
+        <span class="avatar avatar--text avatar--mobile-large" style="display: none;">
+          <span class="avatar__text">엘</span>
+        </span>
+        <!-- 이미지 아바타 -->
+        <span class="avatar avatar--mobile-large">
+          <img class="avatar__image" src="../assets/images/avatar/sample_01.png" alt="사용자 아바타">
+        </span>
+        <span class="avatar-btn__text hide-on-mobile">엘루오</span>
+      </button>
+
+      <!-- 메뉴 버튼 -->
+      <button class="header__menu" type="button" aria-label="사이드 메뉴 열기" aria-controls="globalSideNav" aria-expanded="false">
+        <span class="header__menu-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 사이드 네비게이션 -->
+  <nav class="header__nav" id="globalSideNav" aria-hidden="true" inert>
+    <button class="header__nav-close" type="button" aria-label="사이드 메뉴 닫기">
+      <span class="icon-close" aria-hidden="true"></span>
+    </button>
+    <!-- 로그인 상태 사용자 정보 -->
+    <div class="header__nav-user header__nav-user--logged-in">
+      <div class="avatar avatar--md">
+        <img class="avatar__image" src="../assets/images/avatar/sample_01.png" alt="사용자 아바타">
+      </div>
+      <div class="avatar__info-wrapper">
+        <div class="avatar__name">엘루오</div>
+        <div class="avatar__sub">eluo@example.com</div>
+      </div>
+    </div>
+    <!-- 비로그인 상태 사용자 정보 -->
+    <div class="header__nav-user header__nav-user--logged-out" style="display: none;">
+        <p>로그인이 필요합니다.<br>서비스 이용을 위해 로그인해 주세요.</p>
+        <a href="/" class="header__nav-user-login-btn">로그인하기</a>
+    </div>
+    <ul class="header__nav-list">
+      <li><a href="#">AI 템플릿 서비스</a></li>
+      <li><a href="#">AI 지식정보 서비스</a></li>
+      <li><a href="#">AI 지식정보 서비스 관리</a></li>
+    </ul>
+    <div class="header__nav-footer">
+      <!-- 비로그인 상태 -->
+      <a href="#" class="header__nav-login" style="display: none;">
+        <i class="icon-bg icon-user-sm" aria-hidden="true"></i>로그인
+      </a>
+      <a href="#" class="header__nav-join" style="display: none;">
+        <i class="icon-bg icon-user-add" aria-hidden="true"></i>회원가입
+      </a>
+      <!-- 로그인 상태 -->
+      <a href="#" class="header__nav-password">
+        <i class="icon-bg icon-lock" aria-hidden="true"></i>비밀번호 변경
+      </a>
+      <a href="#" class="header__nav-logout">
+        <i class="icon-bg icon-logout" aria-hidden="true"></i>로그아웃
+      </a>
+    </div>
+  </nav>
+
+  <main class="container">
+    콘텐츠 영역
+  </main>
+  <!-- 공통 스크립트 -->
+  <script src="../assets/scripts/common/overlay.js"></script>
+  <script src="../assets/scripts/common/a11y.js"></script>
+
+  <!-- header 전용 스크립트 -->
+  <script>
+    const nav = document.querySelector('.header__nav');
+    const userButton = document.querySelector('.header__user--logged-in');
+    const menuButton = document.querySelector('.header__menu');
+    const closeButton = document.querySelector('.header__nav-close');
+
+    let releaseFocusTrap = null;
+
+    function openNav() {
+      nav.classList.add('is-open');
+      App.overlay.open();
+      nav.setAttribute('aria-hidden', 'false');
+      nav.removeAttribute('inert'); // inert 속성 제거 (중요!)
+      
+      if (userButton) userButton.setAttribute('aria-expanded', 'true');
+      menuButton.setAttribute('aria-expanded', 'true');
+
+      // 트랩 설정 전에 모든 포커스 가능한 요소의 tabindex 확인
+      const focusableElements = nav.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])');
+      focusableElements.forEach(el => {
+        if (el.hasAttribute('tabindex') && el.getAttribute('tabindex') === '-1') {
+          el.removeAttribute('tabindex');
+        }
+      });
+
+      // 포커스 트랩 설정 (이제 문서 전체 이벤트를 캡처하여 포커스가 nav를 벗어나지 않도록 함)
+      releaseFocusTrap = App.a11y.trapFocus(nav);
+      
+      // 첫 번째 포커스 가능한 요소에 포커스는 trapFocus 내부에서 자동으로 처리됨
+    }
+
+    function closeNav() {
+      // 포커스를 메뉴 밖으로 이동
+      menuButton.focus();
+      
+      nav.classList.remove('is-open');
+      App.overlay.close();
+      nav.setAttribute('aria-hidden', 'true');
+      nav.setAttribute('inert', '');
+      if (userButton) userButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-expanded', 'false');
+
+      if (releaseFocusTrap) releaseFocusTrap();
+    }
+
+    // 로그인 버튼이 존재할 때만 이벤트 리스너 추가
+    if (userButton) {
+      userButton.addEventListener('click', toggleNav);
+    }
+    menuButton.addEventListener('click', toggleNav);
+    closeButton.addEventListener('click', closeNav);
+    App.overlay.onClick(closeNav);
+
+    function toggleNav() {
+      nav.classList.contains('is-open') ? closeNav() : openNav();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../assets/style-guide.css">
+	<title>Login Page</title>
+</head>
+<body>
+  <!-- 컴포넌트 구현 영역 -->
+  <div class="login-page">
+    <div class="login-page__logo">
+      <div class="login-page__logo-img">
+        <span class="visually-hidden">intelliDOCS</span>
+      </div>
+    </div>
+  
+    <div class="login-page__content">
+      <div class="login-page__header">
+        <p class="login-page__title" role="heading" aria-level="1">인텔리독스 로그인</p>
+        <span class="login-page__subtitle">인텔리독스 계정으로 로그인해주세요.</span>
+      </div>
+  
+      <div class="login-page__form">
+        <form class="fd-form">
+          <div class="login-page__form-group">
+            <div class="fd-field">
+              <label for="login-email" class="fd-field__lbl">이메일</label>
+              <div class="fd-field__ctrl fd-field__ctrl--input">
+                <div class="fd-input fd-input--full">
+                  <input id="login-email" name="email" type="email"
+                         class="fd-input__el" placeholder="이메일"
+                         autocomplete="username" inputmode="email"
+                         autocapitalize="none">
+                </div>
+              </div>
+            </div>
+            <div class="fd-field">
+              <label for="login-pw" class="fd-field__lbl">비밀번호 입력</label>
+              <div class="fd-field__ctrl fd-field__ctrl--pw">
+                <div class="fd-pw fd-pw--full">
+                  <input id="login-pw" name="password" type="password"
+                         class="fd-pw__el" placeholder="비밀번호"
+                         minlength="8" autocomplete="current-password"
+                         autocapitalize="none">
+                  <button type="button" class="fd-pw__toggle" aria-pressed="false" data-password-toggle>
+                    <span class="visually-hidden">비밀번호 보기</span>
+                    <i class="icon-bg icon-pw-hide" aria-hidden="true"></i>
+                  </button>                  
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="login-page__form-utils">
+            <div class="fd-field">
+              <div class="fd-field__ctrl fd-field__ctrl--chk">
+                <div class="fd-chk">
+                  <input id="f-chk-1" name="remember" value="1" type="checkbox" class="fd-chk__el">
+                  <label for="f-chk-1" class="fd-chk__lbl">아이디 저장</label>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="link login-page__link">비밀번호 찾기</a>
+          </div>
+  
+          <div class="login-page__form-action">
+            <button type="submit" class="btn btn--fill btn--square btn--full-width">로그인</button>
+            <p class="login-page__signup-text">
+              아직 계정이 없으신가요? <a href="#" class="link login-page__signup-link">회원가입</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+    
+  <!-- 컴포넌트 설명 영역 -->
+  <div class="container container--no-header">
+    <h1 class="t-title-1 guide-title">Login Page 컴포넌트</h1>
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">Login Page</h2>
+      <p class="guide-subtitle">Login Page는 사용자가 로그인을 할 때 사용하는 페이지입니다.</p>
+
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">기본 구조</h3>
+        <p>Login Page는 다음 두 가지 주요 부분으로 구성됩니다:</p>
+        <ul class="guide-list">
+          <li>
+            <span><strong>로고(.login-page__logo)</strong>: 인텔리독스 로고</span>
+          </li>
+          <li>
+            <span><strong>컨텐츠(.login-page__content)</strong>: 로그인 폼과 회원가입 링크</span>
+          </li>
+        </ul>
+
+        <div class="guide-code-block">
+<pre><code>
+&lt;div class=&quot;login-page&quot;&gt;
+  &lt;!-- 로고 --&gt;
+  &lt;div class=&quot;login-page__logo&quot;&gt;
+    &lt;div class=&quot;login-page__logo-img&quot;&gt;
+      &lt;span class=&quot;visually-hidden&quot;&gt;intelliDOCS&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- 컨텐츠 --&gt;
+  &lt;div class=&quot;login-page__content&quot;&gt;
+    &lt;div class=&quot;login-page__header&quot;&gt;
+      &lt;p class=&quot;login-page__title&quot;&gt;인텔리독스 로그인&lt;/p&gt;
+      &lt;span class=&quot;login-page__subtitle&quot;&gt;인텔리독스 계정으로 로그인해주세요.&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 폼 영역 --&gt;
+    &lt;div class=&quot;login-page__form&quot;&gt;
+      &lt;form class=&quot;fd-form&quot;&gt;
+
+      &lt;!-- 입력 영역 --&gt;
+      &lt;div class=&quot;login-page__form-group&quot;&gt;
+        &lt;div class=&quot;fd-field&quot;&gt;
+          &lt;label for=&quot;login-email&quot; class=&quot;fd-field__lbl&quot;&gt;이메일&lt;/label&gt;
+          &lt;div class=&quot;fd-field__ctrl fd-field__ctrl--input&quot;&gt;
+            &lt;div class=&quot;fd-input fd-input--full&quot;&gt;
+              &lt;input id=&quot;login-email&quot; name=&quot;email&quot; type=&quot;email&quot;
+                     class=&quot;fd-input__el&quot; placeholder=&quot;이메일&quot; 
+                     autocomplete=&quot;username&quot; inputmode=&quot;email&quot; 
+                     autocapitalize=&quot;none&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      
+        &lt;div class=&quot;fd-field&quot;&gt;
+          &lt;label for=&quot;login-pw&quot; class=&quot;fd-field__lbl&quot;&gt;비밀번호 입력&lt;/label&gt;
+          &lt;div class=&quot;fd-field__ctrl fd-field__ctrl--pw&quot;&gt;
+            &lt;div class=&quot;fd-pw fd-pw--full&quot;&gt;
+              &lt;input id=&quot;login-pw&quot; name=&quot;password&quot; type=&quot;password&quot; 
+                     class=&quot;fd-pw__el&quot; placeholder=&quot;비밀번호&quot;
+                     minlength=&quot;8&quot; autocomplete=&quot;current-password&quot;
+                     autocapitalize=&quot;none&quot;&gt;
+              &lt;button type=&quot;button&quot; class=&quot;fd-pw__toggle&quot; aria-pressed=&quot;false&quot; data-password-toggle&gt;
+                &lt;span class=&quot;visually-hidden&quot;&gt;비밀번호 보기&lt;/span&gt;
+                &lt;i class=&quot;icon-bg icon-pw-hide&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
+              &lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+        &lt;!-- 유틸리티 영역 --&gt;
+        &lt;div class=&quot;login-page__form-utils&quot;&gt;
+          &lt;div class=&quot;fd-field&quot;&gt;
+            &lt;div class=&quot;fd-field__ctrl fd-field__ctrl--chk&quot;&gt;
+              &lt;div class=&quot;fd-chk&quot;&gt;
+              &lt;input id=&quot;f-chk-1&quot; name=&quot;remember&quot; value=&quot;1&quot; type=&quot;checkbox&quot; class=&quot;fd-chk__el&quot;&gt;
+                &lt;label for=&quot;f-chk-1&quot; class=&quot;fd-chk__lbl&quot;&gt;아이디 저장&lt;/label&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;a href=&quot;#&quot; class=&quot;link login-page__link&quot;&gt;비밀번호 찾기&lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;!-- 버튼 영역 --&gt;
+        &lt;div class=&quot;login-page__form-action&quot;&gt;
+          &lt;button type=&quot;submit&quot; class=&quot;btn btn--fill btn--square btn--full-width&quot;&gt;로그인&lt;/button&gt;
+          &lt;p class=&quot;login-page__signup-text&quot;&gt;
+            아직 계정이 없으신가요? &lt;a href=&quot;#&quot; class=&quot;link login-page__signup-link&quot;&gt;회원가입&lt;/a&gt;
+          &lt;/p&gt;
+        &lt;/div&gt;
+
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                      
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="../../assets/scripts/common/a11y.js"></script>
+  <script>
+    // Password 토글 기능
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggles = document.querySelectorAll('[data-password-toggle]');
+
+      toggles.forEach((btn) => {
+        // 안전장치: submit 방지
+        if (btn.type !== 'button') btn.setAttribute('type', 'button');
+
+        // 1) aria-label 제거 (버튼 내부 SR 텍스트로만 이름 제공)
+        if (btn.hasAttribute('aria-label')) btn.removeAttribute('aria-label');
+
+        // 2) SR 텍스트를 버튼 '직속'으로 보장 (아이콘 내부에 있으면 꺼내옴)
+        let sr = btn.querySelector(':scope > .visually-hidden');
+        if (!sr) {
+          const srInIcon = btn.querySelector('.icon-bg .visually-hidden');
+          const text = srInIcon ? srInIcon.textContent.trim() : '비밀번호 보기';
+          sr = document.createElement('span');
+          sr.className = 'visually-hidden';
+          sr.textContent = text || '비밀번호 보기';
+          btn.prepend(sr);
+          if (srInIcon) srInIcon.remove(); // 중복 제거
+        }
+
+        // 3) 아이콘은 SR에서 숨김
+        const icon = btn.querySelector('.icon-bg');
+        if (icon && !icon.hasAttribute('aria-hidden')) {
+          icon.setAttribute('aria-hidden', 'true');
+        }
+
+        btn.addEventListener('click', () => {
+          const container = btn.closest('.fd-pw');
+          if (!container) return;
+
+          const input = container.querySelector('.fd-pw__el');
+          if (!input) return;
+
+          // 4) SR 연결(최초 1회) - input에 id가 있어야 함
+          if (!btn.hasAttribute('aria-controls') && input.id) {
+            btn.setAttribute('aria-controls', input.id);
+          }
+
+          const show = (input.type === 'password'); // 보여줄지 여부
+          input.type = show ? 'text' : 'password';
+
+          // 5) 아이콘 상태 토글 (replace 우선, 실패 시 폴백)
+          if (icon) {
+            const from = show ? 'icon-pw-hide' : 'icon-pw-show';
+            const to   = show ? 'icon-pw-show' : 'icon-pw-hide';
+            if (!icon.classList.replace(from, to)) {
+              icon.classList.toggle('icon-pw-hide', !show);
+              icon.classList.toggle('icon-pw-show', show);
+            }
+          }
+
+          // 6) 토글 상태·접근성 이름 갱신
+          btn.setAttribute('aria-pressed', show ? 'true' : 'false');
+          sr.textContent = show ? '비밀번호 숨기기' : '비밀번호 보기';
+        });
+      });
+    });
+
+  </script>
+</body>
+</html>

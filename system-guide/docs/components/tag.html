@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../assets/style-guide.css">
+	<title>Tag</title>
+</head>
+<body>
+  <div class="container container--no-header">
+    <h1 class="t-title-1 guide-title">Tag 컴포넌트</h1>
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">텍스트 태그 리스트</h2>
+      <div class="guide-article">
+        <div class="tag-list">
+          <span class="tag">#CRUD</span>
+          <span class="tag">#CRUD</span>
+          <span class="tag">#CRUD</span>
+          <span class="tag">#CRUD</span>
+          <span class="tag">#CRUD</span>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="tag-list"&gt;
+  &lt;span class="tag"&gt;#CRUD&lt;/span&gt;
+  &lt;span class="tag"&gt;#CRUD&lt;/span&gt;
+  &lt;span class="tag"&gt;#CRUD&lt;/span&gt;
+  &lt;span class="tag"&gt;#CRUD&lt;/span&gt;
+  &lt;span class="tag"&gt;#CRUD&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">버튼형 태그</h2>
+      <div class="guide-article">
+        <p class="guide-subtitle">클릭 가능한 버튼형 태그로, 배지와 유사한 디자인을 가지며 클릭 시 입력 필드에 해당 태그 내용이 추가됩니다.</p>
+        
+        <div class="field" style="margin-bottom: 16px;">
+          <label for="tagInput" class="field__label">태그 입력 필드:</label>
+          <input type="text" id="tagInput" class="field__input" placeholder="태그를 클릭하세요" readonly>
+        </div>
+        
+        <div class="tag-list tag-list--button">
+          <button class="tag tag--button">CRUD</button>
+          <button class="tag tag--button">조회(R)</button>
+          <button class="tag tag--button">목록</button>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="tag-list tag-list--button"&gt;
+  &lt;button class="tag tag--button"&gt;CRUD&lt;/button&gt;
+  &lt;button class="tag tag--button"&gt;조회(R)&lt;/button&gt;
+  &lt;button class="tag tag--button"&gt;목록&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">키워드 태그 (삭제 버튼 있음)</h2>
+      <div class="guide-article">
+        <p class="guide-subtitle">삭제 버튼이 포함된 키워드 태그로, 입력된 키워드를 표시하고 삭제할 수 있습니다.</p>
+        <div class="tag-list tag-list--keyword">
+          <div class="tag tag--keyword">
+            <span class="tag__text">키워드</span>
+            <button type="button" class="tag__close dark-bg">
+              <i class="icon-bg icon-tag-close">
+                <span class="visually-hidden">삭제</span>
+              </i>
+            </button>
+          </div>
+          <div class="tag tag--keyword">
+            <span class="tag__text">일이삼사오육칠팔</span>
+            <button type="button" class="tag__close dark-bg">
+              <i class="icon-bg icon-tag-close">
+                <span class="visually-hidden">삭제</span>
+              </i>
+            </button>
+          </div>
+          <div class="tag tag--keyword">
+            <span class="tag__text">키워드</span>
+            <button type="button" class="tag__close dark-bg">
+              <i class="icon-bg icon-tag-close">
+                <span class="visually-hidden">삭제</span>
+              </i>
+            </button>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="tag-list tag-list--keyword"&gt;
+  &lt;div class="tag tag--keyword"&gt;
+    &lt;span class="tag__text"&gt;키워드&lt;/span&gt;
+    &lt;button type="button" class="tag__close dark-bg"&gt;
+      &lt;i class="icon-bg icon-tag-close"&gt;
+        &lt;span class="visually-hidden"&gt;삭제&lt;/span&gt;
+      &lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;!-- 추가 태그 --&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">키워드 태그 (삭제 버튼 없음)</h2>
+      <div class="guide-article">
+        <p class="guide-subtitle">삭제 버튼이 없는 단순한 키워드 태그로, 키워드 표시만 가능합니다.</p>
+        <div class="tag-list tag-list--keyword">
+          <span class="tag tag--keyword-static">키워드</span>
+          <span class="tag tag--keyword-static">일이삼사오육칠팔</span>
+          <span class="tag tag--keyword-static">키워드</span>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="tag-list tag-list--keyword"&gt;
+  &lt;span class="tag tag--keyword-static"&gt;키워드&lt;/span&gt;
+  &lt;span class="tag tag--keyword-static"&gt;일이삼사오육칠팔&lt;/span&gt;
+  &lt;span class="tag tag--keyword-static"&gt;키워드&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">모바일 줄바꿈 예시</h2>
+      <div class="guide-article">
+        <p class="guide-subtitle">태그가 많을 경우 자동으로 줄바꿈되어 표시됩니다. (화면 크기를 조절하여 확인해보세요)</p>
+        <div style="max-width: 400px; border: 1px dashed #ccc; padding: 16px; margin-bottom: 16px;">
+          <div class="tag-list tag-list--keyword">
+            <span class="tag tag--keyword-static">디자인시스템</span>
+            <span class="tag tag--keyword-static">컴포넌트</span>
+            <span class="tag tag--keyword-static">태그</span>
+            <span class="tag tag--keyword-static">키워드</span>
+            <span class="tag tag--keyword-static">반응형</span>
+            <span class="tag tag--keyword-static">모바일지원</span>
+            <span class="tag tag--keyword-static">줄바꿈</span>
+            <span class="tag tag--keyword-static">UI/UX</span>
+            <span class="tag tag--keyword-static">웹디자인</span>
+            <span class="tag tag--keyword-static">사용성</span>
+            <span class="tag tag--keyword-static">접근성</span>
+            <span class="tag tag--keyword-static">인터페이스</span>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="tag-list tag-list--keyword"&gt;
+  &lt;span class="tag tag--keyword-static"&gt;디자인시스템&lt;/span&gt;
+  &lt;span class="tag tag--keyword-static"&gt;컴포넌트&lt;/span&gt;
+  &lt;span class="tag tag--keyword-static"&gt;태그&lt;/span&gt;
+  &lt;span class="tag tag--keyword-static"&gt;키워드&lt;/span&gt;
+  &lt;span class="tag tag--keyword-static"&gt;반응형&lt;/span&gt;
+  &lt;span class="tag tag--keyword-static"&gt;모바일지원&lt;/span&gt;
+  &lt;span class="tag tag--keyword-static"&gt;줄바꿈&lt;/span&gt;
+  &lt;span class="tag tag--keyword-static"&gt;UI/UX&lt;/span&gt;
+  &lt;span class="tag tag--keyword-static"&gt;웹디자인&lt;/span&gt;
+  &lt;span class="tag tag--keyword-static"&gt;사용성&lt;/span&gt;
+  &lt;span class="tag tag--keyword-static"&gt;접근성&lt;/span&gt;
+  &lt;span class="tag tag--keyword-static"&gt;인터페이스&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">태그 타입별 비교</h2>
+      <div class="guide-article">
+        <p>디자인 시스템에서 사용되는 네 가지 주요 태그 타입:</p>
+        <ul>
+          <li><strong>기본 태그</strong>: 텍스트만 있는 단순한 태그입니다.</li>
+          <li><strong>버튼형 태그</strong>: 클릭 가능한 버튼형 태그로, 클릭 시 입력 필드에 태그 내용을 추가합니다.</li>
+          <li><strong>키워드 태그 (삭제 기능)</strong>: 입력된 키워드를 표시하고 삭제할 수 있는 태그입니다.</li>
+          <li><strong>키워드 태그 (정적)</strong>: 삭제 버튼이 없는 단순한 키워드 표시용 태그입니다.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">JavaScript 기능</h2>
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">버튼형 태그 입력 기능</h3>
+        <div class="guide-code-block">
+          <pre><code>/**
+ * 버튼형 태그 기능 초기화
+ */
+function initButtonTags() {
+  const buttonTags = document.querySelectorAll('.tag--button');
+  const tagInput = document.getElementById('tagInput');
+  
+  if (buttonTags.length === 0 || !tagInput) return;
+  
+  buttonTags.forEach(tag => {
+    tag.addEventListener('click', function() {
+      // 입력 필드에 태그 텍스트 설정
+      tagInput.value = this.textContent;
+    });
+  });
+}
+
+// 초기화 호출
+initButtonTags();</code></pre>
+        </div>
+      </div>
+
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">키워드 태그 삭제 기능</h3>
+        <div class="guide-code-block">
+          <pre><code>/**
+ * 키워드 태그 삭제 기능 초기화
+ */
+function initTagCloseButtons() {
+  const tagCloseButtons = document.querySelectorAll('.tag__close');
+  
+  if (tagCloseButtons.length === 0) return;
+  
+  tagCloseButtons.forEach(button => {
+    button.addEventListener('click', handleTagDelete);
+  });
+}
+
+/**
+ * 태그 삭제 처리 함수
+ * - 애니메이션 효과와 함께 태그 요소 제거
+ */
+function handleTagDelete(event) {
+  const button = event.currentTarget;
+  const tagElement = button.closest('.tag--keyword');
+  
+  if (tagElement) {
+    // 애니메이션 효과 추가
+    tagElement.style.opacity = '0';
+    tagElement.style.transition = 'opacity 0.2s ease-out';
+    
+    // 애니메이션 후 요소 제거
+    setTimeout(() => {
+      tagElement.remove();
+    }, 200);
+  }
+}
+
+// 초기화 호출
+initTagCloseButtons();</code></pre>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <script>
+    /**
+     * 태그 컴포넌트 관련 기능을 처리하는 스크립트들
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+      // 각 기능별 초기화 함수 호출
+      initButtonTags();
+      initTagCloseButtons();
+    });
+
+    /**
+     * 1. 버튼형 태그 기능
+     * - 클릭 시 입력 필드에 텍스트 추가
+     */
+    function initButtonTags() {
+      const buttonTags = document.querySelectorAll('.tag--button');
+      const tagInput = document.getElementById('tagInput');
+      
+      if (buttonTags.length === 0 || !tagInput) return;
+      
+      buttonTags.forEach(tag => {
+        tag.addEventListener('click', function() {
+          // 입력 필드에 태그 텍스트 설정
+          tagInput.value = this.textContent;
+        });
+      });
+    }
+
+    /**
+     * 2. 키워드 태그 삭제 기능
+     * - 삭제 버튼 클릭 시 태그 제거
+     */
+    function initTagCloseButtons() {
+      const tagCloseButtons = document.querySelectorAll('.tag__close');
+      
+      if (tagCloseButtons.length === 0) return;
+      
+      tagCloseButtons.forEach(button => {
+        button.addEventListener('click', handleTagDelete);
+      });
+    }
+
+    /**
+     * 태그 삭제 처리 함수
+     * - 애니메이션 효과와 함께 태그 요소 제거
+     */
+    function handleTagDelete(event) {
+      const button = event.currentTarget;
+      const tagElement = button.closest('.tag--keyword');
+      
+      if (tagElement) {
+        // 애니메이션 효과 추가
+        tagElement.style.opacity = '0';
+        tagElement.style.transition = 'opacity 0.2s ease-out';
+        
+        // 애니메이션 후 요소 제거
+        setTimeout(() => {
+          tagElement.remove();
+        }, 200);
+      }
+    }
+
+    /**
+     * 사용 예시:
+     * 
+     * // 버튼형 태그 기능만 초기화
+     * initButtonTags();
+     * 
+     * // 태그 삭제 기능만 초기화
+     * initTagCloseButtons();
+     */
+  </script>
+</body>
+</html>
