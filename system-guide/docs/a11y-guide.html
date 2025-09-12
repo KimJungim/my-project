@@ -123,18 +123,18 @@ const releaseToggle = App.a11y.toggleExpandable(triggerElement, targetElement, {
       </div>
       
       <div class="guide-article">
-        <h3 class="t-title-3 guide-subtitle">Escape 키 처리 (escapeHandler)</h3>
+        <h3 class="t-title-3 guide-subtitle">Escape 키 처리 (bindEscOnce)</h3>
         <p class="t-body-1">
           Escape 키를 누르면 컴포넌트를 닫거나 특정 동작을 실행하도록 합니다.
-          모달, 드롭다운 등에서 Escape 키로 닫기 기능을 구현할 때 유용합니다.
+          cross-UA 보장을 위해 keydown/keyup 모두 리스닝하지만, 첫 ESC 이벤트에서 AbortController로 즉시 해제됩니다.
         </p>
         
         <div class="guide-code-block">
-          <pre><code>// Escape 키 처리 설정
-const releaseEscHandler = App.a11y.escapeHandler(containerElement, () => {
+          <pre><code>// ESC 1회성 처리 설정
+const releaseEsc = App.a11y.bindEscOnce([document, containerElement], () => {
   // Escape 키를 누를 때 실행할 코드
   closeModal();
-}, triggerButton); // 닫은 후 포커스를 이동할 요소 (옵션)</code></pre>
+});</code></pre>
         </div>
       </div>
       
@@ -162,7 +162,7 @@ const releaseFocusOut = App.a11y.handleFocusOut(containerElement, () => {
         <h3 class="t-title-3 guide-subtitle">드롭다운 컴포넌트 초기화 (initDropdown)</h3>
         <p class="t-body-1">
           드롭다운 컴포넌트에 필요한 모든 접근성 기능을 한 번에 설정합니다.
-          버튼 클릭/키보드 이벤트, 목록 항목 선택, 포커스 관리 등이 포함됩니다.
+          버튼 클릭/키보드 이벤트, 목록 항목 선택, 포커스 관리, 모바일 대응 등이 포함됩니다.
         </p>
         
         <div class="guide-code-block">
@@ -170,9 +170,44 @@ const releaseFocusOut = App.a11y.handleFocusOut(containerElement, () => {
 document.addEventListener('DOMContentLoaded', function() {
   const dropdowns = document.querySelectorAll('.dropdown');
   dropdowns.forEach(dropdown => {
-    App.a11y.initDropdown(dropdown);
+    const dropdownControl = App.a11y.initDropdown(dropdown);
+    // 필요시 정리 함수 저장
+    // dropdownControl.cleanup();
   });
 });</code></pre>
+        </div>
+        
+        <div class="guide-code-block">
+          <pre><code>// HTML 구조 예시
+&lt;div class="dropdown"&gt;
+  &lt;button class="dropdown__button" aria-expanded="false"&gt;
+    &lt;span class="dropdown__text"&gt;선택하세요&lt;/span&gt;
+    &lt;i class="dropdown__arrow" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;div class="dropdown__list"&gt;
+    &lt;div class="dropdown__item" tabindex="-1" aria-selected="false"&gt;
+      &lt;span class="dropdown__item-text"&gt;옵션 1&lt;/span&gt;
+      &lt;span class="dropdown__count"&gt;3&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="dropdown__item" tabindex="-1" aria-selected="false"&gt;
+      &lt;span class="dropdown__item-text"&gt;옵션 2&lt;/span&gt;
+      &lt;span class="dropdown__count"&gt;5&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        
+        <div class="guide-notice">
+          <strong>주요 기능:</strong>
+          <ul>
+            <li><strong>모바일 대응:</strong> 모바일 환경에서 드롭다운 너비를 버튼 너비와 동일하게 자동 조정합니다</li>
+            <li><strong>윈도우 리사이즈 대응:</strong> 화면 크기 변경 시 120ms 디바운싱으로 성능 최적화된 너비 재조정</li>
+            <li><strong>ESC 키 처리:</strong> Escape 키로 드롭다운을 닫을 수 있습니다</li>
+            <li><strong>포커스 관리:</strong> 드롭다운 열기/닫기 시 포커스가 적절히 관리됩니다</li>
+            <li><strong>화살표 키 탐색:</strong> 목록 내에서 화살표 키로 항목 간 이동이 가능합니다</li>
+            <li><strong>항목 선택:</strong> Enter/Space 키 또는 클릭으로 항목을 선택할 수 있습니다</li>
+            <li><strong>포커스 이동 감지:</strong> 포커스가 드롭다운 밖으로 나가면 자동으로 닫힙니다</li>
+          </ul>
         </div>
       </div>
       
@@ -180,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <h3 class="t-title-3 guide-subtitle">다중 선택 컴포넌트 초기화 (initMultiSelect)</h3>
         <p class="t-body-1">
           다중 선택이 가능한 커스텀 셀렉트 컴포넌트에 필요한 접근성 기능을 설정합니다.
-          옵션 선택/해제, 태그 생성/삭제, 키보드 탐색 등이 포함됩니다.
+          옵션 선택/해제, 태그 생성/삭제, 키보드 탐색, 스크린 리더 알림, 네이티브 select 동기화 등이 포함됩니다.
         </p>
         
         <div class="guide-code-block">
@@ -188,9 +223,281 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
   const multiSelects = document.querySelectorAll('.select--multiple');
   multiSelects.forEach(multiSelect => {
-    App.a11y.initMultiSelect(multiSelect);
+    // 네이티브 select 요소 숨김 처리
+    const nativeSelect = multiSelect.querySelector('.select__native');
+    if (nativeSelect) {
+      nativeSelect.classList.add('visually-hidden');
+      nativeSelect.tabIndex = -1;
+      nativeSelect.setAttribute('aria-hidden', 'true');
+    }
+    
+    // 커스텀 UI 초기화
+    const selectControl = App.a11y.initMultiSelect(multiSelect);
+    // 필요시 정리 함수 저장
+    // selectControl.cleanup();
   });
 });</code></pre>
+        </div>
+        
+        <div class="guide-code-block">
+          <pre><code>// HTML 구조 예시
+&lt;div class="fd-field"&gt;
+  &lt;label id="f-multi-select" class="fd-field__lbl" for="f-multi-select-native"&gt;다중 선택 박스&lt;/label&gt;
+  &lt;div class="fd-field__ctrl fd-field__ctrl--multi-select"&gt;
+    &lt;div class="select select--multiple"&gt;
+      &lt;!-- 폴백: 네이티브 select (JS 비활성화 시 사용) --&gt;
+      &lt;select id="f-multi-select-native" class="select__native" multiple&gt;
+        &lt;option value="option1"&gt;옵션 1&lt;/option&gt;
+        &lt;option value="option2"&gt;옵션 2&lt;/option&gt;
+      &lt;/select&gt;
+      
+      &lt;!-- 커스텀 UI --&gt;
+      &lt;div class="select__field" tabindex="0" role="button" 
+           aria-haspopup="listbox" aria-expanded="false" 
+           aria-controls="select-options-1" 
+           aria-labelledby="f-multi-select"&gt;
+        &lt;span class="select__placeholder"&gt;항목을 선택해주세요&lt;/span&gt;
+        &lt;!-- 선택된 항목들은 JavaScript로 태그로 추가됨 --&gt;
+      &lt;/div&gt;
+      &lt;i class="select__arrow" aria-hidden="true"&gt;&lt;/i&gt;
+      
+      &lt;div id="select-options-1" class="select__options" role="listbox" 
+           aria-multiselectable="true" aria-labelledby="f-multi-select"&gt;
+        &lt;div class="select__option" role="option" data-value="option1" 
+             tabindex="0" aria-selected="false"&gt;옵션 1&lt;/div&gt;
+        &lt;div class="select__option" role="option" data-value="option2" 
+             tabindex="-1" aria-selected="false"&gt;옵션 2&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        
+        <div class="guide-notice">
+          <strong>주요 기능:</strong>
+          <ul>
+            <li><strong>자동 announcer 생성:</strong> 스크린 리더 사용자에게 선택/해제 상태를 자동으로 알려줍니다</li>
+            <li><strong>네이티브 select 동기화:</strong> 커스텀 UI와 네이티브 select가 자동으로 동기화됩니다</li>
+            <li><strong>태그 키보드 접근성:</strong> 생성된 태그의 삭제 버튼에 키보드 접근성이 자동으로 설정됩니다</li>
+            <li><strong>포커스 관리:</strong> 목록 열기/닫기 시 포커스가 적절히 관리됩니다</li>
+            <li><strong>ESC 키 처리:</strong> Escape 키로 목록을 닫을 수 있습니다</li>
+            <li><strong>포커스 복귀 정책:</strong> ESC로 닫기 시 필드로 포커스 복귀, 포커스 아웃/클릭으로 닫기 시 복귀 안함</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">폼 메시지 관리 (formMsg)</h2>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">폼 필드 메시지 관리</h3>
+        <p class="t-body-1">
+          폼 필드의 도움말과 오류 메시지를 관리하고 ARIA 속성을 자동으로 설정합니다.
+          .fd-field 단위로 도움말↔오류 전환을 처리하며, data-ctrl, data-help, data-error, data-scope 속성을 사용합니다.
+        </p>
+        
+        <div class="guide-code-block">
+          <pre><code>// 폼 필드 초기화
+App.a11y.formMsg.init();
+
+// 오류 메시지 표시
+App.a11y.formMsg.showError('#username', '사용자명을 입력해주세요.');
+
+// 오류 메시지 해제
+App.a11y.formMsg.clearError('#username');</code></pre>
+        </div>
+        
+        <div class="guide-code-block">
+          <pre><code>// 단일 입력 필드 예시
+&lt;div class="fd-field" data-help="help-username" data-error="error-username"&gt;
+  &lt;label for="username"&gt;사용자명&lt;/label&gt;
+  &lt;input id="username" type="text"&gt;
+  &lt;div id="help-username" class="fd-field__msg"&gt;영문과 숫자만 사용 가능합니다.&lt;/div&gt;
+  &lt;div id="error-username" class="fd-field__msg fd-field__msg--error"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+// 그룹 요소 (체크박스/라디오) 예시
+&lt;div class="fd-field" data-scope="group" data-help="hobby-help" data-error="hobby-error"&gt;
+  &lt;fieldset class="fd-field__ctrl fd-field__ctrl--chk"&gt;
+    &lt;legend class="fd-field__lbl"&gt;취미 선택&lt;/legend&gt;
+    &lt;div class="fd-group fd-group--column"&gt;
+      &lt;div class="fd-chk"&gt;
+        &lt;input id="chk-1" type="checkbox" name="hobby"&gt;
+        &lt;label for="chk-1"&gt;독서&lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div class="fd-chk"&gt;
+        &lt;input id="chk-2" type="checkbox" name="hobby"&gt;
+        &lt;label for="chk-2"&gt;운동&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p id="hobby-help" class="fd-field__msg"&gt;최소 1개를 선택해주세요.&lt;/p&gt;
+    &lt;p id="hobby-error" class="fd-field__msg fd-field__msg--error"&gt;&lt;/p&gt;
+  &lt;/fieldset&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        
+        <div class="guide-notice">
+          <strong>자동 처리:</strong> 
+          <ul>
+            <li>오류 표시 시 도움말은 숨겨지고 오류 메시지가 표시됩니다</li>
+            <li><code>aria-describedby</code>와 <code>aria-invalid</code> 속성이 자동으로 설정됩니다</li>
+            <li><code>data-scope="group"</code> 사용 시 fieldset에 <code>aria-describedby</code>가 연결됩니다</li>
+            <li>오류 메시지에 <code>aria-live="polite"</code>가 자동으로 설정되어 스크린 리더가 변경사항을 알립니다</li>
+            <li><strong>스크린 리더 재공지:</strong> 강제 리플로우를 통한 안정적인 오류 메시지 재공지</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">비밀번호 토글 기능</h2>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">비밀번호 표시/숨김 토글</h3>
+        <p class="t-body-1">
+          비밀번호 입력 필드에서 비밀번호를 표시하거나 숨기는 토글 버튼을 구현합니다.
+          접근성을 고려하여 스크린 리더 사용자에게도 적절한 피드백을 제공합니다.
+        </p>
+        
+        <div class="guide-code-block">
+          <pre><code>// HTML 구조
+&lt;div class="fd-field"&gt;
+  &lt;label for="f-password" class="fd-field__lbl"&gt;비밀번호 입력&lt;/label&gt;
+  &lt;div class="fd-field__ctrl fd-field__ctrl--pw"&gt;
+    &lt;div class="fd-pw fd-pw--full"&gt;
+      &lt;input id="f-password" name="password" type="password" class="fd-pw__el"
+             placeholder="비밀번호를 입력하세요" required minlength="8" autocomplete="new-password"&gt;
+      &lt;button type="button" class="fd-pw__toggle" aria-pressed="false" data-password-toggle&gt;
+        &lt;span class="visually-hidden"&gt;비밀번호 보기&lt;/span&gt;
+        &lt;i class="icon-bg icon-pw-hide" aria-hidden="true"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        
+        <div class="guide-code-block">
+          <pre><code>// JavaScript 구현
+document.addEventListener('DOMContentLoaded', function() {
+  const toggles = document.querySelectorAll('[data-password-toggle]');
+  
+  toggles.forEach((btn) => {
+    // 안전장치: submit 방지
+    if (btn.type !== 'button') btn.setAttribute('type', 'button');
+    
+    // 1. 접근성 이름: 버튼 직접 자식 SR 텍스트 보장
+    if (btn.hasAttribute('aria-label')) btn.removeAttribute('aria-label');
+    let sr = btn.querySelector(':scope > .visually-hidden');
+    if (!sr) {
+      const srInIcon = btn.querySelector('.icon-bg .visually-hidden');
+      const text = srInIcon ? srInIcon.textContent.trim() : '비밀번호 보기';
+      sr = document.createElement('span');
+      sr.className = 'visually-hidden';
+      sr.textContent = text || '비밀번호 보기';
+      btn.prepend(sr);
+      if (srInIcon) srInIcon.remove(); // 중복 제거
+    }
+    
+    // 2. 아이콘은 SR에서 제외
+    const icon = btn.querySelector('.icon-bg');
+    if (icon && !icon.hasAttribute('aria-hidden')) {
+      icon.setAttribute('aria-hidden', 'true');
+    }
+    
+    // 3. 제어 대상 연결 + 초기 상태 동기화
+    const container = btn.closest('.fd-pw');
+    const input = container ? container.querySelector('.fd-pw__el') : null;
+    if (!input) return;
+    
+    if (!input.id) {
+      input.id = 'pw-' + Math.random().toString(36).slice(2, 8);
+    }
+    btn.setAttribute('aria-controls', input.id);
+    
+    // 초기 aria-pressed / SR 문구 동기화
+    const isHiddenInit = (input.type === 'password');
+    btn.setAttribute('aria-pressed', isHiddenInit ? 'false' : 'true');
+    sr.textContent = isHiddenInit ? '비밀번호 보기' : '비밀번호 숨기기';
+    
+    // 입력 비활성화 시 버튼도 비활성화 동기화
+    if (input.disabled) btn.disabled = true;
+    
+    // 4. 클릭 토글
+    btn.addEventListener('click', () => {
+      const show = (input.type === 'password'); // 보여줄지 여부
+      input.type = show ? 'text' : 'password';
+      
+      // 아이콘 상태 토글
+      if (icon) {
+        const from = show ? 'icon-pw-hide' : 'icon-pw-show';
+        const to   = show ? 'icon-pw-show' : 'icon-pw-hide';
+        if (!icon.classList.replace(from, to)) {
+          icon.classList.toggle('icon-pw-hide', !show);
+          icon.classList.toggle('icon-pw-show', show);
+        }
+      }
+      
+      // 상태·이름 동기화
+      btn.setAttribute('aria-pressed', show ? 'true' : 'false');
+      sr.textContent = show ? '비밀번호 숨기기' : '비밀번호 보기';
+    });
+  });
+});</code></pre>
+        </div>
+        
+        <div class="guide-notice">
+          <strong>접근성 고려사항:</strong>
+          <ul>
+            <li><strong>aria-pressed:</strong> 버튼의 현재 상태(눌림/안눌림)를 스크린 리더에 알려줍니다</li>
+            <li><strong>aria-controls:</strong> 버튼이 제어하는 입력 필드를 명시합니다</li>
+            <li><strong>visually-hidden 텍스트:</strong> 아이콘만 있는 버튼에 대체 텍스트를 제공합니다</li>
+            <li><strong>아이콘 숨김:</strong> 장식용 아이콘은 <code>aria-hidden="true"</code>로 스크린 리더에서 제외합니다</li>
+            <li><strong>상태 동기화:</strong> 입력 필드의 비활성화 상태와 버튼 상태를 동기화합니다</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">포커스 복귀 정책</h2>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">컴포넌트 닫기 시 포커스 관리</h3>
+        <p class="t-body-1">
+          드롭다운/셀렉트 컴포넌트 닫기 시 포커스 관리 정책이 명확히 정의되었습니다.
+          사용자 경험과 접근성을 고려한 일관된 포커스 동작을 보장합니다.
+        </p>
+        
+        <div class="guide-code-block">
+          <pre><code>// 포커스 복귀 정책 규칙
+// ESC로 닫기: focusField: true - 사용자가 의도적으로 닫았으므로 원래 위치로 복귀
+releaseEsc = a11y.bindEscOnce([document, options], () => {
+  closeList({ focusField: true });
+});
+
+// 포커스 아웃으로 닫기: focusField: false - 자연스러운 포커스 이동이므로 방해하지 않음
+cleanupFunctions.push(a11y.handleFocusOut(container, () => {
+  if (options.classList.contains('show')) {
+    closeList({ focusField: false });
+  }
+}));
+
+// 클릭으로 닫기: focusField: false - 새로운 포커스 위치로 이동 중이므로 방해하지 않음
+const onFieldClick = function(event) {
+  if (options.classList.contains('show')) {
+    closeList({ focusField: false });
+  }
+};</code></pre>
+        </div>
+        
+        <div class="guide-notice">
+          <strong>접근성 이점:</strong>
+          <ul>
+            <li><strong>키보드 사용자:</strong> ESC로 닫은 후 어디로 포커스가 갈지 예측 가능</li>
+            <li><strong>스크린 리더 사용자:</strong> 포커스 위치를 명확히 알 수 있음</li>
+            <li><strong>일관된 UX:</strong> 모든 컴포넌트에서 동일한 포커스 동작</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -206,12 +513,45 @@ document.addEventListener('DOMContentLoaded', function() {
         </p>
         
         <div class="guide-code-block">
-          <pre><code>// 정리 함수 호출 예시
+          <pre><code>// 개별 함수 정리
 function destroyComponent() {
   if (releaseFocusTrap) releaseFocusTrap();
   if (releaseArrowNav) releaseArrowNav();
   if (releaseToggle) releaseToggle();
   // 기타 정리 코드...
+}
+
+// 컴포넌트 초기화 함수의 정리
+const dropdownControl = App.a11y.initDropdown('.dropdown');
+// 나중에 정리할 때
+dropdownControl.cleanup();</code></pre>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">성능 최적화</h3>
+        <p class="t-body-1">
+          a11y.js는 성능을 고려하여 최적화되어 있습니다. 주요 최적화 사항들을 확인하세요.
+        </p>
+        
+        <div class="guide-code-block">
+          <pre><code>// 주요 최적화 사항
+// 1. 윈도우 리사이즈 디바운싱 (120ms)
+let resizeTid;
+function onResize() {
+  clearTimeout(resizeTid);
+  resizeTid = setTimeout(updateDropdownWidth, 120);
+}
+
+// 2. 스크린 리더 재공지 최적화
+const txt = err.textContent;
+err.textContent = '';
+void err.offsetHeight; // 강제 리플로우
+err.textContent = txt;
+
+// 3. 개발 환경에서만 디버깅 로그
+if (window?.App?.env === 'dev' || window.location.hostname === 'localhost') {
+  console.warn('[a11y.dispatchNativeChange] failed', { el, e1, e2 });
 }</code></pre>
         </div>
       </div>
@@ -292,17 +632,195 @@ function closeNav() {
         
         <div class="guide-code-block">
           <pre><code>document.addEventListener('DOMContentLoaded', function() {
-  // 기본 select 요소 이벤트 처리
-  const selects = document.querySelectorAll('.select__element');
-  selects.forEach(select => {
-    // focus/blur 이벤트 처리
-    // ...
-  });
-  
   // a11y.js를 활용한 다중 선택 컴포넌트 초기화
   const multiSelects = document.querySelectorAll('.select--multiple');
   multiSelects.forEach(multiSelect => {
+    const selectControl = App.a11y.initMultiSelect(multiSelect);
+    // 필요시 정리 함수 저장
+  });
+});</code></pre>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">폼 유효성 검사와 메시지 관리</h3>
+        <p class="t-body-1">
+          폼 유효성 검사 시 a11y.js의 formMsg 기능을 활용하여 접근성 있는 오류 메시지를 표시하는 예시입니다.
+        </p>
+        
+        <div class="guide-code-block">
+          <pre><code>document.addEventListener('DOMContentLoaded', function() {
+  // a11y 공통 초기화 (도움말/오류 연결)
+  if (window.App?.a11y?.formMsg) {
+    App.a11y.formMsg.init(document);
+
+    // 샘플로 에러를 보여줄 필드만 재노출
+    document.querySelectorAll('.fd-field--error[data-error]').forEach(fd => {
+      App.a11y.formMsg.showError(fd);
+    });
+  }
+  
+  // 폼 제출 시 유효성 검사
+  document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    
+    // 사용자명 검사
+    if (!username.value.trim()) {
+      App.a11y.formMsg.showError('#username', '사용자명을 입력해주세요.');
+      return;
+    } else {
+      App.a11y.formMsg.clearError('#username');
+    }
+    
+    // 비밀번호 검사
+    if (!password.value) {
+      App.a11y.formMsg.showError('#password', '비밀번호를 입력해주세요.');
+      return;
+    } else {
+      App.a11y.formMsg.clearError('#password');
+    }
+    
+    // 폼 제출 처리
+    submitForm();
+  });
+});</code></pre>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">컴포넌트 통합 초기화</h3>
+        <p class="t-body-1">
+          field.html에서 사용하는 실제 초기화 코드를 참고한 통합 예시입니다.
+        </p>
+        
+        <div class="guide-code-block">
+          <pre><code>document.addEventListener('DOMContentLoaded', function() {
+  // 1. a11y 공통 초기화 (도움말/오류 연결)
+  if (window.App?.a11y?.formMsg) {
+    App.a11y.formMsg.init(document);
+
+    // 샘플로 에러를 보여줄 필드만 재노출
+    document.querySelectorAll('.fd-field--error[data-error]').forEach(fd => {
+      App.a11y.formMsg.showError(fd);
+    });
+  }
+
+  // 2. 기본 select 요소 이벤트 처리 (키보드 접근성 포함)
+  const selects = document.querySelectorAll('.select__element');
+  selects.forEach(select => {
+    // 탭키로 들어온 경우 active 클래스 제거
+    select.addEventListener('focus', function() {
+      this.parentElement.classList.remove('active');
+    });
+    
+    // blur 이벤트 - active 제거
+    select.addEventListener('blur', function() {
+      this.parentElement.classList.remove('active');
+    });
+    
+    // 클릭 이벤트 - 액티브 토글만 처리
+    select.addEventListener('click', function() {
+      this.parentElement.classList.toggle('active');
+    });
+    
+    // 키보드 이벤트 - 엔터/스페이스 키는 브라우저 기본 동작 유지
+    select.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        this.parentElement.classList.add('active');
+      }
+      
+      if (e.key === 'Escape') {
+        this.parentElement.classList.remove('active');
+      }
+    });
+    
+    // 변경 이벤트 - 옵션 선택 후 active 제거
+    select.addEventListener('change', function() {
+      this.parentElement.classList.remove('active');
+    });
+  });
+  
+  // 3. 다중 선택 컴포넌트 초기화 (a11y.js 사용)
+  const multiSelects = document.querySelectorAll('.select--multiple');
+  multiSelects.forEach(multiSelect => {
+    // 네이티브 select 요소에 visually-hidden 클래스 추가
+    const nativeSelect = multiSelect.querySelector('.select__native');
+    if (nativeSelect) {
+      nativeSelect.classList.add('visually-hidden');
+      nativeSelect.tabIndex = -1;
+      nativeSelect.setAttribute('aria-hidden', 'true');
+    }
+    
+    // 커스텀 UI 초기화
     App.a11y.initMultiSelect(multiSelect);
+  });
+
+  // 4. Password 토글 기능 (접근성 개선 포함)
+  const toggles = document.querySelectorAll('[data-password-toggle]');
+  
+  toggles.forEach((btn) => {
+    // 안전장치: submit 방지
+    if (btn.type !== 'button') btn.setAttribute('type', 'button');
+    
+    // 접근성 이름 설정
+    if (btn.hasAttribute('aria-label')) btn.removeAttribute('aria-label');
+    let sr = btn.querySelector(':scope > .visually-hidden');
+    if (!sr) {
+      const srInIcon = btn.querySelector('.icon-bg .visually-hidden');
+      const text = srInIcon ? srInIcon.textContent.trim() : '비밀번호 보기';
+      sr = document.createElement('span');
+      sr.className = 'visually-hidden';
+      sr.textContent = text || '비밀번호 보기';
+      btn.prepend(sr);
+      if (srInIcon) srInIcon.remove();
+    }
+    
+    // 아이콘은 SR에서 제외
+    const icon = btn.querySelector('.icon-bg');
+    if (icon && !icon.hasAttribute('aria-hidden')) {
+      icon.setAttribute('aria-hidden', 'true');
+    }
+    
+    // 제어 대상 연결
+    const container = btn.closest('.fd-pw');
+    const input = container ? container.querySelector('.fd-pw__el') : null;
+    if (!input) return;
+    
+    if (!input.id) {
+      input.id = 'pw-' + Math.random().toString(36).slice(2, 8);
+    }
+    btn.setAttribute('aria-controls', input.id);
+    
+    // 초기 상태 동기화
+    const isHiddenInit = (input.type === 'password');
+    btn.setAttribute('aria-pressed', isHiddenInit ? 'false' : 'true');
+    sr.textContent = isHiddenInit ? '비밀번호 보기' : '비밀번호 숨기기';
+    
+    // 입력 비활성화 시 버튼도 비활성화 동기화
+    if (input.disabled) btn.disabled = true;
+    
+    // 클릭 토글
+    btn.addEventListener('click', () => {
+      const show = (input.type === 'password');
+      input.type = show ? 'text' : 'password';
+      
+      // 아이콘 상태 토글
+      if (icon) {
+        const from = show ? 'icon-pw-hide' : 'icon-pw-show';
+        const to   = show ? 'icon-pw-show' : 'icon-pw-hide';
+        if (!icon.classList.replace(from, to)) {
+          icon.classList.toggle('icon-pw-hide', !show);
+          icon.classList.toggle('icon-pw-show', show);
+        }
+      }
+      
+      // 상태·이름 동기화
+      btn.setAttribute('aria-pressed', show ? 'true' : 'false');
+      sr.textContent = show ? '비밀번호 숨기기' : '비밀번호 보기';
+    });
   });
 });</code></pre>
         </div>

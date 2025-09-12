@@ -145,14 +145,14 @@
                 </div>
               </div>
             </div>
-            <div class="fd-field fd-field--error col-span-4 md:col-span-4 lg:col-span-4">
+            <div class="fd-field fd-field--error col-span-4 md:col-span-4 lg:col-span-4" data-error="errorId2">
               <label for="f-text-error" class="fd-field__lbl fd-label--error">오류 라벨 텍스트(필요 시 컬러 변경)</label>
               <div class="fd-field__ctrl fd-field__ctrl--input">
                 <div class="fd-input fd-input--full">
-                  <input id="f-text-error" type="text" class="fd-input__el" placeholder="텍스트" required aria-describedby="f-text-error-msg">
+                  <input id="f-text-error" type="text" class="fd-input__el" placeholder="텍스트" required>
                 </div>
               </div>
-              <p id="f-text-error-msg" class="fd-field__msg fd-field__msg--error" aria-live="polite">*올바른 값을 입력해주세요.</p>
+              <p id="errorId2" class="fd-field__msg fd-field__msg--error" aria-live="polite">*올바른 값을 입력해주세요.</p>
             </div>
           </div>
         </div>
@@ -170,62 +170,68 @@
         </div>
       </div>
       <div class="guide-notice">
-        <strong>참고:</strong> 설명/오류 메시지는 포커스를 받는 실제 위젯(<input>, .select__field 등) 또는 fieldset에 aria-describedby로 연결합니다.
+        <strong>참고:</strong> 설명/오류 메시지는 포커스를 받는 실제 위젯(&lt;input&gt, .select__field 등) 또는 fieldset에 aria-describedby로 연결합니다.
       </div>
     </section>
   </div>
+  
+  <script src="../../assets/scripts/common/a11y.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Password 토글 기능
-      const toggles = document.querySelectorAll('[data-password-toggle]');
+    window.addEventListener('DOMContentLoaded', function () {
+      const A = window.App && App.a11y;
     
-      toggles.forEach((btn) => {
-        // 안전장치: submit 방지
-        if (btn.type !== 'button') btn.setAttribute('type', 'button');
+      // formMsg: 도움말 보이기/오류 숨기기/aria 연결
+      if (A && A.formMsg) A.formMsg.init(document);
     
-        // 1. 접근성 이름: 버튼 직접 자식 SR 텍스트 보장
+      // (데모 전용) 가이드에서 처음부터 에러 상태 시연용
+      document.querySelectorAll('.fd-field--error[data-error]').forEach(fd => {
+        A && A.formMsg && A.formMsg.showError(fd);
+      });
+    
+      // 단일 네이티브 select(정렬 등)
+      document.querySelectorAll('.select__element').forEach(select => {
+        select.addEventListener('focus',  () => select.parentElement.classList.remove('active'));
+        select.addEventListener('blur',   () => select.parentElement.classList.remove('active'));
+        select.addEventListener('click',  () => select.parentElement.classList.toggle('active'));
+        select.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') select.parentElement.classList.add('active');
+          if (e.key === 'Escape')                select.parentElement.classList.remove('active');
+        });
+        select.addEventListener('change', () => select.parentElement.classList.remove('active'));
+      });
+    
+      // 패스워드 토글
+      document.querySelectorAll('[data-password-toggle]').forEach(btn => {
+        if (btn.type !== 'button') btn.type = 'button';
         if (btn.hasAttribute('aria-label')) btn.removeAttribute('aria-label');
+    
         let sr = btn.querySelector(':scope > .visually-hidden');
         if (!sr) {
-          const srInIcon = btn.querySelector('.icon-bg .visually-hidden');
-          const text = srInIcon ? srInIcon.textContent.trim() : '비밀번호 보기';
+          const x = btn.querySelector('.icon-bg .visually-hidden');
           sr = document.createElement('span');
           sr.className = 'visually-hidden';
-          sr.textContent = text || '비밀번호 보기';
+          sr.textContent = x ? x.textContent.trim() : '비밀번호 보기';
           btn.prepend(sr);
-          if (srInIcon) srInIcon.remove(); // 중복 제거
+          if (x) x.remove();
         }
-    
-        // 2. 아이콘은 SR에서 제외
         const icon = btn.querySelector('.icon-bg');
-        if (icon && !icon.hasAttribute('aria-hidden')) {
-          icon.setAttribute('aria-hidden', 'true');
-        }
+        if (icon && !icon.hasAttribute('aria-hidden')) icon.setAttribute('aria-hidden','true');
     
-        // 3. 초기화 시점에 제어 대상 연결 + 초기 상태 동기화 (추가)
-        const container = btn.closest('.fd-pw');
-        const input = container ? container.querySelector('.fd-pw__el') : null;
-        if (!input) return; // 이 버튼은 스킵
-    
-        if (!input.id) {
-          input.id = 'pw-' + Math.random().toString(36).slice(2, 8);
-        }
+        const wrap  = btn.closest('.fd-pw');
+        const input = wrap && wrap.querySelector('.fd-pw__el');
+        if (!input) return;
+        if (!input.id) input.id = 'pw-' + Math.random().toString(36).slice(2,8);
         btn.setAttribute('aria-controls', input.id);
     
-        // 초기 aria-pressed / SR 문구 동기화 (현재 타입 기준)
-        const isHiddenInit = (input.type === 'password');
-        btn.setAttribute('aria-pressed', isHiddenInit ? 'false' : 'true');
-        sr.textContent = isHiddenInit ? '비밀번호 보기' : '비밀번호 숨기기';
+        const hiddenInit = (input.type === 'password');
+        btn.setAttribute('aria-pressed', hiddenInit ? 'false' : 'true');
+        sr.textContent = hiddenInit ? '비밀번호 보기' : '비밀번호 숨기기';
     
-        // 입력 비활성화 시 버튼도 비활성화 동기화
         if (input.disabled) btn.disabled = true;
     
-        // 4. 클릭 토글
         btn.addEventListener('click', () => {
-          const show = (input.type === 'password'); // 보여줄지 여부
+          const show = (input.type === 'password');
           input.type = show ? 'text' : 'password';
-    
-          // 아이콘 상태 토글 (replace 우선, 실패 시 폴백)
           if (icon) {
             const from = show ? 'icon-pw-hide' : 'icon-pw-show';
             const to   = show ? 'icon-pw-show' : 'icon-pw-hide';
@@ -234,13 +240,11 @@
               icon.classList.toggle('icon-pw-show', show);
             }
           }
-    
-          // 상태·이름 동기화
           btn.setAttribute('aria-pressed', show ? 'true' : 'false');
           sr.textContent = show ? '비밀번호 숨기기' : '비밀번호 보기';
         });
       });
     });
-  </script>    
+  </script>
 </body>
 </html> 

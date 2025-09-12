@@ -44,7 +44,7 @@
         <div class="guide-component-group block">
           <form class="fd-form">
             <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
-              <div class="fd-field col-span-4 md:col-span-4 lg:col-span-6">
+              <div class="fd-field col-span-4 md:col-span-4 lg:col-span-4">
                 <label for="f-text-1" class="fd-field__lbl">기본 유형</label>
                 <div class="fd-field__ctrl fd-field__ctrl--input">
                   <div class="fd-input fd-input--full">
@@ -52,7 +52,7 @@
                   </div>
                 </div>
               </div>
-              <div class="fd-field col-span-4 md:col-span-4 lg:col-span-6">
+              <div class="fd-field col-span-4 md:col-span-4 lg:col-span-4">
                 <label for="f-text-2" class="fd-field__lbl">도움말 및 오류 메시지</label>
                 <div class="fd-field__ctrl fd-field__ctrl--input">
                   <div class="fd-input fd-input--full">
@@ -61,6 +61,15 @@
                 </div>
                 <!-- 도움말/오류 영역 -->
                 <p id="f-text-msg-2" class="fd-field__msg">*메시지 텍스트</p>
+              </div>
+              <div class="fd-field col-span-4 md:col-span-4 lg:col-span-4">
+                <label for="f-text-3" class="fd-field__lbl">버튼 조합</label>
+                <div class="fd-field__ctrl fd-field__ctrl--input fd-field__ctrl--with-button">
+                  <div class="fd-input fd-input--full">
+                    <input id="f-text-3" type="text" class="fd-input__el" placeholder="텍스트" required>
+                  </div>
+                  <button type="button" class="fd-field__btn btn btn--solid">버튼</button>
+                </div>
               </div>
             </div>
           </form>
@@ -80,11 +89,21 @@
     &lt;label for="f-text" class="fd-field__lbl"&gt;도움말 및 오류 메시지&lt;/label&gt;
     &lt;div class="fd-field__ctrl fd-field__ctrl--input"&gt;
       &lt;div class="fd-input fd-input--full"&gt;
-        &lt;input id="f-text" type="text" class="fd-input__el" placeholder="텍스트" required aria-describedby="f-text-msg-2"&gt;
+        &lt;input id="f-text" type="text" class="fd-input__el" placeholder="텍스트" required aria-describedby="f-text-msg"&gt;
       &lt;/div&gt;
     &lt;/div&gt;
     &lt;!-- 도움말/오류 영역 --&gt;
-    &lt;p id="f-text-msg-2" class="fd-field__msg"&gt;*메시지 텍스트&lt;/p&gt;
+    &lt;p id="f-text-msg" class="fd-field__msg"&gt;*메시지 텍스트&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class="fd-field"&gt;
+    &lt;label for="f-text" class="fd-field__lbl"&gt;버튼 조합&lt;/label&gt;
+    &lt;div class="fd-field__ctrl fd-field__ctrl--input fd-field__ctrl--with-button"&gt;
+      &lt;div class="fd-input fd-input--full"&gt;
+        &lt;input id="f-text" type="text" class="fd-input__el" placeholder="텍스트" required&gt;
+      &lt;/div&gt;
+      &lt;button type="button" class="fd-field__btn btn btn--solid"&gt;버튼&lt;/button&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/form&gt;</code></pre>
         </div>

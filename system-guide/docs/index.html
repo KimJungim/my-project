@@ -99,57 +99,56 @@
     const userButton = document.querySelector('.header__user--logged-in');
     const menuButton = document.querySelector('.header__menu');
     const closeButton = document.querySelector('.header__nav-close');
-
-    let releaseFocusTrap = null;
-
-    function openNav() {
+  
+    let releaseFocusTrap = null; // 포커스 트랩 해제 함수
+    let releaseEsc = null; // ESC 해제 함수
+    let lastOpener = null; // 마지막으로 연 트리거
+  
+    function openNav(opener) { // 오프너를 인자로 받음
+      lastOpener = opener || menuButton;
+  
       nav.classList.add('is-open');
       App.overlay.open();
       nav.setAttribute('aria-hidden', 'false');
-      nav.removeAttribute('inert'); // inert 속성 제거 (중요!)
-      
+      nav.removeAttribute('inert');
+  
       if (userButton) userButton.setAttribute('aria-expanded', 'true');
       menuButton.setAttribute('aria-expanded', 'true');
-
-      // 트랩 설정 전에 모든 포커스 가능한 요소의 tabindex 확인
-      const focusableElements = nav.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])');
-      focusableElements.forEach(el => {
-        if (el.hasAttribute('tabindex') && el.getAttribute('tabindex') === '-1') {
-          el.removeAttribute('tabindex');
-        }
-      });
-
-      // 포커스 트랩 설정 (이제 문서 전체 이벤트를 캡처하여 포커스가 nav를 벗어나지 않도록 함)
+  
+      // trapFocus 설정
       releaseFocusTrap = App.a11y.trapFocus(nav);
-      
-      // 첫 번째 포커스 가능한 요소에 포커스는 trapFocus 내부에서 자동으로 처리됨
+  
+      // ESC로 닫기 + 포커스 복귀(마지막 오프너)
+      releaseEsc = App.a11y.escapeHandler(nav, closeNav, lastOpener);
     }
-
+  
     function closeNav() {
-      // 포커스를 메뉴 밖으로 이동
-      menuButton.focus();
-      
+      // 먼저 포커스 복귀(보강: escapeHandler가 실패해도 복귀 보장)
+      (lastOpener || menuButton).focus();
+  
       nav.classList.remove('is-open');
       App.overlay.close();
       nav.setAttribute('aria-hidden', 'true');
       nav.setAttribute('inert', '');
       if (userButton) userButton.setAttribute('aria-expanded', 'false');
       menuButton.setAttribute('aria-expanded', 'false');
-
-      if (releaseFocusTrap) releaseFocusTrap();
+  
+      // 바인딩 해제
+      if (releaseFocusTrap) { releaseFocusTrap(); releaseFocusTrap = null; }
+      if (releaseEsc) { releaseEsc(); releaseEsc = null; }
     }
-
-    // 로그인 버튼이 존재할 때만 이벤트 리스너 추가
-    if (userButton) {
-      userButton.addEventListener('click', toggleNav);
+  
+    function toggleNav(opener) {
+      nav.classList.contains('is-open') ? closeNav() : openNav(opener);
     }
-    menuButton.addEventListener('click', toggleNav);
+  
+    // 트리거 연결 (오프너 전달)
+    if (userButton) userButton.addEventListener('click', () => toggleNav(userButton));
+    menuButton.addEventListener('click', () => toggleNav(menuButton));
+  
+    // 닫기 버튼/오버레이
     closeButton.addEventListener('click', closeNav);
     App.overlay.onClick(closeNav);
-
-    function toggleNav() {
-      nav.classList.contains('is-open') ? closeNav() : openNav();
-    }
   </script>
 </body>
 </html>

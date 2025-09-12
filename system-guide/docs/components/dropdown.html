@@ -18,19 +18,19 @@
         <div class="guide-component-group">
           <!-- 기본 드롭다운 -->
           <div class="dropdown">
-            <button class="dropdown__button" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="dropdown__button" aria-expanded="false" aria-controls="program-type-1">
               <span class="dropdown__text">프로그램 유형</span>
             </button>
-            <ul class="dropdown__list" role="menu">
-              <li class="dropdown__item" role="menuitem">
+            <ul class="dropdown__list" id="program-type-1" role="listbox" hidden>
+              <li class="dropdown__item" role="option">
                 <span class="dropdown__item-text">CRUD</span>
                 <span class="dropdown__count">200</span>
               </li>
-              <li class="dropdown__item" role="menuitem">
+              <li class="dropdown__item" role="option">
                 <span class="dropdown__item-text">목록/리스트</span>
                 <span class="dropdown__count">200</span>
               </li>
-              <li class="dropdown__item" role="menuitem">
+              <li class="dropdown__item" role="option">
                 <span class="dropdown__item-text">조회(R)</span>
                 <span class="dropdown__count">200</span>
               </li>
@@ -42,19 +42,19 @@
         </div>
         <div class="guide-code-block">
           <pre><code>&lt;div class="dropdown"&gt;
-  &lt;button class="dropdown__button" aria-haspopup="true" aria-expanded="false"&gt;
+  &lt;button type="button" class="dropdown__button" aria-expanded="false" aria-controls="program-type-1"&gt;
     &lt;span class="dropdown__text"&gt;프로그램 유형&lt;/span&gt;
   &lt;/button&gt;
-  &lt;ul class="dropdown__list" role="menu"&gt;
-    &lt;li class="dropdown__item" role="menuitem"&gt;
+  &lt;ul class="dropdown__list" id="program-type-1" role="listbox" hidden&gt;
+    &lt;li class="dropdown__item" role="option"&gt;
       &lt;span class="dropdown__item-text"&gt;CRUD&lt;/span&gt;
       &lt;span class="dropdown__count"&gt;200&lt;/span&gt;
     &lt;/li&gt;
-    &lt;li class="dropdown__item" role="menuitem"&gt;
+    &lt;li class="dropdown__item" role="option"&gt;
       &lt;span class="dropdown__item-text"&gt;목록/리스트&lt;/span&gt;
       &lt;span class="dropdown__count"&gt;200&lt;/span&gt;
     &lt;/li&gt;
-    &lt;li class="dropdown__item" role="menuitem"&gt;
+    &lt;li class="dropdown__item" role="option"&gt;
       &lt;span class="dropdown__item-text"&gt;조회(R)&lt;/span&gt;
       &lt;span class="dropdown__count"&gt;200&lt;/span&gt;
     &lt;/li&gt;
@@ -65,74 +65,77 @@
       
       <div class="guide-article">
         <h3 class="t-title-3 guide-subtitle">여러 드롭다운 배치</h3>
+        <div class="guide-notice">
+          <strong>참고:</strong> 이 섹션의 예시는 <code>initDropdown()</code>이 리스트에 ID를 자동 생성하고 버튼에 <code>aria-controls</code>를 자동 부여합니다.
+        </div>
         <div class="guide-component-group">
           <!-- 여러 줄에 걸친 드롭다운 배치 -->
           <!-- 첫 번째 줄: 3개 배치 -->
           <div class="dropdown-row items-3">
             <div class="dropdown">
-              <button class="dropdown__button" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="dropdown__button" aria-expanded="false">
                 <span class="dropdown__text">프로그램 유형</span>
               </button>
-              <ul class="dropdown__list" role="menu">
-                <li class="dropdown__item" role="menuitem">
+              <ul class="dropdown__list" role="listbox" hidden>
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">CRUD</span>
                   <span class="dropdown__count">1</span>
                 </li>
-                <li class="dropdown__item" role="menuitem">
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">목록/리스트</span>
                   <span class="dropdown__count">10</span>
                 </li>
-                <li class="dropdown__item" role="menuitem">
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">조회(R)</span>
                   <span class="dropdown__count">100</span>
                 </li>
-                <li class="dropdown__item" role="menuitem">
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">CRUD</span>
                   <span class="dropdown__count">200</span>
                 </li>
-                <li class="dropdown__item" role="menuitem">
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">목록/리스트</span>
                   <span class="dropdown__count">200</span>
                 </li>
-                <li class="dropdown__item" role="menuitem">
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">조회(R)</span>
                   <span class="dropdown__count">200</span>
                 </li>
               </ul>
             </div>
             <div class="dropdown">
-              <button class="dropdown__button" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="dropdown__button"  aria-expanded="false">
                 <span class="dropdown__text">프로그램 유형</span>
               </button>
-              <ul class="dropdown__list" role="menu">
-                <li class="dropdown__item" role="menuitem">
+              <ul class="dropdown__list" role="listbox" hidden>
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">CRUD</span>
                   <span class="dropdown__count">200</span>
                 </li>
-                <li class="dropdown__item" role="menuitem">
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">목록/리스트</span>
                   <span class="dropdown__count">200</span>
                 </li>
-                <li class="dropdown__item" role="menuitem">
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">조회(R)</span>
                   <span class="dropdown__count">200</span>
                 </li>
               </ul>
             </div>
             <div class="dropdown">
-              <button class="dropdown__button" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="dropdown__button"  aria-expanded="false">
                 <span class="dropdown__text">프로그램 유형</span>
               </button>
-              <ul class="dropdown__list" role="menu">
-                <li class="dropdown__item" role="menuitem">
+              <ul class="dropdown__list" role="listbox" hidden>
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">CRUD</span>
                   <span class="dropdown__count">200</span>
                 </li>
-                <li class="dropdown__item" role="menuitem">
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">목록/리스트</span>
                   <span class="dropdown__count">200</span>
                 </li>
-                <li class="dropdown__item" role="menuitem">
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">조회(R)</span>
                   <span class="dropdown__count">200</span>
                 </li>
@@ -143,76 +146,76 @@
           <!-- 두 번째 줄: 4개 배치 -->
           <div class="dropdown-row items-4">
             <div class="dropdown">
-              <button class="dropdown__button" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="dropdown__button"  aria-expanded="false">
                 <span class="dropdown__text">프로그램 유형</span>
               </button>
-              <ul class="dropdown__list" role="menu">
-                <li class="dropdown__item" role="menuitem">
+              <ul class="dropdown__list" role="listbox" hidden>
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">CRUD</span>
                   <span class="dropdown__count">200</span>
                 </li>
-                <li class="dropdown__item" role="menuitem">
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">목록/리스트</span>
                   <span class="dropdown__count">200</span>
                 </li>
-                <li class="dropdown__item" role="menuitem">
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">조회(R)</span>
                   <span class="dropdown__count">200</span>
                 </li>
               </ul>
             </div>
             <div class="dropdown">
-              <button class="dropdown__button" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="dropdown__button"  aria-expanded="false">
                 <span class="dropdown__text">개발언어</span>
               </button>
-              <ul class="dropdown__list" role="menu">
-                <li class="dropdown__item" role="menuitem">
+              <ul class="dropdown__list" role="listbox" hidden>
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">JAVA</span>
                   <span class="dropdown__count">150</span>
                 </li>
-                <li class="dropdown__item" role="menuitem">
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">JavaScript</span>
                   <span class="dropdown__count">120</span>
                 </li>
-                <li class="dropdown__item" role="menuitem">
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">Python</span>
                   <span class="dropdown__count">80</span>
                 </li>
               </ul>
             </div>
             <div class="dropdown">
-              <button class="dropdown__button" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="dropdown__button"  aria-expanded="false">
                 <span class="dropdown__text">프레임워크</span>
               </button>
-              <ul class="dropdown__list" role="menu">
-                <li class="dropdown__item" role="menuitem">
+              <ul class="dropdown__list" role="listbox" hidden>
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">Spring</span>
                   <span class="dropdown__count">100</span>
                 </li>
-                <li class="dropdown__item" role="menuitem">
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">React</span>
                   <span class="dropdown__count">90</span>
                 </li>
-                <li class="dropdown__item" role="menuitem">
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">Vue</span>
                   <span class="dropdown__count">70</span>
                 </li>
               </ul>
             </div>
             <div class="dropdown">
-              <button class="dropdown__button" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="dropdown__button"  aria-expanded="false">
                 <span class="dropdown__text">개발환경</span>
               </button>
-              <ul class="dropdown__list" role="menu">
-                <li class="dropdown__item" role="menuitem">
+              <ul class="dropdown__list" role="listbox" hidden>
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">로컬</span>
                   <span class="dropdown__count">50</span>
                 </li>
-                <li class="dropdown__item" role="menuitem">
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">클라우드</span>
                   <span class="dropdown__count">120</span>
                 </li>
-                <li class="dropdown__item" role="menuitem">
+                <li class="dropdown__item" role="option">
                   <span class="dropdown__item-text">하이브리드</span>
                   <span class="dropdown__count">30</span>
                 </li>
@@ -224,10 +227,10 @@
           <pre><code>&lt;!-- 첫 번째 줄: 3개 배치 --&gt;
 &lt;div class="dropdown-row items-3"&gt;
   &lt;div class="dropdown"&gt;
-    &lt;button class="dropdown__button" aria-haspopup="true" aria-expanded="false"&gt;
+    &lt;button type="button" class="dropdown__button"  aria-expanded="false"&gt;
       &lt;span class="dropdown__text"&gt;프로그램 유형&lt;/span&gt;
     &lt;/button&gt;
-    &lt;ul class="dropdown__list" role="menu"&gt;
+    &lt;ul class="dropdown__list" role="listbox" hidden&gt;
       &lt;!-- 드롭다운 항목들 --&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
@@ -237,10 +240,10 @@
 &lt;!-- 두 번째 줄: 4개 배치 --&gt;
 &lt;div class="dropdown-row items-4"&gt;
   &lt;div class="dropdown"&gt;
-    &lt;button class="dropdown__button" aria-haspopup="true" aria-expanded="false"&gt;
+    &lt;button type="button" class="dropdown__button"  aria-expanded="false"&gt;
       &lt;span class="dropdown__text"&gt;프로그램 유형&lt;/span&gt;
     &lt;/button&gt;
-    &lt;ul class="dropdown__list" role="menu"&gt;
+    &lt;ul class="dropdown__list" role="listbox" hidden&gt;
       &lt;!-- 드롭다운 항목들 --&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
@@ -253,24 +256,354 @@
     </section>
 
     <section class="guide-section">
-      <h2 class="t-title-2 guide-title">JavaScript 기능</h2>
+      <h2 class="t-title-2 guide-title">3가지 드롭다운 타입</h2>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">타입 1: 선택형 (listbox)</h3>
+        <div class="guide-notice">
+          <strong>용도:</strong> 상태/기준 선택, 필터링/정렬 기준 설정
+        </div>
+        <div class="guide-component-group">
+          <div class="dropdown" data-type="listbox">
+            <button type="button" class="dropdown__button" aria-expanded="false" aria-controls="program-type-2">
+              <span class="dropdown__text">선택형(listbox) 유형</span>
+            </button>
+            <ul class="dropdown__list" id="program-type-2" role="listbox" hidden>
+              <li class="dropdown__item" role="option">
+                <span class="dropdown__item-text">CRUD</span>
+                <span class="dropdown__count">200</span>
+              </li>
+              <li class="dropdown__item" role="option">
+                <span class="dropdown__item-text">목록/리스트</span>
+                <span class="dropdown__count">150</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;!-- 선택형 드롭다운 --&gt;
+&lt;div class="dropdown" data-type="listbox"&gt;
+  &lt;button type="button" class="dropdown__button" aria-expanded="false" aria-controls="program-type-2"&gt;
+    &lt;span class="dropdown__text"&gt;선택형(listbox) 유형&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;ul class="dropdown__list" id="program-type-2" role="listbox" hidden&gt;
+    &lt;li class="dropdown__item" role="option"&gt;
+      &lt;span class="dropdown__item-text"&gt;CRUD&lt;/span&gt;
+      &lt;span class="dropdown__count"&gt;200&lt;/span&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">타입 2: 액션형 (menu)</h3>
+        <div class="guide-notice">
+          <strong>용도:</strong> 기능/액션 실행, 각 옵션이 액션 역할
+        </div>
+        <div class="guide-component-group">
+          <div class="dropdown" data-type="menu">
+            <button type="button" class="dropdown__button" aria-expanded="false" aria-controls="row-actions-2">
+              <span class="dropdown__text">액션형(menu) 유형</span>
+            </button>
+            <ul class="dropdown__list" id="row-actions-2" role="menu" hidden>
+              <li role="none">
+                <button type="button" role="menuitem" class="dropdown__item" tabindex="-1">
+                  <span class="dropdown__item-text">편집</span>
+                  <span class="dropdown__count">Ctrl+E</span>
+                </button>
+              </li>
+              <li role="none">
+                <button type="button" role="menuitem" class="dropdown__item" tabindex="-1">
+                  <span class="dropdown__item-text">삭제</span>
+                  <span class="dropdown__count">Del</span>
+                </button>
+              </li>
+              <li role="none">
+                <button type="button" role="menuitem" class="dropdown__item" tabindex="-1">
+                  <span class="dropdown__item-text">복사</span>
+                  <span class="dropdown__count">Ctrl+C</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;!-- 액션형 드롭다운 --&gt;
+&lt;div class="dropdown" data-type="menu"&gt;
+  &lt;button type="button" class="dropdown__button" aria-expanded="false" aria-controls="row-actions-2"&gt;
+    &lt;span class="dropdown__text"&gt;액션형(menu) 유형&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;ul class="dropdown__list" id="row-actions-2" role="menu" hidden&gt;
+    &lt;li role="none"&gt;
+      &lt;button type="button" role="menuitem" class="dropdown__item" tabindex="-1"&gt;
+        &lt;span class="dropdown__item-text"&gt;편집&lt;/span&gt;
+        &lt;span class="dropdown__count"&gt;Ctrl+E&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">타입 3: 디스클로저형 (disclosure)</h3>
+        <div class="guide-notice">
+          <strong>용도:</strong> 정보 표시/숨김, 토글만 가능한 패널
+        </div>
+        <div class="guide-component-group">
+          <div class="dropdown" data-type="disclosure">
+            <button type="button" class="dropdown__button" id="help-trigger-2" aria-expanded="false" aria-controls="help-panel-2">
+              <span class="dropdown__text">디스클로저형(disclosure) 유형</span>
+            </button>
+            <div class="dropdown__list" id="help-panel-2" hidden>
+              <div class="dropdown__item">
+                <div class="dropdown__item-text">
+                  정보 입력<br>
+                  도움말 표시<br>
+                  설명 표시
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;!-- 디스클로저형 드롭다운 --&gt;
+&lt;div class="dropdown" data-type="disclosure"&gt;
+  &lt;button type="button" class="dropdown__button" id="help-trigger-2" aria-expanded="false" aria-controls="help-panel-2"&gt;
+    &lt;span class="dropdown__text"&gt;디스클로저형(disclosure) 유형&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="dropdown__list" id="help-panel-2" hidden&gt;
+    &lt;div class="dropdown__item"&gt;
+      &lt;div class="dropdown__item-text"&gt;
+        &lt;h4&gt;사용 방법&lt;/h4&gt;
+        &lt;p&gt;이 드롭다운을 사용하여 원하는 옵션을 선택할 수 있습니다.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">타입별 사용 가이드</h3>
+        <div class="guide-notice">
+          <strong>타입 선택 기준:</strong>
+          <ul>
+            <li><strong>선택형 (listbox)</strong>: 필터링, 정렬, 상태 선택</li>
+            <li><strong>액션형 (menu)</strong>: 기능 실행, 작업 수행</li>
+            <li><strong>디스클로저형 (disclosure)</strong>: 정보 표시, 도움말, 설명</li>
+          </ul>
+        </div>
+        <div class="guide-notice">
+          <strong>자동 타입 감지:</strong>
+          <ul>
+            <li><code>data-type</code> 속성으로 명시적 지정</li>
+            <li>없으면 내부 <code>role</code> 속성으로 자동 유추</li>
+            <li>JavaScript 초기화는 동일하게 <code>App.a11y.initDropdown</code> 사용</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">접근성 가이드</h2>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">최소 안전 사양 (필수)</h3>
+        <div class="guide-notice">
+          <strong>중요:</strong> 심사에서 "불필요" 지적을 피하기 위해 최소한의 필수 속성만 명시합니다. 아래 속성들은 접근성의 핵심이며 반드시 포함되어야 합니다.
+        </div>
+        
+        <div class="guide-article">
+          <h4 class="t-title-4 guide-subtitle">선택형 (listbox)</h4>
+          <div class="guide-code-block">
+            <pre><code>&lt;!-- 선택형 드롭다운 최소 사양 --&gt;
+&lt;button type="button" aria-expanded="false" aria-controls="program-type-3"&gt;
+  &lt;span class="dropdown__text"&gt;프로그램 유형&lt;/span&gt;
+&lt;/button&gt;
+&lt;ul id="program-type-3" role="listbox" hidden&gt;
+  &lt;li role="option" tabindex="-1"&gt;CRUD&lt;/li&gt;
+  &lt;li role="option" tabindex="-1"&gt;목록/리스트&lt;/li&gt;
+  &lt;li role="option" tabindex="-1" aria-selected="true"&gt;조회(R)&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+          </div>
+          <div class="guide-notice">
+            <strong>필수 속성:</strong>
+            <ul>
+              <li><code>aria-expanded</code>: 열림/닫힘 상태 전달</li>
+              <li><code>aria-controls="program-type-3"</code>: 버튼이 제어하는 리스트의 ID</li>
+              <li><code>role="listbox"</code>: 선택 가능한 옵션들의 컨테이너</li>
+              <li><code>role="option"</code>: 각 아이템이 선택 가능한 옵션</li>
+              <li><code>tabindex="-1"</code>: 팝업형에서 Tab으로 메뉴를 빠져나가고 ↑/↓로만 이동</li>
+              <li><code>aria-selected="true"</code>: 선택된 항목에만 표기 (나머지는 생략)</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="guide-article">
+          <h4 class="t-title-4 guide-subtitle">액션형 (menu)</h4>
+          <div class="guide-code-block">
+            <pre><code>&lt;!-- 액션형 드롭다운 최소 사양 --&gt;
+&lt;button type="button" aria-expanded="false" aria-controls="row-actions-3"&gt;
+  작업 선택
+&lt;/button&gt;
+&lt;ul id="row-actions-3" role="menu" hidden&gt;
+  &lt;li role="none"&gt;
+    &lt;button type="button" role="menuitem" tabindex="-1"&gt;편집&lt;/button&gt;
+  &lt;/li&gt;
+  &lt;li role="none"&gt;
+    &lt;button type="button" role="menuitem" tabindex="-1" aria-disabled="true"&gt;삭제&lt;/button&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+          </div>
+          <div class="guide-notice">
+            <strong>필수 속성:</strong>
+            <ul>
+              <li><code>aria-expanded</code>: 열림/닫힘 상태 전달</li>
+              <li><code>aria-controls="row-actions-3"</code>: 버튼이 제어하는 메뉴의 ID</li>
+              <li><code>role="menu"</code>: 액션 메뉴임을 명시</li>
+              <li><code>role="menuitem"</code>: 실행 가능한 액션임을 명시</li>
+              <li><code>tabindex="-1"</code>: Tab이 메뉴 밖으로 빠지도록 함</li>
+              <li><code>aria-disabled="true"</code>: 필요할 때만 비활성 항목에 표기</li>
+            </ul>
+            <div class="guide-notice">
+              <strong>주의:</strong> <code>aria-selected</code>는 사용하지 않음 (명령 실행 목록이므로 "선택 상태" 개념 없음)
+            </div>
+          </div>
+        </div>
+        
+        <div class="guide-article">
+          <h4 class="t-title-4 guide-subtitle">디스클로저형 (disclosure)</h4>
+          <div class="guide-code-block">
+            <pre><code>&lt;!-- 디스클로저형 드롭다운 최소 사양 --&gt;
+&lt;button type="button" aria-expanded="false" aria-controls="help-panel-3"&gt;
+  도움말 보기
+&lt;/button&gt;
+&lt;div id="help-panel-3" hidden&gt;
+  &lt;!-- 일반 콘텐츠 --&gt;
+  &lt;h4&gt;사용 방법&lt;/h4&gt;
+  &lt;p&gt;이 드롭다운을 사용하여 원하는 옵션을 선택할 수 있습니다.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+          <div class="guide-notice">
+            <strong>필수 속성:</strong>
+            <ul>
+              <li><code>aria-expanded</code>: 열림/닫힘 상태 전달</li>
+              <li><code>aria-controls="help-panel-3"</code>: 버튼이 제어하는 패널의 ID</li>
+              <li><code>hidden</code>: 패널의 가시성 제어</li>
+            </ul>
+            <div class="guide-notice">
+              <strong>주의:</strong> 단순 정보 패널이면 별도 role 불필요. <code>role="region"</code>·<code>aria-labelledby</code>는 중요 랜드마크로 취급할 때만 고려.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">권장 사항 (선택)</h3>
+        <div class="guide-notice">
+          <strong>참고:</strong> 아래 속성들은 접근성을 향상시키지만 "필수"는 아닙니다. 심사에서 "불필요"로 지적될 수 있으므로 선택적으로 적용하세요.
+        </div>
+        
+        <div class="guide-notice">
+          <strong>권장 속성:</strong>
+          <ul>
+            <li><code>aria-haspopup="listbox"</code> | <code>aria-haspopup="menu"</code>: 스크린리더가 "팝업 있음"을 선행 안내 (선택적)</li>
+            <li><code>role="none"</code> (menu에서 li 래퍼): 중첩 역할 충돌 예방 (선택적)</li>
+            <li><code>role="region"</code> + <code>aria-labelledby</code> (디스클로저): 실질적 랜드마크 필요 시에만 (선택적)</li>
+          </ul>
+        </div>
+        <div class="guide-notice">
+          <strong>디스클로저 특별 주의사항:</strong>
+          <ul>
+            <li><strong>디스클로저는 기본적으로 별도 role 불필요</strong>하며, <code>aria-haspopup</code> 사용 금지 (팝업이 아닌 패널 토글이므로)</li>
+            <li>정말 랜드마크가 필요할 때만 <code>role="region"</code> + <code>aria-labelledby</code> 고려</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">키보드 접근성</h3>
+        <div class="guide-notice">
+          <strong>지원되는 키보드 조작:</strong>
+          <ul>
+            <li><strong>Enter/Space</strong>: 드롭다운 열기/닫기</li>
+            <li><strong>Arrow Down/Up</strong>: 옵션 간 이동</li>
+            <li><strong>Home/End</strong>: 첫 번째/마지막 옵션으로 이동</li>
+            <li><strong>Escape</strong>: 드롭다운 닫기</li>
+            <li><strong>Tab</strong>: 다음 포커스 가능 요소로 이동</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">스크린 리더 지원</h3>
+        <div class="guide-notice">
+          <strong>스크린 리더 사용자를 위한 기능:</strong>
+          <ul>
+            <li>드롭다운 상태 변화 시 자동 알림</li>
+            <li>선택된 옵션 정보 제공</li>
+            <li>옵션 개수 및 현재 위치 정보</li>
+            <li>드롭다운 열림/닫힘 상태 명확한 전달</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">사용 시 주의사항</h3>
+        <div class="guide-notice">
+          <strong>개발 시 반드시 확인할 사항:</strong>
+          <ul>
+            <li>드롭다운 버튼에 <code>aria-expanded</code>, <code>aria-controls</code> 속성 포함</li>
+            <li>리스트에 <code>role="listbox"</code> 또는 <code>role="menu"</code> 속성 포함</li>
+            <li>각 아이템에 <code>role="option"</code> 또는 <code>role="menuitem"</code> 속성 포함</li>
+            <li>JavaScript 초기화 스크립트 포함 (<code>App.a11y.initDropdown</code>)</li>
+            <li>드롭다운이 닫힌 상태에서 옵션들이 포커스 받지 않도록 설정</li>
+            <li>외부 클릭 시 드롭다운이 자동으로 닫히도록 구현</li>
+          </ul>
+        </div>
+        <div class="guide-notice">
+          <strong>권장 사항:</strong>
+          <ul>
+            <li><code>aria-haspopup</code>는 스크린리더 사전 안내에 도움이 되지만 심사 기준에 따라 불필요 판단될 수 있으므로 권장(선택) 항목으로 분류합니다.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="t-title-2 guide-title">JavaScript 기능 (업데이트됨)</h2>
       <p class="guide-subtitle">아래 스크립트는 드롭다운 컴포넌트의 동작을 위해 필요한 기능을 구현합니다. 주요 기능으로는 토글 기능, 항목 선택 기능, 외부 클릭 시 닫기 기능이 포함되어 있습니다.</p>
       
-      <div class="guide-notice">
-        <strong>참고:</strong> 아래 스크립트는 드롭다운의 기본적인 동작을 위해 필요합니다. 페이지에 드롭다운 컴포넌트가 포함된 경우 반드시 추가해 주세요.
-      </div>
+        <div class="guide-notice">
+          <strong>참고:</strong> 아래 스크립트는 드롭다운의 기본적인 동작을 위해 필요합니다. 페이지에 드롭다운 컴포넌트가 포함된 경우 반드시 추가해 주세요.
+        </div>
+        <div class="guide-notice">
+          <strong>자동 설정:</strong> JavaScript가 자동으로 리스트에 고유 ID를 생성하고 버튼의 <code>aria-controls</code> 속성을 연결합니다. 또한 모든 옵션에 <code>tabindex="-1"</code>을 설정하고 포커스 관리를 담당합니다.
+        </div>
+        <div class="guide-notice">
+          <strong>주요 개선사항:</strong>
+          <ul>
+            <li><strong>성능 최적화:</strong> 윈도우 리사이즈 시 120ms 디바운싱으로 성능 향상</li>
+            <li><strong>포커스 관리:</strong> ESC로 닫기 시 버튼으로 포커스 복귀, 포커스 아웃으로 닫기 시 복귀 안함</li>
+            <li><strong>모바일 대응:</strong> 모바일 환경에서 드롭다운 너비 자동 조정</li>
+            <li><strong>키보드 접근성:</strong> 화살표 키 탐색, Enter/Space 선택, ESC 닫기 지원</li>
+            <li><strong>스크린 리더 지원:</strong> ARIA 속성 자동 관리 및 안정적인 상태 알림</li>
+          </ul>
+        </div>
       
       <div class="guide-code-block">
         <pre><code>&lt;!-- 접근성 유틸리티 스크립트 추가 --&gt;
 &lt;script src="../../assets/scripts/common/a11y.js"&gt;&lt;/script&gt;
 
 &lt;script&gt;
-  // a11y.js를 활용한 드롭다운 접근성 초기화
-  document.addEventListener('DOMContentLoaded', function() {
-    // 페이지의 모든 드롭다운 컴포넌트 초기화
-    const dropdowns = document.querySelectorAll('.dropdown');
-    dropdowns.forEach(dropdown => {
-      App.a11y.initDropdown(dropdown);
+  window.addEventListener('DOMContentLoaded', function () {
+    const A = window.App && App.a11y;
+  
+    // 드롭다운
+    document.querySelectorAll('.dropdown').forEach(dd => {
+      A && A.initDropdown && A.initDropdown(dd);
     });
   });
 &lt;/script&gt;</code></pre>
@@ -282,12 +615,12 @@
 
   <script src="../../assets/scripts/common/a11y.js"></script>
   <script>
-    // a11y.js를 활용한 드롭다운 접근성 초기화
-    document.addEventListener('DOMContentLoaded', function() {
-      // 페이지의 모든 드롭다운 컴포넌트 초기화
-      const dropdowns = document.querySelectorAll('.dropdown');
-      dropdowns.forEach(dropdown => {
-        App.a11y.initDropdown(dropdown);
+    window.addEventListener('DOMContentLoaded', function () {
+      const A = window.App && App.a11y;
+    
+      // 드롭다운
+      document.querySelectorAll('.dropdown').forEach(dd => {
+        A && A.initDropdown && A.initDropdown(dd);
       });
     });
   </script>

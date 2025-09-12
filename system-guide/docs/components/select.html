@@ -14,21 +14,41 @@
       <h2 class="t-title-2 guide-title">기본 Select</h2>
       
       <div class="guide-article">
-        <h3 class="t-title-3 guide-subtitle">기본형</h3>
-        <div class="guide-component-group">
-          <div class="select">
-            <select class="select__element">
-              <option value="" disabled selected hidden>선택하세요</option>
-              <option value="option1">관련도</option>
-              <option value="option2">최신순</option>
-              <option value="option3">오래된순</option>
-              <option value="option4">인기순</option>
-            </select>
+        <p class="guide-subtitle">단독으로 사용되는 기본 선택 필드로, placeholder와 disabled 상태를 지원합니다.</p>
+        <div class="guide-component-group block">
+          <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+            <div class="col-span-4 md:col-span-4 lg:col-span-3">
+              <h3 class="t-title-3 guide-subtitle">기본형</h3>
+              <div class="select">
+                <label for="select-1" class="visually-hidden">기본형 Select</label>
+                <select id="select-1" class="select__element">
+                  <option value="" disabled selected hidden>선택하세요</option>
+                  <option value="option1">관련도</option>
+                  <option value="option2">최신순</option>
+                  <option value="option3">오래된순</option>
+                  <option value="option4">인기순</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-span-4 md:col-span-4 lg:col-span-3">
+              <h3 class="t-title-3 guide-subtitle">비활성화 상태</h3>
+              <div class="select">
+                <label for="select-2" class="visually-hidden">비활성화 상태 Select</label>
+                <select id="select-2" class="select__element" disabled>
+                  <option value="" disabled selected hidden>선택하세요</option>
+                  <option value="option1">관련도</option>
+                  <option value="option2">최신순</option>
+                  <option value="option3">오래된순</option>
+                  <option value="option4">인기순</option>
+                </select>
+              </div>
+            </div>
           </div>
         </div>
         <div class="guide-code-block">
           <pre><code>&lt;div class="select"&gt;
-  &lt;select class="select__element"&gt;
+  &lt;label for="select-1" class="visually-hidden"&gt;기본형 Select&lt;/label&gt;
+  &lt;select id="select-1" class="select__element"&gt;
     &lt;option value="" disabled selected hidden&gt;선택하세요&lt;/option&gt;
     &lt;option value="option1"&gt;관련도&lt;/option&gt;
     &lt;option value="option2"&gt;최신순&lt;/option&gt;
@@ -43,7 +63,8 @@
         <h3 class="t-title-3 guide-subtitle">전체 너비형</h3>
         <div class="guide-component-group">
           <div class="select select--full-width">
-            <select class="select__element">
+            <label for="select-3" class="visually-hidden">전체 너비형 Select</label>
+            <select id="select-3" class="select__element">
               <option value="" disabled selected hidden>선택하세요</option>
               <option value="option1">옵션 1</option>
               <option value="option2">옵션 2</option>
@@ -53,7 +74,8 @@
         </div>
         <div class="guide-code-block">
           <pre><code>&lt;div class="select select--full-width"&gt;
-  &lt;select class="select__element"&gt;
+  &lt;label for="select-3" class="visually-hidden"&gt;전체 너비형 Select&lt;/label&gt;
+  &lt;select id="select-3" class="select__element"&gt;
     &lt;option value="" disabled selected hidden&gt;선택하세요&lt;/option&gt;
     &lt;option value="option1"&gt;옵션 1&lt;/option&gt;
     &lt;option value="option2"&gt;옵션 2&lt;/option&gt;
@@ -75,10 +97,10 @@
         <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
           <div class="col-span-2 md:col-span-4 lg:col-span-6">
             <div class="fd-field">
-              <label for="select-1" class="fd-field__lbl">컬럼 너비에 맞춘 Select</label>
+              <label for="select-grid-1" class="fd-field__lbl">컬럼 너비에 맞춘 Select</label>
               <div class="fd-field__ctrl fd-field__ctrl--select">
                 <div class="select">
-                  <select id="select-1" class="select__element">
+                  <select id="select-grid-1" class="select__element">
                     <option value="" disabled selected hidden>컬럼 너비에 맞춘 Select</option>
                     <option value="option1">옵션 1</option>
                     <option value="option2">옵션 2</option>
@@ -89,10 +111,10 @@
           </div>
           <div class="col-span-2 md:col-span-4 lg:col-span-6">
             <div class="fd-field">
-              <label for="select-2" class="fd-field__lbl">컬럼 너비에 맞춘 Select</label>
+              <label for="select-grid-2" class="fd-field__lbl">컬럼 너비에 맞춘 Select</label>
               <div class="fd-field__ctrl fd-field__ctrl--select">
                 <div class="select">
-                  <select id="select-2" class="select__element">
+                  <select id="select-grid-2" class="select__element">
                     <option value="" disabled selected hidden>컬럼 너비에 맞춘 Select</option>
                     <option value="option1">옵션 1</option>
                     <option value="option2">옵션 2</option>
@@ -107,10 +129,10 @@
           <pre><code>&lt;div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12"&gt;
   &lt;div class="col-span-2 md:col-span-4 lg:col-span-6"&gt;
     &lt;div class="fd-field"&gt;
-      &lt;label for="select-1" class="fd-field__lbl"&gt;컬럼 너비에 맞춘 Select&lt;/label&gt;
+      &lt;label for="select-grid-1" class="fd-field__lbl"&gt;컬럼 너비에 맞춘 Select&lt;/label&gt;
       &lt;div class="fd-field__ctrl fd-field__ctrl--select"&gt;
         &lt;div class="select"&gt;
-          &lt;select id="select-1" class="select__element"&gt;
+          &lt;select id="select-grid-1" class="select__element"&gt;
             &lt;option value="" disabled selected hidden&gt;컬럼 너비에 맞춘 Select&lt;/option&gt;
             &lt;option value="option1"&gt;옵션 1&lt;/option&gt;
             &lt;option value="option2"&gt;옵션 2&lt;/option&gt;
@@ -121,10 +143,10 @@
   &lt;/div&gt;
   &lt;div class="col-span-2 md:col-span-4 lg:col-span-6"&gt;
     &lt;div class="fd-field"&gt;
-      &lt;label for="select-2" class="fd-field__lbl"&gt;컬럼 너비에 맞춘 Select&lt;/label&gt;
+      &lt;label for="select-grid-2" class="fd-field__lbl"&gt;컬럼 너비에 맞춘 Select&lt;/label&gt;
       &lt;div class="fd-field__ctrl fd-field__ctrl--select"&gt;
         &lt;div class="select"&gt;
-          &lt;select id="select-2" class="select__element"&gt;
+          &lt;select id="select-grid-2" class="select__element"&gt;
             &lt;option value="" disabled selected hidden&gt;컬럼 너비에 맞춘 Select&lt;/option&gt;
             &lt;option value="option1"&gt;옵션 1&lt;/option&gt;
             &lt;option value="option2"&gt;옵션 2&lt;/option&gt;
@@ -137,16 +159,18 @@
         </div>
       </div>
 
-      <h2 class="t-title-2 guide-title">다중 선택 컴포넌트</h2>
+      <h2 class="t-title-2 guide-title">다중 선택(HTML 기본 다중 선택)</h2>
       
       <div class="guide-article">
         <h3 class="t-title-3 guide-subtitle">기본형 (HTML 기본 다중 선택)</h3>
-        <p class="t-body-2">브라우저 기본 UI를 활용한 다중 선택 컴포넌트입니다. JavaScript가 비활성화된 환경에서도 작동합니다.</p>
+        <ul class="guide-list">
+          <li>브라우저 기본 UI를 활용한 다중 선택 컴포넌트입니다. JavaScript가 비활성화된 환경에서도 작동합니다.</li>
+        </ul>
         
         <div class="guide-component-group">
           <div class="select">
-            <select class="select__element" multiple>
-              <option value="" disabled selected hidden>선택하세요</option>
+            <label id="multi-basic-lbl" class="visually-hidden" for="multi-basic">다중 선택</label>
+            <select id="multi-basic" class="select__element" multiple>
               <option value="option1">옵션 1</option>
               <option value="option2">옵션 2</option>
               <option value="option3">옵션 3</option>
@@ -158,8 +182,8 @@
         
         <div class="guide-code-block">
           <pre><code>&lt;div class="select"&gt;
-  &lt;select class="select__element" multiple&gt;
-    &lt;option value="" disabled selected hidden&gt;선택하세요&lt;/option&gt;
+  &lt;label id="multi-basic-lbl" class="visually-hidden" for="multi-basic"&gt;다중 선택&lt;/label&gt;
+  &lt;select id="multi-basic" class="select__element" multiple&gt;
     &lt;option value="option1"&gt;옵션 1&lt;/option&gt;
     &lt;option value="option2"&gt;옵션 2&lt;/option&gt;
     &lt;option value="option3"&gt;옵션 3&lt;/option&gt;
@@ -170,16 +194,18 @@
         </div>
       </div>
 
+      <h3 class="t-title-2 guide-subtitle">다중 선택 커스텀형 UI (향상된 다중 선택)</h3>
+      <ul class="guide-list">
+        <li>JavaScript를 활용한 향상된 다중 선택 컴포넌트로, 태그 형태의 선택 UI와 접근성을 제공합니다.</li>
+        <li>JavaScript가 비활성화된 환경에서는 기본 다중 선택으로 폴백됩니다.</li>
+      </ul>
       <div class="guide-article">
-        <h3 class="t-title-3 guide-subtitle">커스텀형 UI (향상된 다중 선택)</h3>
-        <p class="t-body-2">JavaScript를 활용한 향상된 다중 선택 컴포넌트로, 태그 형태의 선택 UI와 접근성을 제공합니다.</p>
-        <p class="t-body-3">JavaScript가 비활성화된 환경에서는 기본 다중 선택으로 폴백됩니다.</p>
-        
+        <h3 class="t-title-3 guide-subtitle">단일 사용시</h3>
         <div class="guide-component-group">
           <div class="select select--multiple">
-            <span id="select-label-1" class="visually-hidden">다중 선택 박스</span>
+            <span id="select-label-1" class="visually-hidden">다중 선택 박스(단일 사용시)</span>
             <!-- 실제 select 요소 (JavaScript 비활성화 시 표시됨) -->
-            <select class="select__native" multiple>
+            <select class="select__native" multiple aria-labelledby="select-label-1">
               <option value="option1">옵션 1</option>
               <option value="option2">옵션 2</option>
               <option value="option3">옵션 3</option>
@@ -196,20 +222,21 @@
             <i class="select__arrow" aria-hidden="true"></i>
             
             <!-- 옵션 목록 -->
-            <div id="select-options-1" class="select__options" role="listbox" aria-labelledby="select-label-1" aria-multiselectable="true">
-              <div class="select__option" role="option" id="option1" data-value="option1" tabindex="-1" aria-selected="false">옵션 1</div>
-              <div class="select__option" role="option" id="option2" data-value="option2" tabindex="-1" aria-selected="false">옵션 2</div>
-              <div class="select__option" role="option" id="option3" data-value="option3" tabindex="-1" aria-selected="false">옵션 3</div>
-              <div class="select__option" role="option" id="option4" data-value="option4" tabindex="-1" aria-selected="false">옵션 4</div>
-              <div class="select__option" role="option" id="option5" data-value="option5" tabindex="-1" aria-selected="false">옵션 5</div>
-              <div class="select__option" role="option" id="option6" data-value="option6" tabindex="-1" aria-selected="false">매우 긴 텍스트의 옵션 이름이 있는 경우</div>
+            <div id="select-options-1" class="select__options" role="listbox" aria-labelledby="select-label-1" aria-multiselectable="true" aria-hidden="true" inert>
+              <div class="select__option" role="option" id="option1-1" data-value="option1" tabindex="-1" aria-selected="false">옵션 1</div>
+              <div class="select__option" role="option" id="option1-2" data-value="option2" tabindex="-1" aria-selected="false">옵션 2</div>
+              <div class="select__option" role="option" id="option1-3" data-value="option3" tabindex="-1" aria-selected="false">옵션 3</div>
+              <div class="select__option" role="option" id="option1-4" data-value="option4" tabindex="-1" aria-selected="false">옵션 4</div>
+              <div class="select__option" role="option" id="option1-5" data-value="option5" tabindex="-1" aria-selected="false">옵션 5</div>
+              <div class="select__option" role="option" id="option1-6" data-value="option6" tabindex="-1" aria-selected="false">매우 긴 텍스트의 옵션 이름이 있는 경우</div>
             </div>
           </div>
         </div>
         <div class="guide-code-block">
           <pre><code>&lt;div class="select select--multiple"&gt;
+  &lt;span id="select-label-1" class="visually-hidden"&gt;다중 선택 박스(단일 사용시)&lt;/span&gt;
   &lt;!-- 실제 select 요소 (JavaScript 비활성화 시 표시됨) --&gt;
-  &lt;select class="select__native" multiple&gt;
+  &lt;select class="select__native" multiple aria-labelledby="select-label-1"&gt;
     &lt;option value="option1"&gt;옵션 1&lt;/option&gt;
     &lt;option value="option2"&gt;옵션 2&lt;/option&gt;
     &lt;option value="option3"&gt;옵션 3&lt;/option&gt;
@@ -222,33 +249,121 @@
   &lt;div class="select__field" tabindex="0" role="button" 
        aria-haspopup="listbox" aria-expanded="false" 
        aria-controls="select-options-1" aria-labelledby="select-label-1"&gt;
-    &lt;span id="select-label-1" class="select__placeholder"&gt;항목을 선택해주세요&lt;/span&gt;
+    &lt;span class="select__placeholder"&gt;항목을 선택해주세요&lt;/span&gt;
     &lt;!-- 선택된 항목들은 JavaScript로 여기에 태그로 추가됨 --&gt;
   &lt;/div&gt;
-  &lt;div class="select__arrow" aria-hidden="true"&gt;&lt;/div&gt;
-  &lt;div id="select-description" class="visually-hidden"&gt;다중 선택이 가능한 드롭다운 목록입니다. Enter 키를 눌러 옵션을 열고, 화살표 키로 이동한 후 Space 키로 선택하세요.&lt;/div&gt;
+  &lt;i class="select__arrow" aria-hidden="true"&gt;&lt;/i&gt;
   
   &lt;!-- 옵션 목록 --&gt;
   &lt;div id="select-options-1" class="select__options" role="listbox"
-       aria-labelledby="select-label"  aria-multiselectable="true"&gt;
-    &lt;div class="select__option" role="option" id="option1" 
+       aria-labelledby="select-label-1" aria-multiselectable="true" aria-hidden="true" inert&gt;
+    &lt;div class="select__option" role="option" id="option1-1" 
          data-value="option1" tabindex="-1" aria-selected="false"&gt;옵션 1&lt;/div&gt;
-    &lt;div class="select__option" role="option" id="option2" 
+    &lt;div class="select__option" role="option" id="option1-2" 
          data-value="option2" tabindex="-1" aria-selected="false"&gt;옵션 2&lt;/div&gt;
-    &lt;div class="select__option" role="option" id="option3" 
+    &lt;div class="select__option" role="option" id="option1-3" 
          data-value="option3" tabindex="-1" aria-selected="false"&gt;옵션 3&lt;/div&gt;
-    &lt;div class="select__option" role="option" id="option4" 
+    &lt;div class="select__option" role="option" id="option1-4" 
          data-value="option4" tabindex="-1" aria-selected="false"&gt;옵션 4&lt;/div&gt;
-    &lt;div class="select__option" role="option" id="option5" 
+    &lt;div class="select__option" role="option" id="option1-5" 
          data-value="option5" tabindex="-1" aria-selected="false"&gt;옵션 5&lt;/div&gt;
-    &lt;div class="select__option" role="option" id="option6" 
+    &lt;div class="select__option" role="option" id="option1-6" 
          data-value="option6" tabindex="-1" aria-selected="false"&gt;매우 긴 텍스트의 옵션 이름이 있는 경우&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
         </div>
         
         <div class="guide-notice">
-          <strong>중요:</strong> JavaScript 비활성화 환경 대응을 위해 visually-hidden 클래스는 JavaScript로 동적으로 추가됩니다. 이를 통해 JavaScript가 활성화되면 커스텀 UI가 사용되고, 비활성화되면 기본 select 요소가 표시됩니다.
+          <strong>중요:</strong> JavaScript 비활성화 환경 대응을 위해 네이티브 select 요소가 폴백으로 제공됩니다. JavaScript가 활성화되면 네이티브 select가 숨겨지고 커스텀 UI가 사용되며, 비활성화되면 네이티브 select가 표시됩니다.
+        </div>
+      </div>
+
+      <div class="guide-article">
+        <h3 class="t-title-3 guide-subtitle">field 컴포넌트에서 사용</h3>
+        <ul class="guide-list">
+          <li>field 컴포넌트에서 사용할 경우, 기본 다중 선택으로 폴백됩니다.</li>
+        </ul>
+        <div class="guide-component-group block">
+          <div class="fd-field">
+            <label id="f-multi-select-1" class="fd-field__lbl" for="f-multi-select-native-1">다중 선택 박스(field 컴포넌트에서 사용)</label>
+            <div class="fd-field__ctrl fd-field__ctrl--multi-select">
+              <!-- 커스텀 UI: JS 향상 시 활성 -->
+              <div class="select select--multiple">
+                <!-- 폴백: 네이티브 (JS 꺼져도 접근 가능) -->
+                <select id="f-multi-select-native-1" class="select__native" multiple>
+                  <option value="option1">옵션 1</option>
+                  <option value="option2">옵션 2</option>
+                  <option value="option3">옵션 3</option>
+                  <option value="option4">옵션 4</option>
+                  <option value="option5">옵션 5</option>
+                  <option value="option6">매우 긴 텍스트의 옵션 이름이 있는 경우</option>
+                </select>
+
+                <!-- 커스텀 UI (JavaScript 활성화 시 표시됨) -->
+                <div class="select__field" tabindex="0" role="button" 
+                      aria-haspopup="listbox" aria-expanded="false" 
+                      aria-controls="select-options-2" 
+                      aria-labelledby="f-multi-select-1">
+                  <span class="select__placeholder">항목을 선택해주세요</span>
+                  <!-- 선택된 항목들은 JavaScript로 여기에 태그로 추가됨 -->
+                </div>
+                <i class="select__arrow" aria-hidden="true"></i>
+                
+                <!-- 옵션 목록 -->
+                <div id="select-options-2" class="select__options" role="listbox" aria-multiselectable="true" aria-labelledby="f-multi-select-1" aria-hidden="true" inert>
+                  <div class="select__option" role="option" id="option2-1" data-value="option1" tabindex="-1" aria-selected="false">옵션 1</div>
+                  <div class="select__option" role="option" id="option2-2" data-value="option2" tabindex="-1" aria-selected="false">옵션 2</div>
+                  <div class="select__option" role="option" id="option2-3" data-value="option3" tabindex="-1" aria-selected="false">옵션 3</div>
+                  <div class="select__option" role="option" id="option2-4" data-value="option4" tabindex="-1" aria-selected="false">옵션 4</div>
+                  <div class="select__option" role="option" id="option2-5" data-value="option5" tabindex="-1" aria-selected="false">옵션 5</div>
+                  <div class="select__option" role="option" id="option2-6" data-value="option6" tabindex="-1" aria-selected="false">매우 긴 텍스트의 옵션 이름이 있는 경우</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="guide-code-block">
+          <pre><code>&lt;div class="fd-field"&gt;
+  &lt;label id="f-multi-select-1" class="fd-field__lbl" for="f-multi-select-native-1"&gt;다중 선택 박스(field 컴포넌트에서 사용)&lt;/label&gt;
+  &lt;div class="fd-field__ctrl fd-field__ctrl--multi-select"&gt;
+    &lt;!-- 커스텀 UI: JS 향상 시 활성 --&gt;
+    &lt;div class="select select--multiple"&gt;
+      &lt;!-- 폴백: 네이티브 (JS 꺼져도 접근 가능) --&gt;
+      &lt;select id="f-multi-select-native-1" class="select__native" multiple&gt;
+        &lt;option value="option1"&gt;옵션 1&lt;/option&gt;
+        &lt;option value="option2"&gt;옵션 2&lt;/option&gt;
+        &lt;option value="option3"&gt;옵션 3&lt;/option&gt;
+        &lt;option value="option4"&gt;옵션 4&lt;/option&gt;
+        &lt;option value="option5"&gt;옵션 5&lt;/option&gt;
+        &lt;option value="option6"&gt;매우 긴 텍스트의 옵션 이름이 있는 경우&lt;/option&gt;
+      &lt;/select&gt;
+
+      &lt;!-- 커스텀 UI (JavaScript 활성화 시 표시됨) --&gt;
+      &lt;div class="select__field" tabindex="0" role="button" 
+            aria-haspopup="listbox" aria-expanded="false" 
+            aria-controls="select-options-2" 
+            aria-labelledby="f-multi-select-1"&gt;
+        &lt;span class="select__placeholder"&gt;항목을 선택해주세요&lt;/span&gt;
+        &lt;!-- 선택된 항목들은 JavaScript로 여기에 태그로 추가됨 --&gt;
+      &lt;/div&gt;
+      &lt;i class="select__arrow" aria-hidden="true"&gt;&lt;/i&gt;
+      
+      &lt;!-- 옵션 목록 --&gt;
+      &lt;div id="select-options-2" class="select__options" role="listbox" aria-multiselectable="true" aria-labelledby="f-multi-select-1" aria-hidden="true" inert&gt;
+        &lt;div class="select__option" role="option" id="option2-1" data-value="option1" tabindex="-1" aria-selected="false"&gt;옵션 1&lt;/div&gt;
+        &lt;div class="select__option" role="option" id="option2-2" data-value="option2" tabindex="-1" aria-selected="false"&gt;옵션 2&lt;/div&gt;
+        &lt;div class="select__option" role="option" id="option2-3" data-value="option3" tabindex="-1" aria-selected="false"&gt;옵션 3&lt;/div&gt;
+        &lt;div class="select__option" role="option" id="option2-4" data-value="option4" tabindex="-1" aria-selected="false"&gt;옵션 4&lt;/div&gt;
+        &lt;div class="select__option" role="option" id="option2-5" data-value="option5" tabindex="-1" aria-selected="false"&gt;옵션 5&lt;/div&gt;
+        &lt;div class="select__option" role="option" id="option2-6" data-value="option6" tabindex="-1" aria-selected="false"&gt;매우 긴 텍스트의 옵션 이름이 있는 경우&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        
+        <div class="guide-notice">
+          <strong>중요:</strong> JavaScript 비활성화 환경 대응을 위해 네이티브 select 요소가 폴백으로 제공됩니다. JavaScript가 활성화되면 네이티브 select가 숨겨지고 커스텀 UI가 사용되며, 비활성화되면 네이티브 select가 표시됩니다.
         </div>
       </div>
 
@@ -256,7 +371,7 @@
       <p class="guide-subtitle">셀렉트 컴포넌트의 동작을 위해 필요한 JavaScript 코드입니다. 접근성을 고려한 키보드 내비게이션과 스크린 리더 지원이 포함되어 있습니다.</p>
 
       <div class="guide-notice">
-        <strong>참고:</strong> 아래 스크립트는 셀렉트 컴포넌트가 포함된 페이지에서 필요합니다. 기본 셀렉트의 경우 옵션 열기/닫기 동작 및 키보드 접근성이 구현되어 있고, 다중 선택형의 경우 a11y.js 유틸리티의 initMultiSelect 함수를 통한 초기화가 필요합니다.
+        <strong>참고:</strong> 아래 스크립트는 셀렉트 컴포넌트가 포함된 페이지에서 필요합니다. 기본 셀렉트의 경우 옵션 열기/닫기 동작과 키보드 접근성은 브라우저 기본 기능으로 제공되며, 다중 선택형의 경우 a11y.js 유틸리티의 initMultiSelect 함수를 통한 초기화가 필요합니다.
       </div>
       
       <div class="guide-notice">
@@ -273,74 +388,39 @@
 &lt;script src="../../assets/scripts/common/a11y.js"&gt;&lt;/script&gt;
 
 &lt;script&gt;
-  document.addEventListener('DOMContentLoaded', function() {
-    // 1. 기본 select 요소 이벤트 처리 (키보드 접근성 포함)
-    const selects = document.querySelectorAll('.select__element');
-    selects.forEach(select => {
-      // 탭키로 들어온 경우 active 클래스 제거
-      select.addEventListener('focus', function() {
-        // 탭으로 포커스 이동 시 active 클래스 제거
-        this.parentElement.classList.remove('active');
-      });
-      
-      // blur 이벤트 - active 제거
-      select.addEventListener('blur', function() {
-        this.parentElement.classList.remove('active');
-      });
-      
-      // 클릭 이벤트 - 액티브 토글만 처리
-      select.addEventListener('click', function() {
-        // 클릭 시 active 상태 토글 (브라우저 기본 동작은 그대로 실행)
-        this.parentElement.classList.toggle('active');
-      });
-      
-      // 키보드 이벤트 - 엔터/스페이스 키는 브라우저 기본 동작 유지
-      select.addEventListener('keydown', function(e) {
-        // 엔터키나 스페이스바 - 기본 동작 유지
-        if (e.key === 'Enter' || e.key === ' ') {
-          // 기본 동작 유지 (preventDefault 제거)
-          // 액티브 클래스 추가
-          this.parentElement.classList.add('active');
-        }
-        
-        // ESC 키
-        if (e.key === 'Escape') {
-          this.parentElement.classList.remove('active');
-        }
-      });
-      
-      // 변경 이벤트 - 옵션 선택 후 active 제거
-      select.addEventListener('change', function() {
-        // 옵션 선택 후 active 제거
-        this.parentElement.classList.remove('active');
-      });
-    });
-    
-    // 2. 다중 선택 컴포넌트 초기화 (a11y.js 사용)
-    const multiSelects = document.querySelectorAll('.select--multiple');
-    multiSelects.forEach(multiSelect => {
-      // 네이티브 select 요소에 visually-hidden 클래스 추가
-      const nativeSelect = multiSelect.querySelector('.select__native');
+  window.addEventListener('DOMContentLoaded', function () {
+    const A = window.App && App.a11y;
+
+    // formMsg: 도움말 보이기/오류 숨기기/aria 연결
+    if (A && A.formMsg) A.formMsg.init(document);
+
+    // 멀티 셀렉트 향상 UI
+    document.querySelectorAll('.select--multiple').forEach(ms => {
+      const nativeSelect = ms.querySelector('.select__native');
       if (nativeSelect) {
+        // JavaScript 활성화 시 네이티브 select 숨기기
+        nativeSelect.style.display = 'none';
         nativeSelect.classList.add('visually-hidden');
+        nativeSelect.tabIndex = -1;
+        nativeSelect.setAttribute('aria-hidden','true');
       }
-      
-      // 커스텀 UI 초기화
-      App.a11y.initMultiSelect(multiSelect);
-    });
+      A && A.initMultiSelect && A.initMultiSelect(ms);
+    });   
   });
 &lt;/script&gt;</code></pre>
       </div>
 
       <div class="guide-article">
-        <h3 class="t-title-3 guide-subtitle">a11y.js의 주요 기능</h3>
+        <h3 class="t-title-3 guide-subtitle">a11y.js의 주요 기능 (업데이트됨)</h3>
         <p>a11y.js 파일에는 셀렉트 컴포넌트의 접근성을 향상시키는 다양한 기능이 포함되어 있습니다:</p>
         <ul>
-          <li>키보드 탐색 (화살표 키, Enter, Space, Escape)</li>
-          <li>스크린 리더 지원 (ARIA 속성 관리)</li>
-          <li>다중 선택 시 태그 생성 및 삭제</li>
-          <li>포커스 관리</li>
-          <li>옵션 선택 시 네이티브 select 요소와 동기화</li>
+          <li><strong>키보드 탐색:</strong> 화살표 키, Enter, Space, Escape 키 지원</li>
+          <li><strong>스크린 리더 지원:</strong> ARIA 속성 자동 관리 및 강제 리플로우를 통한 안정적인 재공지</li>
+          <li><strong>다중 선택 시 태그 관리:</strong> 태그 생성/삭제 및 키보드 접근성 자동 설정</li>
+          <li><strong>포커스 관리:</strong> ESC로 닫기 시 필드로 복귀, 포커스 아웃/클릭으로 닫기 시 복귀 안함</li>
+          <li><strong>네이티브 select 동기화:</strong> 커스텀 UI와 네이티브 select 자동 동기화</li>
+          <li><strong>성능 최적화:</strong> 윈도우 리사이즈 디바운싱(120ms), 개발 환경 디버깅 로그</li>
+          <li><strong>자동 announcer 생성:</strong> 스크린 리더 사용자에게 선택/해제 상태 자동 알림</li>
         </ul>
       </div>
     </section>
@@ -348,61 +428,29 @@
 
   <script src="../../assets/scripts/common/a11y.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // 1. 기본 select 요소 이벤트 처리 (키보드 접근성 포함)
-      const selects = document.querySelectorAll('.select__element');
-      selects.forEach(select => {
-        // 탭키로 들어온 경우 active 클래스 제거
-        select.addEventListener('focus', function() {
-          // 탭으로 포커스 이동 시 active 클래스 제거
-          this.parentElement.classList.remove('active');
-        });
-        
-        // blur 이벤트 - active 제거
-        select.addEventListener('blur', function() {
-          this.parentElement.classList.remove('active');
-        });
-        
-        // 클릭 이벤트 - 액티브 토글만 처리
-        select.addEventListener('click', function() {
-          // 클릭 시 active 상태 토글 (브라우저 기본 동작은 그대로 실행)
-          this.parentElement.classList.toggle('active');
-        });
-        
-        // 키보드 이벤트 - 엔터/스페이스 키는 브라우저 기본 동작 유지
-        select.addEventListener('keydown', function(e) {
-          // 엔터키나 스페이스바 - 기본 동작 유지
-          if (e.key === 'Enter' || e.key === ' ') {
-            // 기본 동작 유지 (preventDefault 제거)
-            // 액티브 클래스 추가
-            this.parentElement.classList.add('active');
-          }
-          
-          // ESC 키
-          if (e.key === 'Escape') {
-            this.parentElement.classList.remove('active');
-          }
-        });
-        
-        // 변경 이벤트 - 옵션 선택 후 active 제거
-        select.addEventListener('change', function() {
-          // 옵션 선택 후 active 제거
-          this.parentElement.classList.remove('active');
-        });
+    window.addEventListener('DOMContentLoaded', function () {
+      const A = window.App && App.a11y;
+    
+      // formMsg: 도움말 보이기/오류 숨기기/aria 연결
+      if (A && A.formMsg) A.formMsg.init(document);
+    
+      // (데모 전용) 가이드에서 처음부터 에러 상태 시연용
+      document.querySelectorAll('.fd-field--error[data-error]').forEach(fd => {
+        A && A.formMsg && A.formMsg.showError(fd);
       });
-      
-      // 2. 다중 선택 컴포넌트 초기화 (a11y.js 사용)
-      const multiSelects = document.querySelectorAll('.select--multiple');
-      multiSelects.forEach(multiSelect => {
-        // 네이티브 select 요소에 visually-hidden 클래스 추가
-        const nativeSelect = multiSelect.querySelector('.select__native');
+    
+      // 멀티 셀렉트 향상 UI
+      document.querySelectorAll('.select--multiple').forEach(ms => {
+        const nativeSelect = ms.querySelector('.select__native');
         if (nativeSelect) {
+          // JavaScript 활성화 시 네이티브 select 숨기기
+          nativeSelect.style.display = 'none';
           nativeSelect.classList.add('visually-hidden');
+          nativeSelect.tabIndex = -1;
+          nativeSelect.setAttribute('aria-hidden','true');
         }
-        
-        // 커스텀 UI 초기화
-        App.a11y.initMultiSelect(multiSelect);
-      });
+        A && A.initMultiSelect && A.initMultiSelect(ms);
+      });   
     });
   </script>
 </body>

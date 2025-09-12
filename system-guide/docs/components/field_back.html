@@ -49,7 +49,7 @@
         <div class="guide-component-group block">
           <form class="fd-form grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
             <!-- 정상 상태 -->
-            <div class="fd-field col-span-4 md:col-span-4 lg:col-span-6" data-help="helpId1">
+            <div class="fd-field fd-field col-span-4 md:col-span-4 lg:col-span-6">
               <label for="f-required-1" class="fd-field__lbl fd-label--required">
                 필수 입력 필드
                 <span class="fd-label__required" aria-hidden="true">*</span>
@@ -57,29 +57,28 @@
               </label>
               <div class="fd-field__ctrl fd-field__ctrl--input">
                 <div class="fd-input fd-input--full">
-                  <input id="f-required-1" type="text" class="fd-input__el" placeholder="텍스트" required>
+                  <input id="f-required-1" type="text" class="fd-input__el" required aria-describedby="f-required-1-msg" placeholder="텍스트">
                 </div>
               </div>
-              <p id="helpId1" class="fd-field__msg">*이 필드는 필수 입력입니다.</p>
+              <p id="f-required-1-msg" class="fd-field__msg">*이 필드는 필수 입력입니다.</p>
             </div>
 
             <!-- 오류 상태 -->
-            <div class="fd-field fd-field--error fd-field col-span-4 md:col-span-4 lg:col-span-6" data-help="helpId2" data-error="errorId2">
+            <div class="fd-field fd-field--error fd-field col-span-4 md:col-span-4 lg:col-span-6">
               <label for="f-error-1" class="fd-field__lbl">오류 상태 예시</label>
               <div class="fd-field__ctrl fd-field__ctrl--input">
                 <div class="fd-input fd-input--full">
-                  <input id="f-error-1" type="text" class="fd-input__el" placeholder="텍스트" required>
+                  <input id="f-error-1" type="text" class="fd-input__el" required aria-describedby="f-error-1-msg" placeholder="텍스트" aria-invalid="true">
                 </div>
               </div>
-              <p id="helpId2" class="fd-field__msg">*이 필드는 필수 입력입니다.</p>
-              <p id="errorId2" class="fd-field__msg fd-field__msg--error" aria-live="polite">*올바른 값을 입력해주세요.</p>
+              <p id="f-error-1-msg" class="fd-field__msg fd-field__msg--error" aria-live="polite">*올바른 값을 입력해주세요.</p>
             </div>
           </form>
         </div>
 
         <div class="guide-code-block">
-<pre><code>&lt;!-- 정상 상태(도움말) --&gt;
-&lt;div class="fd-field" data-help="helpId"&gt;
+<pre><code>&lt;!-- 정상 상태(필수 + 도움말) --&gt;
+&lt;div class="fd-field"&gt;
   &lt;label for="f-required-1" class="fd-field__lbl fd-label--required"&gt;
     필수 입력 필드
     &lt;span class="fd-label__required" aria-hidden="true"&gt;*&lt;/span&gt;
@@ -87,22 +86,21 @@
   &lt;/label&gt;
   &lt;div class="fd-field__ctrl fd-field__ctrl--input"&gt;
     &lt;div class="fd-input fd-input--full"&gt;
-      &lt;input id="f-required-1" type="text" class="fd-input__el" placeholder="텍스트" required&gt;
+      &lt;input id="f-required-1" type="text" class="fd-input__el" required aria-describedby="f-required-1-msg" placeholder="텍스트"&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;p id="helpId" class="fd-field__msg"&gt;*이 필드는 필수 입력입니다.&lt;/p&gt;
+  &lt;p id="f-required-1-msg" class="fd-field__msg"&gt;*이 필드는 필수 입력입니다.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;!-- 오류 상태 --&gt;
-&lt;div class="fd-field fd-field--error" data-help="helpId" data-error="errorId"&gt;
+&lt;div class="fd-field fd-field--error"&gt;
   &lt;label for="f-error-1" class="fd-field__lbl"&gt;오류 상태 예시&lt;/label&gt;
   &lt;div class="fd-field__ctrl fd-field__ctrl--input"&gt;
     &lt;div class="fd-input fd-input--full"&gt;
-      &lt;input id="f-error-1" type="text" class="fd-input__el" placeholder="텍스트" required&gt;
+      &lt;input id="f-error-1" type="text" class="fd-input__el" required aria-describedby="f-error-1-msg" placeholder="텍스트" aria-invalid="true"&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;p id="helpId" class="fd-field__msg">*이 필드는 필수 입력입니다.&lt;/p&gt;
-  &lt;p id="errorId" class="fd-field__msg fd-field__msg--error" aria-live="polite"&gt;*올바른 값을 입력해주세요.&lt;/p&gt;
+  &lt;p id="f-error-1-msg" class="fd-field__msg fd-field__msg--error" aria-live="polite"&gt;*올바른 값을 입력해주세요.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
         </div>
       </div>
@@ -220,8 +218,8 @@
                     <i class="select__arrow" aria-hidden="true"></i>
                     
                     <!-- 옵션 목록 -->
-                    <div id="select-options-1" class="select__options" role="listbox" aria-multiselectable="true" aria-labelledby="f-multi-select-1" aria-hidden="true" inert>
-                      <div class="select__option" role="option" id="option1-1" data-value="option1" tabindex="-1" aria-selected="false">옵션 1</div>
+                    <div id="select-options-1" class="select__options" role="listbox" aria-multiselectable="true" aria-labelledby="f-multi-select-1">
+                      <div class="select__option" role="option" id="option1-1" data-value="option1" tabindex="0" aria-selected="false">옵션 1</div>
                       <div class="select__option" role="option" id="option1-2" data-value="option2" tabindex="-1" aria-selected="false">옵션 2</div>
                       <div class="select__option" role="option" id="option1-3" data-value="option3" tabindex="-1" aria-selected="false">옵션 3</div>
                       <div class="select__option" role="option" id="option1-4" data-value="option4" tabindex="-1" aria-selected="false">옵션 4</div>
@@ -251,14 +249,14 @@
                          aria-haspopup="listbox" aria-expanded="false" 
                          aria-controls="select-options-2" 
                          aria-labelledby="f-multi-select-2">
-                      <span class="select__placeholder">항목을 선택해주세요</span>
+                      <span id="select-label-2" class="select__placeholder">항목을 선택해주세요</span>
                       <!-- 선택된 항목들은 JavaScript로 여기에 태그로 추가됨 -->
                     </div>
                     <i class="select__arrow" aria-hidden="true"></i>
                     
                     <!-- 옵션 목록 -->
-                    <div id="select-options-2" class="select__options" role="listbox" aria-multiselectable="true" aria-labelledby="f-multi-select-2" aria-hidden="true" inert>
-                      <div class="select__option" role="option" id="option2-1" data-value="option1" tabindex="-1" aria-selected="false">옵션 1</div>
+                    <div id="select-options-2" class="select__options" role="listbox" aria-multiselectable="true" aria-labelledby="f-multi-select-2">
+                      <div class="select__option" role="option" id="option2-1" data-value="option1" tabindex="0" aria-selected="false">옵션 1</div>
                       <div class="select__option" role="option" id="option2-2" data-value="option2" tabindex="-1" aria-selected="false">옵션 2</div>
                       <div class="select__option" role="option" id="option2-3" data-value="option3" tabindex="-1" aria-selected="false">옵션 3</div>
                       <div class="select__option" role="option" id="option2-4" data-value="option4" tabindex="-1" aria-selected="false">옵션 4</div>
@@ -316,6 +314,7 @@
   &lt;div class="fd-field__ctrl fd-field__ctrl--select"&gt;
     &lt;div class="select"&gt;
       &lt;select id="f-select" class="select__element"&gt;...&lt;/select&gt;
+    &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -375,8 +374,8 @@
         <div class="guide-component-group block">
           <form class="fd-form grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
             <!-- Column(세로) 기본 배치 -->
-            <div class="fd-field col-span-4 md:col-span-4 lg:col-span-6" data-scope="group" data-help="hobby-help1">
-              <fieldset class="fd-field__ctrl fd-field__ctrl--chk">
+            <div class="fd-field fd-field col-span-4 md:col-span-4 lg:col-span-6">
+              <fieldset class="fd-field__ctrl fd-field__ctrl--chk" aria-describedby="hobby-help">
                 <legend class="fd-field__lbl">
                   취미 선택
                   <span class="fd-label__required" aria-hidden="true">*</span>
@@ -397,12 +396,12 @@
                     <label for="chk-a3" class="fd-chk__lbl">음악 감상</label>
                   </div>
                 </div>
-                <p id="hobby-help1" class="fd-field__msg">*최소 1개를 선택해주세요.</p>
+                <p id="hobby-help" class="fd-field__msg">최소 1개를 선택하세요.</p>
               </fieldset>
             </div>
 
             <!-- Row(가로) 배치: 그리드 유틸리티로 2/4열 -->
-            <div class="fd-field fd-field--error col-span-4 md:col-span-4 lg:col-span-6" data-help="hobby-help2" data-error="hobby-error">
+            <div class="fd-field fd-field col-span-4 md:col-span-4 lg:col-span-6">
               <fieldset class="fd-field__ctrl fd-field__ctrl--chk">
                 <legend class="fd-field__lbl">취미 선택 (가로)</legend>
                 <div class="fd-group fd-group--row">
@@ -423,8 +422,6 @@
                     <label for="chk-b4" class="fd-chk__lbl">요리</label>
                   </div>
                 </div>
-                <p id="hobby-help2" class="fd-field__msg">*최소 1개를 선택해주세요.</p>
-                <p id="hobby-error" class="fd-field__msg fd-field__msg--error" aria-live="polite">*하나 이상 선택해야 합니다.</p>
               </fieldset>
             </div>
           </form>
@@ -433,7 +430,7 @@
         <div class="guide-code-block">
 <pre><code>&lt;!-- Column(세로 기본) --&gt;
   &lt;div class=&quot;fd-field&quot;&gt;
-    &lt;fieldset class=&quot;fd-field__ctrl fd-field__ctrl--chk&quot;&gt;
+    &lt;fieldset class=&quot;fd-field__ctrl fd-field__ctrl--chk&quot; aria-describedby=&quot;hobby-help&quot;&gt;
       &lt;legend class=&quot;fd-field__lbl&quot;&gt;
         취미 선택
         &lt;span class=&quot;fd-label__required&quot; aria-hidden=&quot;true&quot;&gt;*&lt;/span&gt;
@@ -477,8 +474,8 @@
         <div class="guide-component-group block">
           <form class="fd-form grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
             <!-- Column(세로) 기본 배치 -->
-            <div class="fd-field col-span-4 md:col-span-4 lg:col-span-6" data-scope="group" data-help="pay-help">
-              <fieldset class="fd-field__ctrl fd-field__ctrl--rdo">
+            <div class="fd-field fd-field col-span-4 md:col-span-4 lg:col-span-6">
+              <fieldset class="fd-field__ctrl fd-field__ctrl--rdo" aria-describedby="pay-help">
                 <legend class="fd-field__lbl">
                   결제 수단
                   <span class="fd-label__required" aria-hidden="true">*</span>
@@ -495,12 +492,12 @@
                     <label for="pay-a2" class="fd-rdo__lbl">계좌이체</label>
                   </div>
                 </div>
-                <p id="pay-help" class="fd-field__msg">*옵션 중 하나를 선택해주세요.</p>
+                <p id="pay-help" class="fd-field__msg">하나를 선택하세요.</p>
               </fieldset>
             </div>
 
             <!-- Row(가로) 배치: 그리드 유틸리티 -->
-            <div class="fd-field fd-field--error col-span-4 md:col-span-4 lg:col-span-6" data-error="pay-error">
+            <div class="fd-field fd-field col-span-4 md:col-span-4 lg:col-span-6">
               <fieldset class="fd-field__ctrl fd-field__ctrl--rdo">
                 <legend class="fd-field__lbl">결제 수단 (가로)</legend>
                 <div class="fd-group fd-group--row">
@@ -517,7 +514,6 @@
                     <label for="pay-b3" class="fd-rdo__lbl">무통장입금</label>
                   </div>
                 </div>
-                <p id="pay-error" class="fd-field__msg fd-field__msg--error" aria-live="polite">*하나를 선택해야 합니다.</p>
               </fieldset>
             </div>
           </form>
@@ -526,7 +522,7 @@
         <div class="guide-code-block">
 <pre><code>&lt;!-- Column(세로 기본) --&gt;
   &lt;div class=&quot;fd-field&quot;&gt;
-    &lt;fieldset class=&quot;fd-field__ctrl fd-field__ctrl--rdo&quot;&gt;
+    &lt;fieldset class=&quot;fd-field__ctrl fd-field__ctrl--rdo&quot; aria-describedby=&quot;pay-help&quot;&gt;
       &lt;legend class=&quot;fd-field__lbl&quot;&gt;
         결제 수단
         &lt;span class=&quot;fd-label__required&quot; aria-hidden=&quot;true&quot;&gt;*&lt;/span&gt;
@@ -569,7 +565,6 @@
           <li>필수 표기는 시각용 <code>*</code>(<code>aria-hidden="true"</code>) + 스크린리더용 <code>(필수)</code> 텍스트를 함께 제공하세요.</li>
           <li>도움말/오류 문구는 해당 컨트롤 또는 <code>fieldset</code>에 <code>aria-describedby</code>로 연결하고, 오류는 <code>aria-live="polite"</code>에 노출해 인지성을 높입니다.</li>
           <li>오류 스타일은 기본적으로 <code>.fd-field--error</code>를 필드 래퍼에 토글해 일관되게 처리합니다.</li>
-          <li><strong>그룹 요소</strong>: <code>data-scope="group"</code> 속성을 사용하여 체크박스/라디오 그룹임을 명시하고, <code>fieldset/legend</code> 구조를 사용하세요.</li>
         </ul>
 
         <strong>접근성 참고:</strong> 설명/오류 메시지는 <em>포커스를 받는 실제 위젯</em> 에 <code>aria-describedby</code>로 연결합니다.
@@ -584,62 +579,114 @@
 
   <script src="../../assets/scripts/common/a11y.js"></script>
   <script>
-    window.addEventListener('DOMContentLoaded', function () {
-      const A = window.App && App.a11y;
-    
-      // formMsg: 도움말 보이기/오류 숨기기/aria 연결
-      if (A && A.formMsg) A.formMsg.init(document);
-    
-      // (데모 전용) 가이드에서 처음부터 에러 상태 시연용
-      document.querySelectorAll('.fd-field--error[data-error]').forEach(fd => {
-        A && A.formMsg && A.formMsg.showError(fd);
+    document.addEventListener('DOMContentLoaded', function() {
+      // 1. 기본 select 요소 이벤트 처리 (키보드 접근성 포함)
+      const selects = document.querySelectorAll('.select__element');
+      selects.forEach(select => {
+        // 탭키로 들어온 경우 active 클래스 제거
+        select.addEventListener('focus', function() {
+          // 탭으로 포커스 이동 시 active 클래스 제거
+          this.parentElement.classList.remove('active');
+        });
+        
+        // blur 이벤트 - active 제거
+        select.addEventListener('blur', function() {
+          this.parentElement.classList.remove('active');
+        });
+        
+        // 클릭 이벤트 - 액티브 토글만 처리
+        select.addEventListener('click', function() {
+          // 클릭 시 active 상태 토글 (브라우저 기본 동작은 그대로 실행)
+          this.parentElement.classList.toggle('active');
+        });
+        
+        // 키보드 이벤트 - 엔터/스페이스 키는 브라우저 기본 동작 유지
+        select.addEventListener('keydown', function(e) {
+          // 엔터키나 스페이스바 - 기본 동작 유지
+          if (e.key === 'Enter' || e.key === ' ') {
+            // 기본 동작 유지 (preventDefault 제거)
+            // 액티브 클래스 추가
+            this.parentElement.classList.add('active');
+          }
+          
+          // ESC 키
+          if (e.key === 'Escape') {
+            this.parentElement.classList.remove('active');
+          }
+        });
+        
+        // 변경 이벤트 - 옵션 선택 후 active 제거
+        select.addEventListener('change', function() {
+          // 옵션 선택 후 active 제거
+          this.parentElement.classList.remove('active');
+        });
       });
-
-      // 멀티 셀렉트 향상 UI
-      document.querySelectorAll('.select--multiple').forEach(ms => {
-        const nativeSelect = ms.querySelector('.select__native');
+      
+      // 2. 다중 선택 컴포넌트 초기화 (a11y.js 사용)
+      const multiSelects = document.querySelectorAll('.select--multiple');
+      multiSelects.forEach(multiSelect => {
+        // 네이티브 select 요소에 visually-hidden 클래스 추가
+        const nativeSelect = multiSelect.querySelector('.select__native');
         if (nativeSelect) {
-          // JavaScript 활성화 시 네이티브 select 숨기기
-          nativeSelect.style.display = 'none';
           nativeSelect.classList.add('visually-hidden');
           nativeSelect.tabIndex = -1;
-          nativeSelect.setAttribute('aria-hidden','true');
+          nativeSelect.setAttribute('aria-hidden', 'true');
         }
-        A && A.initMultiSelect && A.initMultiSelect(ms);
+        
+        // 커스텀 UI 초기화
+        App.a11y.initMultiSelect(multiSelect);
       });
     
-      // 패스워드 토글
-      document.querySelectorAll('[data-password-toggle]').forEach(btn => {
-        if (btn.type !== 'button') btn.type = 'button';
-        if (btn.hasAttribute('aria-label')) btn.removeAttribute('aria-label');
+      // 3. Password 토글 기능 (접근성 개선 포함)
+      const toggles = document.querySelectorAll('[data-password-toggle]');
     
+      toggles.forEach((btn) => {
+        // 안전장치: submit 방지
+        if (btn.type !== 'button') btn.setAttribute('type', 'button');
+    
+        // 1. 접근성 이름: 버튼 직접 자식 SR 텍스트 보장
+        if (btn.hasAttribute('aria-label')) btn.removeAttribute('aria-label');
         let sr = btn.querySelector(':scope > .visually-hidden');
         if (!sr) {
-          const x = btn.querySelector('.icon-bg .visually-hidden');
+          const srInIcon = btn.querySelector('.icon-bg .visually-hidden');
+          const text = srInIcon ? srInIcon.textContent.trim() : '비밀번호 보기';
           sr = document.createElement('span');
           sr.className = 'visually-hidden';
-          sr.textContent = x ? x.textContent.trim() : '비밀번호 보기';
+          sr.textContent = text || '비밀번호 보기';
           btn.prepend(sr);
-          if (x) x.remove();
+          if (srInIcon) srInIcon.remove(); // 중복 제거
         }
-        const icon = btn.querySelector('.icon-bg');
-        if (icon && !icon.hasAttribute('aria-hidden')) icon.setAttribute('aria-hidden','true');
     
-        const wrap  = btn.closest('.fd-pw');
-        const input = wrap && wrap.querySelector('.fd-pw__el');
-        if (!input) return;
-        if (!input.id) input.id = 'pw-' + Math.random().toString(36).slice(2,8);
+        // 2. 아이콘은 SR에서 제외
+        const icon = btn.querySelector('.icon-bg');
+        if (icon && !icon.hasAttribute('aria-hidden')) {
+          icon.setAttribute('aria-hidden', 'true');
+        }
+    
+        // 3. 초기화 시점에 제어 대상 연결 + 초기 상태 동기화 (추가)
+        const container = btn.closest('.fd-pw');
+        const input = container ? container.querySelector('.fd-pw__el') : null;
+        if (!input) return; // 이 버튼은 스킵
+    
+        if (!input.id) {
+          input.id = 'pw-' + Math.random().toString(36).slice(2, 8);
+        }
         btn.setAttribute('aria-controls', input.id);
     
-        const hiddenInit = (input.type === 'password');
-        btn.setAttribute('aria-pressed', hiddenInit ? 'false' : 'true');
-        sr.textContent = hiddenInit ? '비밀번호 보기' : '비밀번호 숨기기';
+        // 초기 aria-pressed / SR 문구 동기화 (현재 타입 기준)
+        const isHiddenInit = (input.type === 'password');
+        btn.setAttribute('aria-pressed', isHiddenInit ? 'false' : 'true');
+        sr.textContent = isHiddenInit ? '비밀번호 보기' : '비밀번호 숨기기';
     
+        // 입력 비활성화 시 버튼도 비활성화 동기화
         if (input.disabled) btn.disabled = true;
     
+        // 4. 클릭 토글
         btn.addEventListener('click', () => {
-          const show = (input.type === 'password');
+          const show = (input.type === 'password'); // 보여줄지 여부
           input.type = show ? 'text' : 'password';
+    
+          // 아이콘 상태 토글 (replace 우선, 실패 시 폴백)
           if (icon) {
             const from = show ? 'icon-pw-hide' : 'icon-pw-show';
             const to   = show ? 'icon-pw-show' : 'icon-pw-hide';
@@ -648,12 +695,13 @@
               icon.classList.toggle('icon-pw-show', show);
             }
           }
+    
+          // 상태·이름 동기화
           btn.setAttribute('aria-pressed', show ? 'true' : 'false');
           sr.textContent = show ? '비밀번호 숨기기' : '비밀번호 보기';
         });
       });
     });
   </script>
-    
 </body>
 </html>
