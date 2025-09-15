@@ -64,7 +64,7 @@
             </div>
 
             <!-- 오류 상태 -->
-            <div class="fd-field fd-field--error fd-field col-span-4 md:col-span-4 lg:col-span-6" data-help="helpId2" data-error="errorId2">
+            <div class="fd-field fd-field--error col-span-4 md:col-span-4 lg:col-span-6" data-help="helpId2" data-error="errorId2">
               <label for="f-error-1" class="fd-field__lbl">오류 상태 예시</label>
               <div class="fd-field__ctrl fd-field__ctrl--input">
                 <div class="fd-input fd-input--full">
@@ -432,7 +432,7 @@
 
         <div class="guide-code-block">
 <pre><code>&lt;!-- Column(세로 기본) --&gt;
-  &lt;div class=&quot;fd-field&quot;&gt;
+  &lt;div class=&quot;fd-field&quot; data-scope="group" data-help="helpID" data-error="errorID" &gt;
     &lt;fieldset class=&quot;fd-field__ctrl fd-field__ctrl--chk&quot;&gt;
       &lt;legend class=&quot;fd-field__lbl&quot;&gt;
         취미 선택
@@ -453,12 +453,12 @@
           &lt;label for=&quot;chk-a3&quot; class=&quot;fd-chk__lbl&quot;&gt;음악 감상&lt;/label&gt;
         &lt;/div&gt;
       &lt;/div&gt;
-      &lt;p id=&quot;hobby-help&quot; class=&quot;fd-field__msg&quot;&gt;최소 1개를 선택하세요.&lt;/p&gt;
+      &lt;p id=&quot;helpID&quot; class=&quot;fd-field__msg&quot;&gt;최소 1개를 선택하세요.&lt;/p&gt;
     &lt;/fieldset&gt;
   &lt;/div&gt;
   
   &lt;!-- Row(가로 배치) --&gt;
-  &lt;div class=&quot;fd-field&quot;&gt;
+  &lt;div class=&quot;fd-field&quot; data-scope="group" data-help="helpID" data-error="errorID" &gt;
     &lt;fieldset class=&quot;fd-field__ctrl fd-field__ctrl--chk&quot;&gt;
       &lt;legend class=&quot;fd-field__lbl&quot;&gt;취미 선택 (가로)&lt;/legend&gt;
       &lt;div class=&quot;fd-group fd-group--row&quot;&gt;
@@ -467,6 +467,8 @@
         &lt;div class=&quot;fd-chk&quot;&gt;...&lt;/div&gt;
         &lt;div class=&quot;fd-chk&quot;&gt;...&lt;/div&gt;
       &lt;/div&gt;
+      &lt;p id=&quot;helpID&quot; class=&quot;fd-field__msg&quot;&gt;최소 1개를 선택하세요.&lt;/p&gt;
+      &lt;p id=&quot;errorID&quot; class=&quot;fd-field__msg fd-field__msg--error&quot;&gt;*하나 이상 선택해야 합니다.&lt;/p&gt;
     &lt;/fieldset&gt;
   &lt;/div&gt;</code></pre>    
         </div>

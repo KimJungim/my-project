@@ -1189,11 +1189,11 @@
                 : el.removeAttribute('aria-describedby');
     };
 
-    const setInvalid = (ctrls, on) => {
-      const first = ctrls[0];
-      if (!first) return;
-      on ? first.setAttribute('aria-invalid', 'true')
-        : first.removeAttribute('aria-invalid');
+    const setInvalid = (field, ctrls, on) => {
+      const target = getDescTarget(field, ctrls); // 그룹이면 fieldset, 아니면 첫 컨트롤
+      if (!target) return;
+      if (on) target.setAttribute('aria-invalid', 'true');
+      else target.removeAttribute('aria-invalid');
     };
 
     // hidden 속성과 보조 클래스 모두 지원(팀 CSS 상황 대응)
@@ -1212,7 +1212,7 @@
       setHidden(help, false);        // 도움말 기본 노출
       if (target && help) setDescribedBy(target, [help.id]);
 
-      setInvalid(ctrls, false);
+      setInvalid(field, ctrls, false);
       field.classList.remove('is-error');
     };
 
@@ -1235,7 +1235,7 @@
         setHidden(help, true);
         field.classList.add('is-error', 'fd-field--error');
 
-        setInvalid(ctrls, true);
+        setInvalid(field, ctrls, true);
         if (descT) setDescribedBy(descT, [err.id]);
 
         // SR 재공지(같은 문구 반복 무시 방지)
@@ -1243,6 +1243,11 @@
         err.textContent = '';
         void err.offsetHeight; // 강제 리플로우
         err.textContent = txt;
+
+        // 그룹 에러일 때 첫 체크박스로 포커스 유도(키보드/스크린리더 모두 편함)
+        if (field.dataset.scope === 'group') {
+          field.querySelector('input[type="checkbox"], input[type="radio"]')?.focus();
+        }
       },
 
       /** 오류 해제: 오류 숨김 → 도움말 복귀 + aria 원복 */
@@ -1257,7 +1262,7 @@
         setHidden(help, false);
         field.classList.remove('is-error', 'fd-field--error');
 
-        setInvalid(ctrls, false);
+        setInvalid(field, ctrls, false);
         if (descT) help ? setDescribedBy(descT, [help.id]) : setDescribedBy(descT, []);
       }
     };

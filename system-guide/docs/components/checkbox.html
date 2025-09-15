@@ -58,50 +58,53 @@
         <p class="guide-subtitle">라벨과 함께 사용되는 체크박스 그룹으로, 여러 옵션 중 다중 선택이 가능합니다.</p>
         <div class="guide-component-group">
           <form class="fd-form grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
-            <div class="fd-field fd-field col-span-4 md:col-span-4 lg:col-span-6">
+            <div class="fd-field col-span-4 md:col-span-4 lg:col-span-6" data-scope="group" data-help="hobby-help1">
               <fieldset class="fd-field__ctrl fd-field__ctrl--chk">
-                <legend id="hobby-label" class="fd-field__lbl">취미 선택 Column(세로)</legend>
+                <legend class="fd-field__lbl">취미 선택 Column(세로)</legend>
                   <div class="fd-group fd-group--column">
                     <div class="fd-chk">
-                      <input id="hobby-1" type="checkbox" class="fd-chk__el" name="hobby">
+                      <input id="hobby-1" type="checkbox" class="fd-chk__el" name="hobby" value="1">
                       <label for="hobby-1" class="fd-chk__lbl">독서</label>
                     </div>
                     <div class="fd-chk">
-                      <input id="hobby-2" type="checkbox" class="fd-chk__el" name="hobby">
+                      <input id="hobby-2" type="checkbox" class="fd-chk__el" name="hobby" value="2">
                       <label for="hobby-2" class="fd-chk__lbl">운동</label>
                     </div>
                     <div class="fd-chk">
-                      <input id="hobby-3" type="checkbox" class="fd-chk__el" name="hobby">
+                      <input id="hobby-3" type="checkbox" class="fd-chk__el" name="hobby" value="3">
                       <label for="hobby-3" class="fd-chk__lbl">음악 감상</label>
                     </div>
                     <div class="fd-chk">
-                      <input id="hobby-4" type="checkbox" class="fd-chk__el" name="hobby">
+                      <input id="hobby-4" type="checkbox" class="fd-chk__el" name="hobby" value="4">
                       <label for="hobby-4" class="fd-chk__lbl">요리</label>
                     </div>
                   </div>
+                  <p id="hobby-help1" class="fd-field__msg">*최소 1개를 선택해주세요.</p>
               </fieldset>
             </div>
-            <div class="fd-field fd-field col-span-4 md:col-span-4 lg:col-span-6">
+            <div class="fd-field col-span-4 md:col-span-4 lg:col-span-6" data-scope="group" data-help="hobby-help2" data-error="hobby-error">
               <fieldset class="fd-field__ctrl fd-field__ctrl--chk">
-                <legend id="hobby2-label" class="fd-field__lbl">취미 선택 Row(가로)</legend>
+                <legend class="fd-field__lbl">취미 선택 Row(가로)</legend>
                   <div class="fd-group fd-group--row">
                     <div class="fd-chk">
-                      <input id="hobby2-1" type="checkbox" class="fd-chk__el" name="hobby2">
+                      <input id="hobby2-1" type="checkbox" class="fd-chk__el" name="hobby2" value="1">
                       <label for="hobby2-1" class="fd-chk__lbl">독서</label>
                     </div>
                     <div class="fd-chk">
-                      <input id="hobby2-2" type="checkbox" class="fd-chk__el" name="hobby2">
+                      <input id="hobby2-2" type="checkbox" class="fd-chk__el" name="hobby2" value="2">
                       <label for="hobby2-2" class="fd-chk__lbl">운동</label>
                     </div>
                     <div class="fd-chk">
-                      <input id="hobby2-3" type="checkbox" class="fd-chk__el" name="hobby2">
+                      <input id="hobby2-3" type="checkbox" class="fd-chk__el" name="hobby2" value="3">
                       <label for="hobby2-3" class="fd-chk__lbl">음악 감상</label>
                     </div>
                     <div class="fd-chk">
-                      <input id="hobby2-4" type="checkbox" class="fd-chk__el" name="hobby2">
+                      <input id="hobby2-4" type="checkbox" class="fd-chk__el" name="hobby2" value="4">
                       <label for="hobby2-4" class="fd-chk__lbl">요리</label>
                     </div>
                   </div>
+                  <p id="hobby-help2" class="fd-field__msg">*최소 1개를 선택해주세요.</p>
+                  <p id="hobby-error" class="fd-field__msg fd-field__msg--error" aria-live="polite">*하나 이상 선택해야 합니다.</p>
               </fieldset>
             </div>
           </form>
@@ -112,9 +115,9 @@
         <div class="guide-code-block">
           <pre><code>&lt;!-- Column(세로) --&gt;
 &lt;form class="fd-form"&gt;
-  &lt;div class="fd-field"&gt;
+  &lt;div class="fd-field" data-scope="group" data-help="helpID" data-error="errorID"&gt;
     &lt;fieldset class="fd-field__ctrl fd-field__ctrl--chk"&gt;
-      &lt;legend id="hobby-label" class="fd-field__lbl"&gt;취미 선택&lt;/legend&gt;
+      &lt;legend class="fd-field__lbl"&gt;취미 선택&lt;/legend&gt;
       &lt;div class="fd-group fd-group--column"&gt;
         &lt;div class="fd-chk"&gt;
           &lt;input id="hobby-1" type="checkbox" class="fd-chk__el" name="hobby"&gt;  
@@ -133,13 +136,15 @@
           &lt;label for="hobby-4" class="fd-chk__lbl"&gt;요리&lt;/label&gt;
         &lt;/div&gt;
       &lt;/div&gt;
+      &lt;p id="helpID" class="fd-field__msg"&gt;*최소 1개를 선택해주세요.&lt;/p&gt;
+      &lt;p id="errorID" class="fd-field__msg fd-field__msg--error"&gt;*하나 이상 선택해야 합니다.&lt;/p&gt;
     &lt;/fieldset&gt;
   &lt;/div&gt;
 &lt;/form&gt;
 
 &lt;!-- Row(가로) --&gt;
 &lt;form class="fd-form"&gt;
-  &lt;div class="fd-field"&gt;
+  &lt;div class="fd-field" data-scope="group" data-help="helpID" data-error="errorID"&gt;
     &lt;fieldset class="fd-field__ctrl fd-field__ctrl--chk"&gt;
       &lt;legend id="hobby-label" class="fd-field__lbl"&gt;취미 선택&lt;/legend&gt;
       &lt;div class="fd-group fd-group--row"&gt;
@@ -160,6 +165,8 @@
           &lt;label for="hobby-4" class="fd-chk__lbl"&gt;요리&lt;/label&gt;
         &lt;/div&gt;
       &lt;/div&gt;
+      &lt;p id="helpID" class="fd-field__msg"&gt;*최소 1개를 선택해주세요.&lt;/p&gt;
+      &lt;p id="errorID" class="fd-field__msg fd-field__msg--error"&gt;*하나 이상 선택해야 합니다.&lt;/p&gt;
     &lt;/fieldset&gt;
   &lt;/div&gt;
 &lt;/form&gt;</code></pre>
@@ -175,7 +182,7 @@
               <span id="terms-label" class="fd-field__lbl">약관 동의</span>
               <div class="fd-field__ctrl fd-field__ctrl--chk">
                 <div class="fd-chk">
-                  <input id="terms-1" type="checkbox" class="fd-chk__el" aria-describedby="terms-msg" aria-invalid="true">
+                  <input id="terms-1" type="checkbox" class="fd-chk__el">
                   <label for="terms-1" class="fd-chk__lbl">이용약관 동의</label>
                 </div>
               </div>
@@ -189,7 +196,7 @@
     &lt;span id="terms-label" class="fd-field__lbl"&gt;약관 동의&lt;/span&gt;
     &lt;div class="fd-field__ctrl fd-field__ctrl--chk"&gt;
       &lt;div class="fd-chk"&gt;
-        &lt;input id="terms-1" type="checkbox" class="fd-chk__el" aria-describedby="terms-msg" aria-invalid="true"&gt;
+        &lt;input id="terms-1" type="checkbox" class="fd-chk__el"&gt;
         &lt;label for="terms-1" class="fd-chk__lbl"&gt;이용약관 동의&lt;/label&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -245,7 +252,19 @@
     </section>
   </div>
 
+  <script src="../../assets/scripts/common/a11y.js"></script>
   <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const A = window.App && App.a11y;
+    
+      // formMsg: 도움말 보이기/오류 숨기기/aria 연결
+      if (A && A.formMsg) A.formMsg.init(document);
+    
+      // (데모 전용) 가이드에서 처음부터 에러 상태 시연용
+      document.querySelectorAll('.fd-field--error[data-error]').forEach(fd => {
+        A && A.formMsg && A.formMsg.showError(fd);
+      });
+    });
   </script>
 </body>
 </html> 
