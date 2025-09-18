@@ -1,126 +1,799 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>컴포넌트 가이드</title>
+  <title>가이드</title>
   <link rel="stylesheet" href="../system-guide/assets/style-guide.css">
   <style>
-    .dropdown__item-text {
-      text-transform: capitalize;
+    .container {
+      padding: 30px 0;
+    }
+    .card-list {
+      padding-top: 20px;
     }
   </style>
 </head>
 <body>
-  <main class="container">
-      <h1 class="t-title-1 guide-title">디자인 시스템 가이드</h1>
-
-      <section class="guide-section">
-        <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
-          <div class="col-span-4 md:col-span-4 lg:col-span-6">
-            <div class="dropdown">
-              <button class="dropdown__button" aria-haspopup="true" aria-expanded="false">
-                <span class="dropdown__text">가이드 메뉴</span>
-              </button>
-              <ul class="dropdown__list" role="menu">
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/grid.html" class="dropdown__item-text">그리드 적용 가이드</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/index.html" class="dropdown__item-text">레이아웃 적용 가이드</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/a11y-guide.html" class="dropdown__item-text">접근성 가이드</a>
-                </li>
-              </ul>
+  <main class="container container--no-header">
+    <h1 class="t-title-1 guide-title">시스템 가이드 바로가기</h1>
+    <p class="guide-subtitle">
+      이 페이지는 디자인 시스템의 가이드와 컴포넌트를 한눈에 확인하고 접근할 수 있는 바로가기 인덱스입니다.<br>
+      각 카드는 카테고리, 제목, 요약 설명, 키워드를 포함하며, 클릭 시 해당 가이드 페이지나 컴포넌트 문서로 바로 이동할 수 있습니다.
+    </p>
+    <div class="card-list grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-4">
+      <!-- 가이드 페이지 -->
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./a11y-guide.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-primary">가이드</span>
+              </div>
             </div>
-          </div>
-
-          <div class="col-span-4 md:col-span-4 lg:col-span-6">
-            <div class="dropdown">
-              <button class="dropdown__button" aria-haspopup="true" aria-expanded="false">
-                <span class="dropdown__text">컴포넌트 메뉴</span>
-              </button>
-              <ul class="dropdown__list" role="menu">
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/avatar.html" class="dropdown__item-text">avatar 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/badge.html" class="dropdown__item-text">badge 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/button-group.html" class="dropdown__item-text">button-group 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/button.html" class="dropdown__item-text">button 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/card.html" class="dropdown__item-text">card 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/checkbox.html" class="dropdown__item-text">checkbox 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/dropdown.html" class="dropdown__item-text">dropdown 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/field.html" class="dropdown__item-text">field 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/floating-button.html" class="dropdown__item-text">floating-button 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/header.html" class="dropdown__item-text">header 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/input.html" class="dropdown__item-text">input 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/label.html" class="dropdown__item-text">label 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/link.html" class="dropdown__item-text">link 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/login-page.html" class="dropdown__item-text">login-page 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/pagination.html" class="dropdown__item-text">pagination 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/password.html" class="dropdown__item-text">password 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/radio-group.html" class="dropdown__item-text">radio-group 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/searchbox.html" class="dropdown__item-text">searchbox 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/select.html" class="dropdown__item-text">select 컴포넌트</a>
-                </li>
-                <li class="dropdown__item" role="menuitem">
-                  <a href="./docs/components/tag.html" class="dropdown__item-text">tag 컴포넌트</a>
-                </li>
-              </ul>
+            <div class="card__main">
+              <h3 class="card__title">접근성 유틸리티 (a11y.js) 가이드</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">접근성</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">a11y.js</strong><span class="card__summary-text">WCAG 준수를 위한 키보드 접근성 유틸. 포커스 트랩, 목록 탐색, 화살표 키, 토글/디스클로저 패턴 제공.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#포커스트랩</span>
+                  <span class="tag">#키보드 탐색</span>
+                  <span class="tag">#토글/디스클로저</span>
+                  <span class="tag">#접근성 유틸</span>
+                </div>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
-      </section>
-    </div>    
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./grid.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-primary">가이드</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">테일윈드 그리드 시스템 테스트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">레이아웃</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <span class="card__summary-text">12컬럼 기반 반응형 레이아웃 샘플. 2/3/4분할 등 컬럼 분배와 여백, 브레이크포인트 동작을 테스트하는 페이지.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#Grid</span>
+                  <span class="tag">#12컬럼</span>
+                  <span class="tag">#반응형</span>
+                  <span class="tag">#레이아웃</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./index.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-primary">가이드</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">시스템 공통 영역</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">레이아웃/배치</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <span class="card__summary-text">공통 레이아웃/상태 예시(로그인 필요 상태 등) 확인용 진입 페이지.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#공통영역</span>
+                  <span class="tag">#레이아웃</span>
+                  <span class="tag">#템플릿</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <!-- 컴포넌트 페이지 -->
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/avatar.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Avatar 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">상태/디스플레이</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">avatar.html</strong>
+                <span class="card__summary-text">이미지/텍스트 아바타, 아바타+텍스트 패턴 제공. 사용자 식별/요약정보 노출에 사용.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#아바타</span>
+                  <span class="tag">#프로필</span>
+                  <span class="tag">#텍스트 아바타</span>
+                  <span class="tag">#상태표시</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/badge.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Badge 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">상태/디스플레이</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">badge.html</strong>
+                <span class="card__summary-text">상태/카테고리 표식을 위한 배지와 배지 그룹. 타입별 간격·배치 규칙 제공.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#배지</span>
+                  <span class="tag">#상태</span>
+                  <span class="tag">#카테고리</span>
+                  <span class="tag">#그룹</span>
+                  <span class="tag">#라벨</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/button.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Button 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">상태/디스플레이</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">button.html</strong>
+                <span class="card__summary-text">기본/보더/라이트 보더 버튼 스타일과 크기·상태 가이드.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#버튼</span>
+                  <span class="tag">#보더</span>
+                  <span class="tag">#라이트</span>
+                  <span class="tag">#상태</span>
+                  <span class="tag">#크기</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/button-group.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Button Group 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">상태/디스플레이</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">button-group.html</strong>
+                <span class="card__summary-text">버튼 가로/세로 배치와 좌·우·센터 정렬 패턴. 간격/정렬 유틸 제공.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#버튼그룹</span>
+                  <span class="tag">#가로/세로</span>
+                  <span class="tag">#정렬</span>
+                  <span class="tag">#간격</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/card.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Card 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">레이아웃/구성 요소</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">card.html</strong>
+                <span class="card__summary-text">단일 마크업으로 PC/모바일 대응. 기본 카드, 업로드 템플릿, 링크 카드 등 변형 제공.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#카드</span>
+                  <span class="tag">#반응형</span>
+                  <span class="tag">#템플릿</span>
+                  <span class="tag">#링크 카드</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/checkbox.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Checkbox 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">폼(Form) 요소</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">checkbox.html</strong>
+                <span class="card__summary-text">단일 체크박스와 그룹, 오류 상태, 비활성 등 접근성·상태 패턴 제공.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#체크박스</span>
+                  <span class="tag">#그룹</span>
+                  <span class="tag">#오류 상태</span>
+                  <span class="tag">#비활성</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/dropdown.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Dropdown 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">내비게이션/상호작용</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">dropdown.html</strong>
+                <span class="card__summary-text">선택형(listbox)/액션형(menu) 드롭다운. 외부 클릭 닫기, 키보드 탐색, 다중 드롭다운 동작</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#드롭다운</span>
+                  <span class="tag">#listbox</span>
+                  <span class="tag">#menu</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/field.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Field 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">폼(Form) 요소</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">field.html</strong>
+                <span class="card__summary-text">라벨–컨트롤–메시지 구성의 폼 래퍼. input/checkbox/radio/select 등 공통 에러/헬프 메시지와 배치 가이드.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#필드</span>
+                  <span class="tag">#라벨</span>
+                  <span class="tag">#메시지</span>
+                  <span class="tag">#폼 래퍼</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/floating-button.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Floating Button 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">레이아웃/구성 요소</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">floating-button.html</strong>
+                <span class="card__summary-text">화면 고정형 플로팅 액션 버튼. 등록/추가 등 주요 CTA에 사용.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#FAB</span>
+                  <span class="tag">#플로팅</span>
+                  <span class="tag">#CTA</span>
+                  <span class="tag">#고정버튼</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/header.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Header 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">레이아웃/구성 요소</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">header.html</strong>
+                <span class="card__summary-text">로고/유저/메뉴/내비 구성. 상태(로그인 필요/로그인 후)별 변형과 접근성 속성 가이드.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#헤더</span>
+                  <span class="tag">#Nav</span>
+                  <span class="tag">#유저영역</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/input.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Input 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">폼(Form) 요소</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">input.html</strong>
+                <span class="card__summary-text">기본 입력, 전체 너비형, 오류/비활성 상태. Placeholder와 라벨 연계, 포커스 스타일 포함.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#인풋</span>
+                  <span class="tag">#오류</span>
+                  <span class="tag">#비활성화</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/label.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Label 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">폼(Form) 요소</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">label.html</strong>
+                <span class="card__summary-text">단일/다중 컨트롤 라벨 패턴, 필수 표기, 상태별 스타일. for/id 매칭 및 읽기 흐름 가이드.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#라벨</span>
+                  <span class="tag">#필수표기</span>
+                  <span class="tag">#for-id</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/link.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Link 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">내비게이션/상호작용</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">link.html</strong>
+                <span class="card__summary-text">텍스트 링크, 아이콘 포함 링크. 포커스/활성 상태와 접근성 이름 가이드.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#링크</span>
+                  <span class="tag">#아이콘링크</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/login-page.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Login Page 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">레이아웃/구성 요소</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">login-page.html</strong>
+                <span class="card__summary-text">로그인 레이아웃/헤더/폼 구성 예시. 필드/버튼 연동과 오류 메시지 패턴.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#로그인</span>
+                  <span class="tag">#레이아웃</span>
+                  <span class="tag">#폼</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/pagination.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Pagination 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">내비게이션/상호작용</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">pagination.html</strong>
+                <span class="card__summary-text">기본 페이지네이션과 페이지 이동 동작. 버튼/페이지 번호/이전·다음 키보드 동작 가이드.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#페이지네이션</span>
+                  <span class="tag">#이전/다음</span>
+                  <span class="tag">#내비게이션</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/password.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Password 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">폼(Form) 요소</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">password.html</strong>
+                <span class="card__summary-text">비밀번호 보기/숨기기 토글, 헬프/오류 메시지. aria-pressed 동기화 및 아이콘 토글 가이드.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#비밀번호</span>
+                  <span class="tag">#토글</span>
+                  <span class="tag">#aria-pressed</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/radio-group.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Radio Group 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">폼(Form) 요소</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">radio-group.html</strong>
+                <span class="card__summary-text">단일 라디오와 그룹 배치(row/column), 오류/비활성 상태. 키보드 화살표 탐색 패턴.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#라디오</span>
+                  <span class="tag">#그룹</span>
+                  <span class="tag">#row/column</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/searchbox.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Search Box 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">내비게이션/상호작용</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">searchbox.html</strong>
+                <span class="card__summary-text">기본 검색창과 기능형 검색(태그 클릭→입력 반영). 제출/초기화/태그 입력 상호작용 가이드.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#검색</span>
+                  <span class="tag">#태그</span>
+                  <span class="tag">#제출</span>
+                  <span class="tag">#초기화</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/select.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Select 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">폼(Form) 요소</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">select.html</strong>
+                <span class="card__summary-text">기본/비활성/전체 너비형 셀렉트. 네이티브 우선 접근성 + 커스텀 UI 향상 패턴.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#셀렉트</span>
+                  <span class="tag">#네이티브</span>
+                  <span class="tag">#비활성</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+      <div class="card card--link">
+        <div class="card__content">
+          <a href="./components/tag.html" class="card__header">
+            <div class="card__status">
+              <div class="badge-group badge-group--status">
+                <span class="badge badge-status badge-status-success">컴포넌트</span>
+              </div>
+            </div>
+            <div class="card__main">
+              <h3 class="card__title">Tag 컴포넌트</h3>
+              <div class="card__categories">
+                <div class="badge-group badge-group--category">
+                  <span class="badge badge-category">내비게이션/상호작용</span>
+                </div>
+              </div>
+              <p class="card__summary">
+                <strong class="card__summary-label">tag.html</strong>
+                <span class="card__summary-text">버튼형 키워드 태그. 클릭 시 검색 입력에 태그 텍스트 주입/삭제 동작 제공.</span>
+              </p>
+              <div class="card__tags">
+                <div class="tag-list">
+                  <span class="tag">#태그</span>
+                  <span class="tag">#키워드</span>
+                  <span class="tag">#버튼형</span>
+                  <span class="tag">#입력연동</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <i class="icon-bg icon-link-b card__link-icon">
+          <span class="visually-hidden">링크 아이콘</span>
+        </i>
+      </div>
+    </div>
   </main>
-  
-  <script src="../system-guide/assets/scripts/common/a11y.js"></script>
-
-  <script>
-    // a11y.js를 활용한 드롭다운 접근성 초기화
-    document.addEventListener('DOMContentLoaded', function() {
-      // 페이지의 모든 드롭다운 컴포넌트 초기화
-      const dropdowns = document.querySelectorAll('.dropdown');
-      dropdowns.forEach(dropdown => {
-        App.a11y.initDropdown(dropdown);
-      });
-    });
-  </script>
 </body>
 </html>
